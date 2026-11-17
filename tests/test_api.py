@@ -69,7 +69,7 @@ def test_reference_search_returns_invented_requirements_and_repeatable_ranking(c
     assert response.json() == client.post("/references/search", json=payload).json()
     assert response.json()["demonstration"] is True
     match, = response.json()["matches"]
-    assert match["id"] == "adult_name_change"
+    assert match["petition_type"] == "adult_name_change"
     assert match["demonstration"] is True
     assert "requested_name" in match["required_fields"]
     assert 0 < match["score"] <= 1
@@ -78,7 +78,7 @@ def test_reference_search_returns_invented_requirements_and_repeatable_ranking(c
 def test_unknown_search_terms_do_not_return_a_checklist(client):
     response = client.post("/references/search", json={"query": "quasar xylophone zeppelin"})
     assert response.status_code == 200
-    assert response.json() == {"demonstration": True, "matches": []}
+    assert response.json() == {"demonstration": True, "backend": "keyword", "matches": []}
 
 
 @pytest.mark.parametrize("payload", [
@@ -86,7 +86,7 @@ def test_unknown_search_terms_do_not_return_a_checklist(client):
     {"query": "   "},
     {"query": "divorce", "limit": True},
     {"query": "divorce", "limit": "1"},
-    {"query": "divorce", "limit": 5},
+    {"query": "divorce", "limit": 41},
     {"query": "divorce", "model": "untrusted-model"},
 ])
 def test_search_rejects_invalid_or_unsupported_options(client, payload):
@@ -98,3 +98,14 @@ def test_invalid_search_text_is_not_reflected_in_errors(client):
     response = client.post("/references/search", content=body, headers={"content-type": "application/json"})
     assert response.status_code == 422
     assert "PrivateQueryMarker" not in response.text
+
+
+def test_recorded_graph_exposes_latest_and_earlier_evidence_without_approving(client):
+    report = client.get("/demo/extraction").json()
+    assert report == client.get("/demo/extraction").json()
+    assert report["status"] == "needs_review" and not report["approved"]
+    birth = [row for row in report["provenance_table"] if row["field"] == "birth_date"]
+    assert [(row["value"], row["lines"], row["selection"]) for row in birth] == [
+        ("1991-06-18", [4], "earlier_or_unresolved"), ("1991-06-19", [8], "proposed")]
+    address, = [row for row in report["provenance_table"] if row["field"] == "petitioner_address"]
+    assert address["lines"] == [5, 6] and address["selection"] == "proposed"
