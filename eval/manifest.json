@@ -1,6 +1,6 @@
 {
-  "frozen_at": "2026-11-17T19:57:22.213032+00:00",
-  "scope": "40 authored cases; 10 development, 30 holdout; no model outputs examined at this freeze",
+  "frozen_at": "2026-11-17T20:10:50.482637+00:00",
+  "scope": "Data frozen before any capture at 3899209; evaluator safeguards reviewed during ten development captures. No holdout output generated before this freeze.",
   "fact_sheet_commit": "ccb1a8e",
   "prompt_version": "extract-v2",
   "model": {
@@ -57,13 +57,31 @@
     "eval/cases/c40.json": "53cb41e134125211066c2f0852bfaf486be46880ede230376ee21472cf141d03",
     "eval/fact_sheets/divorce.json": "a3f6c6f696aae82b834606e1f9e045e31fb3b788307ea34dd0732836b52bc197",
     "eval/fact_sheets/other.json": "152077a6d29bca44b74901a898534d0cdbd1ff3a116a587714abb65690712c77",
-    "scripts/evaluate.py": "dc0523ecb8eddb1961ade020a0645b09d89e172648b1ad9c528e3cdab001b39b",
+    "requirements.lock": "8f1fbf6f856280ec98f56ab92ef9a0700c3937a3e1c808c3919d28c4f47288cc",
+    "scripts/evaluate.py": "9e6f0207d903f05f28d23efff77f1ebbca73ac30cc6b9ce1a638c43ebb6c08cc",
     "src/intake_draft/contracts.py": "ed1df140c54b98cd2db1172a111560121b73e29dae9e13dc3ae633b755d1ca7b",
     "src/intake_draft/data/reference_notes.json": "5ea395a70a5a70f14a35de20e967d65cacc6f57989bf32fe9becabe65cff466c",
-    "src/intake_draft/evaluation.py": "9073755dbe64c480cf97d4eee44ea031ec53e8d3e3f96cc74396fc2dbf4acc52",
-    "src/intake_draft/evaluation_run.py": "0a0386f66d6aa132760b3e596c5a3bb24afd93155ae0bad81ec6884b59d35318",
+    "src/intake_draft/drafting.py": "2fe2f76766ababa5115a7f9a90b74ac97a4e93db368fac1024299e252bb6a05c",
+    "src/intake_draft/evaluation.py": "ab05533bffcefca8e56c3d4bf4d95acabcc6b8382592fbfe29ccb6df4404be35",
+    "src/intake_draft/evaluation_run.py": "f78c34421a11d1752c0836c22071f2a96d377939193e394a7db09910080d3d8d",
     "src/intake_draft/extraction.py": "0350c4876999dbbfa558c4f31b303ae10b41d8121d9f864c19fa837b149daa99",
     "src/intake_draft/local_model.py": "ca75cf6b414d83ae258d4d3a29ef0f76a3d99982b849965b3ee09d8e3c75b971",
     "src/intake_draft/workflow.py": "d95d6a1bfe8ea95ec08d41610c01acdccef8c7e4e1e0ab5217ea974ea2f954f2"
+  },
+  "data_frozen_commit": "3899209",
+  "development_captures_present": [
+    "c01",
+    "c02",
+    "c03",
+    "c11",
+    "c12",
+    "c13",
+    "c21",
+    "c22",
+    "c31",
+    "c32"
+  ],
+  "runtime_observed_before_capture": {
+    "ollama": "0.30.0"
   }
 }

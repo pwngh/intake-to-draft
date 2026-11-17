@@ -101,7 +101,7 @@ def scripted_review(service, run, sheet, case):
                     if a["kind"] != "uncertain" and words(a["value"]) == words(fact["value"])),
                    key=lambda a: max(c["line"] for c in a["citations"]))
         proposal = row["proposed"]
-        if (proposal and words(proposal["value"]) == words(fact["value"])
+        if (proposal and proposal["value"] == fact["value"]
                 and {c["line"] for c in gold["citations"]} <= {c["line"] for c in proposal["citations"]}):
             decide("accept", **slot)
         else:

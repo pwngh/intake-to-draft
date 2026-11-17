@@ -48,3 +48,32 @@ def test_gold_payloads_use_named_review_and_leave_unresolved_cases_blocked(tmp_p
         assert final["status"] == "draft"
         assert sorted(tokens(r["value"]) for r in final["draft"]["provenance_table"]) == sorted(tokens(f["value"]) for f in sheet["facts"])
         assert all(row["lines"] for row in final["draft"]["provenance_table"])
+
+
+def test_scripted_review_corrects_punctuation_in_requested_name_before_approval(tmp_path):
+    sheet, case = next(pair for pair in PAIRS if pair[0]["id"] == "c35")
+    expected = next(f["value"] for f in sheet["facts"] if f["field"] == "requested_name")
+    facts = json.loads(json.dumps(case["evidence"]))
+    requested = next(f for f in facts if f["field"] == "requested_name")
+    requested["assertions"][0]["value"] = "Neri Dale Fern"
+    source = number_transcript(TranscriptRequest(transcript=case["transcript"]))
+    record = {"model": "synthetic punctuation regression, not a model capture", "note_id": sheet["note_id"],
+              "prompt_version": PROMPT_VERSION,
+              "prompt_sha256": prompt_hash(messages_for(source, note_by_id(sheet["note_id"]))),
+              "transcript": case["transcript"], "transcript_sha256": source.sha256,
+              "raw_output": json.dumps({"facts": facts})}
+    service = ReviewService(tmp_path / "review.sqlite")
+    run = service.create(record)
+    proposal = next(r for r in run["review_queue"] if r["field"] == "requested_name")["proposed"]
+    assert proposal["value"] == "Neri Dale Fern"
+    assert proposal["citations"][0]["quote"] == "Neri Dale-Fern"
+
+    final = scripted_review(service, run, sheet, case)
+    filled = next(r for r in final["draft"]["provenance_table"] if r["field"] == "requested_name")
+    assert filled["value"] == expected == "Neri Dale-Fern"
+    assert filled["action"] == "correct" and filled["reviewer"] == REVIEWER
+    event, = [e for e in final["audit"] if e["field"] == "requested_name"]
+    assert event["action"] == "correct" and event["reviewer"] == REVIEWER
+    assert event["before"]["value"] == "Neri Dale Fern"
+    assert event["after"]["value"] == expected
+    assert final["approval"]["reviewer"] == APPROVER and final["status"] == "draft"

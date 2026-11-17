@@ -1,5 +1,6 @@
 """Independent scoring checks: factual truth and literal citation containment differ."""
 
+from copy import deepcopy
 import json
 
 import pytest
@@ -140,3 +141,34 @@ def test_aggregate_uses_counts_and_zero_denominators_are_not_perfect_scores():
     assert empty["metrics"]["field_accuracy"]["rate"] is None
     assert empty["metrics"]["escaped_guess_rate"]["rate"] is None
     assert count(empty, "missing_fact_review_rate") == (1, 1)
+
+
+@pytest.mark.parametrize("mutate", [
+    lambda f: f.pop("field"),
+    lambda f: f.pop("subject"),
+    lambda f: f.update(field=42),
+    lambda f: f.update(subject="child-0"),
+    lambda f: f.update(unexpected=True),
+    lambda f: f["assertions"][0].pop("kind"),
+    lambda f: f["assertions"][0].update(kind="inferred"),
+    lambda f: f["assertions"][0].update(unexpected=True),
+    lambda f: f["assertions"][0]["citations"][0].update(unexpected=True),
+    lambda f: f["assertions"][0]["citations"][0].update(line=True),
+])
+def test_malformed_group_does_not_earn_credit_just_because_its_quote_matches(mutate):
+    valid = claim("petitioner_name", "Lark", (1, "Lark"))
+    malformed = deepcopy(valid)
+    mutate(malformed)
+    result = score([], "Lark", [], raw=json.dumps({"facts": [malformed, valid]}))
+    assert count(result, "citation_accuracy") == (1, 2)
+    assert [row["supported"] for row in result["citation_checks"]] == [False, True]
+    assert result["malformed_output"] is True
+
+
+def test_bad_assertion_does_not_erase_valid_sibling_citation_credit():
+    mixed = claim("petitioner_name", "Lark", (1, "Lark"))
+    mixed["assertions"].append(deepcopy(mixed["assertions"][0]))
+    mixed["assertions"][0].pop("kind")
+    result = score([], "Lark", [], raw=json.dumps({"facts": [mixed]}))
+    assert count(result, "citation_accuracy") == (1, 2)
+    assert result["malformed_output"] is True

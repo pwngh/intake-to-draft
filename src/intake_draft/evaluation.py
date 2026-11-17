@@ -4,10 +4,14 @@ from collections import Counter
 import json
 import re
 
+from pydantic import ValidationError
+
+from intake_draft.extraction import Fact
+
 SCORING_VERSION = "1"
 DEFINITIONS = {
     "field_accuracy": "Correct checked proposals / known fact-sheet slots; omissions fail. Child IDs are ignored, but full name/date values must match as a multiset.",
-    "citation_accuracy": "Supported raw assertion groups / all raw assertion groups, including earlier and uncertain claims. Exact quotes must exist on their cited lines and jointly contain the value words in order. This measures literal containment, not whether the caller asserted the value as a fact. Malformed claim entries count as failures; unparseable whole outputs have zero groups and are listed separately.",
+    "citation_accuracy": "Supported raw assertion groups / all raw assertion groups, including earlier and uncertain claims. Each group must satisfy the strict fact/assertion/citation structure. Exact quotes must exist on their cited lines and jointly contain the value words in order. This measures literal containment, not whether the caller asserted the value as a fact. Malformed claim entries count as failures; unparseable whole outputs have zero groups and are listed separately.",
     "missing_fact_review_rate": "Unresolved fact-sheet slots with no usable proposal and an empty pending review row / all unresolved slots. Reserve empty child rows for unmatched known children first; remaining rows can cover unresolved children only when no unmatched usable child proposal exists.",
     "escaped_guess_rate": "Incorrect checked proposals / all checked proposals, including invented, stale, misattributed, and duplicate values. This is before mandatory human approval, not a rate of incorrect released drafts.",
     "normalization": "Unicode word tokens after case folding; punctuation and whitespace are ignored. No semantic model judge or post-hoc aliases.",
@@ -33,16 +37,24 @@ def _claims(raw):
     claims, malformed = [], set(output) != {"facts"}
     for fact in output["facts"]:
         if not isinstance(fact, dict):
-            claims.append((None, None, None))
+            claims.append((None, None, None, False))
             malformed = True
             continue
         malformed |= set(fact) != {"field", "subject", "assertions"}
         assertions = fact.get("assertions")
+        valid_list = isinstance(assertions, list) and 1 <= len(assertions) <= 20
         if not isinstance(assertions, list) or not assertions:
-            assertions, malformed = [None], True
+            assertions = [None]
         for assertion in assertions:
-            malformed |= not isinstance(assertion, dict)
-            claims.append((fact.get("field"), fact.get("subject"), assertion))
+            try:
+                # Validate this group only: one malformed sibling must not erase
+                # a valid citation group's credit. Do not call semantic checks.
+                Fact.model_validate({**fact, "assertions": [assertion]})
+                structurally_valid = valid_list
+            except (ValidationError, ValueError):
+                structurally_valid = False
+            malformed |= not structurally_valid
+            claims.append((fact.get("field"), fact.get("subject"), assertion, structurally_valid))
     return claims, malformed
 
 
@@ -127,8 +139,8 @@ def score_case(sheet, case, raw, run):
     citation_checks = [{"field": field if isinstance(field, str) else None,
         "subject": subject if isinstance(subject, str) else None,
         "value": assertion.get("value") if isinstance(assertion, dict) and isinstance(assertion.get("value"), str) else None,
-        "supported": _citation_supported(assertion, lines)}
-        for field, subject, assertion in claims]
+        "supported": structurally_valid and _citation_supported(assertion, lines)}
+        for field, subject, assertion, structurally_valid in claims]
     malformed |= "malformed_model_output" in run["report"].get("issues", [])
     return {"id": sheet["id"], "split": sheet["split"], "note_id": sheet["note_id"],
         "malformed_output": malformed, "model_step_failed": "model_step_failed" in run["report"].get("issues", []),

@@ -2,6 +2,9 @@
 
 import argparse
 from collections import Counter
+from copy import deepcopy
+import fcntl
+import os
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -20,6 +23,14 @@ RECORDINGS = ROOT / "eval/recordings/qwen3-coder"
 
 
 def recording_for(sheet, case, live):
+    directory = ROOT / ".runtime"
+    directory.mkdir(parents=True, exist_ok=True)
+    with (directory / "evaluation-capture.lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        return _recording_for(sheet, case, live)
+
+
+def _recording_for(sheet, case, live):
     source = number_transcript(TranscriptRequest(transcript=case["transcript"]))
     messages = messages_for(source, note_by_id(sheet["note_id"]))
     path = RECORDINGS / (sheet["id"] + ".json")
@@ -32,9 +43,18 @@ def recording_for(sheet, case, live):
         record = {"case_id": sheet["id"], "captured_at": datetime.now(timezone.utc).isoformat(),
                   "transcript": case["transcript"], "note_id": sheet["note_id"], **model.last_result}
         path.parent.mkdir(parents=True, exist_ok=True)
-        # Exclusive creation makes resumed captures reuse, never overwrite, prior results.
-        with path.open("x") as handle:
-            handle.write(json.dumps(record, indent=2) + "\n")
+        # Publish a fully written file atomically. A link fails if a capture exists.
+        temporary = None
+        try:
+            with tempfile.NamedTemporaryFile(mode="w", dir=ROOT / ".runtime", delete=False) as handle:
+                temporary = Path(handle.name)
+                handle.write(json.dumps(record, indent=2) + "\n")
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.link(temporary, path)
+        finally:
+            if temporary is not None:
+                temporary.unlink(missing_ok=True)
     record = json.loads(path.read_text())
     if (record["case_id"] != sheet["id"] or record["note_id"] != sheet["note_id"]
             or record["transcript"] != case["transcript"] or record["model"] != DEFAULT_MODEL
@@ -46,14 +66,25 @@ def recording_for(sheet, case, live):
 
 
 def stable_result(report):
-    """Compare measurements and draft hashes; run IDs and server timestamps intentionally vary."""
-    return {"model": report["model"], "manifest_sha256": report["manifest_sha256"],
-            "recording_sha256": report["recording_sha256"], "scores": report["scores"],
-            "case_results": [{"id": row["id"], "metrics": row["metrics"],
-                              "status": row["review"]["status"],
-                              "draft_sha256": (row["review"]["approval"] or {}).get("draft_sha256"),
-                              "review_actions": row["review"]["actions"]}
-                             for row in report["case_results"]]}
+    """Compare all measurements and evidence, excluding server-assigned timestamps."""
+    stable = deepcopy(report)
+    stable.pop("generated_at", None)
+    for row in stable["case_results"]:
+        if row["review"]["approval"] is not None:
+            row["review"]["approval"].pop("at", None)
+    return stable
+
+
+def check_and_write(report, output, expected_path=None):
+    # Runtime reports must never replace the gold baseline, captures, or other source files.
+    if not output.resolve().is_relative_to((ROOT / ".runtime").resolve()):
+        raise ValueError("evaluation output must stay inside this checkout's ignored .runtime directory")
+    if expected_path is not None:
+        expected = json.loads(expected_path.read_text())
+        if stable_result(report) != stable_result(expected):
+            raise ValueError("replay differs from the committed measurements, evidence, or draft hashes")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(report, indent=2) + "\n")
 
 
 def main():
@@ -63,12 +94,15 @@ def main():
     parser.add_argument("--check", action="store_true", help="Compare replay to the committed report.")
     parser.add_argument("--output", type=Path, help="Default: ignored .runtime/evaluation/<split>/report.json")
     args = parser.parse_args()
+    if args.check and args.split != "holdout":
+        parser.error("only the holdout has a published benchmark report; development is diagnostic")
     if args.live and args.check:
         parser.error("capture and committed-report checking are separate operations")
     manifest = verify_manifest(ROOT)
     pairs = [(s, c) for s, c in load_cases(ROOT) if s["split"] == args.split]
     output = args.output or ROOT / ".runtime/evaluation" / args.split / "report.json"
-    output.parent.mkdir(parents=True, exist_ok=True)
+    if not output.resolve().is_relative_to((ROOT / ".runtime").resolve()):
+        parser.error("--output must stay inside this checkout's ignored .runtime directory")
     artifacts = ROOT / ".runtime/evaluation" / args.split / "runs"
     artifacts.mkdir(parents=True, exist_ok=True)
     rows, hashes = [], {}
@@ -90,11 +124,7 @@ def main():
               "recording_sha256": hashes, "scores": aggregate(rows), "case_results": rows,
               "review_outcomes": dict(Counter(row["review"]["status"] for row in rows)),
               "approval_kind": "Scripted fact-sheet review, not a claim of human inspection; model scores precede corrections."}
-    output.write_text(json.dumps(report, indent=2) + "\n")
-    if args.check:
-        expected = json.loads((ROOT / "eval" / (args.split + "_report.json")).read_text())
-        if stable_result(report) != stable_result(expected):
-            raise ValueError("replay differs from the committed measurements or draft hashes")
+    check_and_write(report, output, ROOT / "eval" / (args.split + "_report.json") if args.check else None)
     print(f"\n{args.split}: {len(rows)} cases; {DEFAULT_MODEL}")
     for name, metric in report["scores"]["metrics"].items():
         rate = "undefined (zero denominator)" if metric["rate"] is None else f"{100 * metric['rate']:.2f}%"
