@@ -31,7 +31,7 @@ def main() -> None:
                         response = client.get("/health")
                         response.raise_for_status()
                         break
-                    except httpx.ConnectError:
+                    except httpx.TransportError:
                         if time.monotonic() >= deadline:
                             raise RuntimeError("demonstration server did not become ready") from None
                         time.sleep(0.05)
