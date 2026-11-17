@@ -117,3 +117,5 @@ GitHub CLI is authenticated as `pwngh`. Antigravity is invoked by its installed 
 
 - Retain the first five new responses. Complete child values improve from 0/7 to 7/7 and both assertions of the corrected child date are supported in one subject. The remaining requested-outcome error and unsupported order-date history stay visible. Do not infer general accuracy or missing-child robustness from these seven known child values.
 - Extend the one-command demo with the separate development replay. Keep the original holdout replay on v2 and keep its report byte-identical; no new holdout score is computed.
+
+- Protect saved reports from aliased runtime paths. Reject aliased parent directories and atomically replace the runtime file, so symlinks and hard links cannot truncate a committed report. Keep the pre-capture manifest alongside the replay manifest after this output-only fix; prove all measurements and per-case evidence are unchanged without new inference.

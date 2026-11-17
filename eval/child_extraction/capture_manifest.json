@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "scope": "development-only child extraction",
+  "frozen_at": "2026-11-17T21:04:25.362742+00:00",
+  "baseline_commit": "8467af6758e766bc8a3a1568596bbc0f6771b5ca",
+  "dev_case_ids": [
+    "c01",
+    "c02",
+    "c03",
+    "c11",
+    "c12",
+    "c13",
+    "c21",
+    "c22",
+    "c31",
+    "c32"
+  ],
+  "child_case_ids": [
+    "c11",
+    "c12",
+    "c13",
+    "c21",
+    "c22"
+  ],
+  "prompt_version": "extract-children-v1",
+  "baseline_manifest_sha256": "aff51b8f03562f023e9bb919b4ad55154afc3b30574d3939debb63aa8783fa4a",
+  "preserved_holdout_report_sha256": "aed0e440b51f50d2cfe846975c5c29c6c0eff1610baa7d50e3444bf4315b2abc",
+  "files": {
+    "src/intake_draft/child_extraction.py": "e7588d5b044de3df4c4f95f477dad6667200027777ed00d7263419760e3ccb30",
+    "scripts/evaluate_children.py": "be2ad338058e32c02c3603d62ffab7c302cf090cf02a9d75bf71df74673ee226",
+    "scripts/evaluate-children": "5396d2620526e8401b49631af5e721589fa2af26e1cde494d7f086dd794ffc86",
+    "eval/cases/c01.json": "3079a79049f4b5ad9812fd82d3183dc5ee920f0c8128d28b401599b5f54ed5ce",
+    "eval/cases/c02.json": "1f2d7a9eabaeb2096d4d080523f26c00a966b00b212f2b90d857f83e899eec85",
+    "eval/cases/c03.json": "73dc8f4e70acb14e532fee3eacd5d2374ef46ac0bc47d3d7132a367126c11be1",
+    "eval/cases/c11.json": "8c17e98b7f4694b28b2e0722f46861432830b283606ba99a3c4bd1ab10c79bf0",
+    "eval/cases/c12.json": "1e1ababac2879d4b4b8e4ca4be3436339040ddf519f6c131cbf96db3e908b492",
+    "eval/cases/c13.json": "5d80275f4d34804b23184f78933636476cc28318cd8fdd3701c13df503d4a230",
+    "eval/cases/c21.json": "79eb500225528c858ea7937b98b449beabbc1d0d7bc05057d4912fef18ee5a44",
+    "eval/cases/c22.json": "7f4a5f1651ccfbf3d73b3022c05d0d9b23215fbc9615ef41f1b00a82fc8db6ef",
+    "eval/cases/c31.json": "292dbbd8b9a2523626e867a688c523e697c6c20b3f628b82e6ec665cde04b27f",
+    "eval/cases/c32.json": "ee5ef6c29059cadd49a22c4f815fbb5194bf46dc010b6108c1f15edb23e0dc2f",
+    "eval/recordings/qwen3-coder/c01.json": "68251c3899602b8d5aa22434c3fa70bdcda8b8fd04f47e49a9be2e83bb539f50",
+    "eval/recordings/qwen3-coder/c02.json": "fe8833f26d43ae6900a521a8877d76bdb2824a46309ed5d9a12d5425ce9e1304",
+    "eval/recordings/qwen3-coder/c03.json": "a959f1babac9d56e3716f80c96324477e17fb8e83296920aa11159ae20bdf95a",
+    "eval/recordings/qwen3-coder/c11.json": "155e8fd99366827913aef76f39981d1b19c5524da7710f66cd090b33bded9fe4",
+    "eval/recordings/qwen3-coder/c12.json": "6f19c434416be8dc30dfa653137d1cb6b6f8b9e54c984e6559120e033f1a93c5",
+    "eval/recordings/qwen3-coder/c13.json": "93383a77b5e2e415b366823a75bf73abf1ab164f759de907f5ce57d02385804c",
+    "eval/recordings/qwen3-coder/c21.json": "7defae7efac4a403d8ec52b7103151d3ac4325aaecdc9f75a2ef1e60e5936dc5",
+    "eval/recordings/qwen3-coder/c22.json": "d46f4990f7d6164bbd32c13c27d8e6b43ebe385d1fdccb0cdda784c6c49576e9",
+    "eval/recordings/qwen3-coder/c31.json": "d4ec30de3592c5695b4ab5910f57174a2b3a324213982f75eccc230bcb06ad5e",
+    "eval/recordings/qwen3-coder/c32.json": "557a44190e8e838cbfba636f33918957529375787d27f2e0f82931e8ebbb06e0",
+    "eval/fact_sheets/divorce.json": "a3f6c6f696aae82b834606e1f9e045e31fb3b788307ea34dd0732836b52bc197",
+    "eval/fact_sheets/other.json": "152077a6d29bca44b74901a898534d0cdbd1ff3a116a587714abb65690712c77"
+  },
+  "runtime_observed": {
+    "ollama": "0.30.0"
+  },
+  "capture_policy": "First response for each of five child development cases; five nonchild baseline outputs reused unchanged. No holdout inference or rescoring with the new prompt."
+}

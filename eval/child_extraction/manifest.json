@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "scope": "development-only child extraction",
-  "frozen_at": "2026-11-17T21:04:25.362742+00:00",
+  "frozen_at": "2026-11-17T21:16:10.909917+00:00",
   "baseline_commit": "8467af6758e766bc8a3a1568596bbc0f6771b5ca",
   "dev_case_ids": [
     "c01",
@@ -27,7 +27,7 @@
   "preserved_holdout_report_sha256": "aed0e440b51f50d2cfe846975c5c29c6c0eff1610baa7d50e3444bf4315b2abc",
   "files": {
     "src/intake_draft/child_extraction.py": "e7588d5b044de3df4c4f95f477dad6667200027777ed00d7263419760e3ccb30",
-    "scripts/evaluate_children.py": "be2ad338058e32c02c3603d62ffab7c302cf090cf02a9d75bf71df74673ee226",
+    "scripts/evaluate_children.py": "acd6888b57ccccdb71a48d6ace594d1c2dfb62a7039026268505b9ac1e3ca8ba",
     "scripts/evaluate-children": "5396d2620526e8401b49631af5e721589fa2af26e1cde494d7f086dd794ffc86",
     "eval/cases/c01.json": "3079a79049f4b5ad9812fd82d3183dc5ee920f0c8128d28b401599b5f54ed5ce",
     "eval/cases/c02.json": "1f2d7a9eabaeb2096d4d080523f26c00a966b00b212f2b90d857f83e899eec85",
@@ -50,10 +50,14 @@
     "eval/recordings/qwen3-coder/c31.json": "d4ec30de3592c5695b4ab5910f57174a2b3a324213982f75eccc230bcb06ad5e",
     "eval/recordings/qwen3-coder/c32.json": "557a44190e8e838cbfba636f33918957529375787d27f2e0f82931e8ebbb06e0",
     "eval/fact_sheets/divorce.json": "a3f6c6f696aae82b834606e1f9e045e31fb3b788307ea34dd0732836b52bc197",
-    "eval/fact_sheets/other.json": "152077a6d29bca44b74901a898534d0cdbd1ff3a116a587714abb65690712c77"
+    "eval/fact_sheets/other.json": "152077a6d29bca44b74901a898534d0cdbd1ff3a116a587714abb65690712c77",
+    "eval/child_extraction/capture_manifest.json": "1c3955238f4b61557538312195db1b05688412d847bef163d20d3a68165c3003"
   },
   "runtime_observed": {
     "ollama": "0.30.0"
   },
-  "capture_policy": "First response for each of five child development cases; five nonchild baseline outputs reused unchanged. No holdout inference or rescoring with the new prompt."
+  "capture_policy": "First response for each of five child development cases; five nonchild baseline outputs reused unchanged. No holdout inference or rescoring with the new prompt.",
+  "capture_manifest": "eval/child_extraction/capture_manifest.json",
+  "capture_source_commit": "e1b5030",
+  "revision_note": "Replay-only manifest after output alias protection. Original capture manifest retained; model, prompt, scorer, inputs, and raw responses unchanged."
 }

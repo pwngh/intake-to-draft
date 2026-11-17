@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-17T21:10:03.477580+00:00",
+  "generated_at": "2026-11-17T21:16:14.970641+00:00",
   "scope": "development-only child extraction",
   "model": {
     "name": "qwen3-coder:latest",
@@ -13,7 +13,7 @@
     }
   },
   "prompt_version": "extract-children-v1",
-  "manifest_sha256": "1c3955238f4b61557538312195db1b05688412d847bef163d20d3a68165c3003",
+  "manifest_sha256": "9f415f449b3eda717b2f8a58e8d1a29302e9a62497c08c8338bb8d9b80b150e4",
   "baseline_manifest_sha256": "aff51b8f03562f023e9bb919b4ad55154afc3b30574d3939debb63aa8783fa4a",
   "evaluation_basis": "Pre-review proposals through the unchanged ReviewService graph; specified note, not retrieval quality; no scripted review or approval.",
   "nonchild_reuse": {

@@ -202,8 +202,18 @@ def check_and_write(report, check=False):
         if stable(report) != stable(expected):
             raise ValueError("replay differs from the committed child report measurements or evidence")
     output = ROOT / ".runtime/child-extraction/report.json"
+    if output.parent.resolve() != output.parent:
+        raise ValueError("runtime report directory must not contain filesystem aliases")
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(report, indent=2) + "\n")
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", dir=output.parent, delete=False) as handle:
+            temporary = Path(handle.name)
+            handle.write(json.dumps(report, indent=2) + "\n")
+        temporary.replace(output)  # Replace an existing alias itself, never truncate its target.
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
     return output
 
 

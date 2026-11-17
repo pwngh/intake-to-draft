@@ -117,6 +117,33 @@ def test_report_checks_entire_evidence_before_writing(runner, monkeypatch, tmp_p
     assert json.loads(committed.read_text()) == report
 
 
+@pytest.mark.parametrize("alias", ["symlink", "hardlink", "directory"])
+def test_runtime_report_alias_cannot_modify_a_saved_report(runner, monkeypatch, tmp_path, alias):
+    monkeypatch.setattr(runner, "ROOT", tmp_path)
+    report = {"generated_at": "before", "measurement": 7}
+    committed = tmp_path / "eval/child_extraction/report.json"
+    committed.parent.mkdir(parents=True)
+    committed.write_text(json.dumps(report))
+    original = committed.read_bytes()
+    runtime = tmp_path / ".runtime/child-extraction"
+    runtime.parent.mkdir()
+    if alias == "directory":
+        runtime.symlink_to(committed.parent, target_is_directory=True)
+        with pytest.raises(ValueError, match="filesystem aliases"):
+            runner.check_and_write({**report, "generated_at": "after"}, check=True)
+    else:
+        runtime.mkdir()
+        output = runtime / "report.json"
+        if alias == "symlink":
+            output.symlink_to(committed)
+        else:
+            output.hardlink_to(committed)
+        runner.check_and_write({**report, "generated_at": "after"}, check=True)
+        assert json.loads(output.read_text())["generated_at"] == "after"
+        assert not output.samefile(committed)
+    assert committed.read_bytes() == original
+
+
 def test_manifest_requires_frozen_dev_inputs_and_detects_changes(runner, monkeypatch, tmp_path):
     monkeypatch.setattr(runner, "ROOT", tmp_path)
     baseline_checks = []
