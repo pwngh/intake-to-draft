@@ -1,0 +1,27 @@
+{
+  "case_id": "c03",
+  "captured_at": "2026-11-17T20:00:33.734866+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nInterviewer: Is this a divorce request, and are there children?\nCaller: Yes, a divorce. Jory Pike and I have no children.\nCaller: My name is Sena Pike. Jory Pike is my spouse.\nCaller: I live at 14 Demonstration Walk Sampletown.\nCaller: We married on 2016-09-20.\nInterviewer: Can you give a definite separation date?\nCaller: I think 2025-03-01, but I cannot confirm the day. That date is only a guess.\nCaller: Dissolve the marriage. Please keep the uncertain day unresolved.\n",
+  "note_id": "divorce_without_children_uncertain_separation_date",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "1c3f5f4a1cd74c73718aa7d5b4d70af5ceadbef81efca46e30c4845647fcda09",
+  "transcript_sha256": "48f6aa63cfe9e9b6fd15696547614b4c6db238446789a69387fd1497143b42f9",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Sena Pike\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"Caller: My name is Sena Pike.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"14 Demonstration Walk Sampletown\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Caller: I live at 14 Demonstration Walk Sampletown.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Jory Pike\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"Caller: Jory Pike is my spouse.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2016-09-20\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Caller: We married on 2016-09-20.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2025-03-01\",\n          \"kind\": \"uncertain\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"Caller: I think 2025-03-01, but I cannot confirm the day. That date is only a guess.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Dissolve the marriage\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"Caller: Dissolve the marriage. Please keep the uncertain day unresolved.\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 664,
+    "eval_count": 561,
+    "total_duration": 27599741208,
+    "load_duration": 7427135667,
+    "prompt_eval_duration": 1404128000,
+    "eval_duration": 18575783000
+  },
+  "keep_alive": 0
+}

@@ -1,0 +1,27 @@
+{
+  "case_id": "c31",
+  "captured_at": "2026-11-17T20:03:53.182253+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nInterviewer: What kind of demonstration request are you making?\nCaller: An adult name change on its own. My current name is Seli Quill.\nCaller: I was born on 1988-02-06.\nCaller: I currently live at 5 Sample Road, Alderhaven.\nInterviewer: What exact name are you requesting?\nCaller: Seli Moss.\nCaller: My reason is: I want to use a name that I chose.\n",
+  "note_id": "adult_name_change",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "184140c7e576479b5ba6d07926657da81470aefdf659ba163aab0f2460e7e761",
+  "transcript_sha256": "eacd3c406e5dbfbe32573c950faf6c5bfc18e0c30f2365638cd57570d85f0c99",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Seli Quill\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"Caller: An adult name change on its own. My current name is Seli Quill.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"birth_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"1988-02-06\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"Caller: I was born on 1988-02-06.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"5 Sample Road, Alderhaven\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Caller: I currently live at 5 Sample Road, Alderhaven.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Seli Moss\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"Caller: Seli Moss.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"reason_for_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"I want to use a name that I chose.\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"Caller: My reason is: I want to use a name that I chose.\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 605,
+    "eval_count": 465,
+    "total_duration": 28443920166,
+    "load_duration": 11326399208,
+    "prompt_eval_duration": 1265213000,
+    "eval_duration": 15591560000
+  },
+  "keep_alive": 0
+}

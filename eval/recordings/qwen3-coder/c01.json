@@ -1,0 +1,27 @@
+{
+  "case_id": "c01",
+  "captured_at": "2026-11-17T19:59:13.706845+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Nell Fern.\nInterviewer: What do you want this invented draft to say?\nCaller: Dissolve our marriage. My spouse is Ivo Reed.\nCaller: We have no children.\nCaller: Our marriage date was 2009-05-12.\nCaller: I moved out and we separated on 2025-02-03.\nCaller: My current address is 11 Sample Lane Sampletown.\nInterviewer: Those are the facts you have supplied for this demonstration.\n",
+  "note_id": "divorce_without_children",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "5cc719bf20da7aa24cf01ac675c67f5687e5a694929c8e583eaa73f8f70f39ee",
+  "transcript_sha256": "8223bd7e96eb2b89cc002304028423e2819e6dad3d7211bf622d526af914ebcc",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Nell Fern\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"I am Nell Fern.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Ivo Reed\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"My spouse is Ivo Reed.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2009-05-12\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Our marriage date was 2009-05-12.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2025-02-03\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"I moved out and we separated on 2025-02-03.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"11 Sample Lane Sampletown\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"My current address is 11 Sample Lane Sampletown.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Dissolve our marriage\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"Dissolve our marriage.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"child_1\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"We have no children.\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 637,
+    "eval_count": 607,
+    "total_duration": 61103721500,
+    "load_duration": 35926952292,
+    "prompt_eval_duration": 1261016000,
+    "eval_duration": 23169500000
+  },
+  "keep_alive": 0
+}

@@ -1,0 +1,27 @@
+{
+  "case_id": "c32",
+  "captured_at": "2026-11-17T20:04:28.984388+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am requesting an adult name spelling change. My current name is Dena Vell.\nCaller: I want the exact name Deena Vell.\nInterviewer: What spelling detail should be preserved?\nCaller: Add one e after the existing e.\nCaller: The reason is: Correct the missing e in my given name.\nCaller: My birth date is 1992-09-24.\nCaller: My current address is 12 Paper Court, Sampletown.\n",
+  "note_id": "adult_name_change_spelling",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "793d59ff64a99630f947c770a9201e57a26d3c7e99b442195e8cf53b7e2e9cff",
+  "transcript_sha256": "b4432666ec7f6fcced976d80fb74597a3082b3b6f6cc14c7b9a0cf1181c9941d",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Dena Vell\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"I am requesting an adult name spelling change. My current name is Dena Vell.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Deena Vell\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"I want the exact name Deena Vell.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"spelling_note\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Add one e after the existing e\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Add one e after the existing e.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"reason_for_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Correct the missing e in my given name\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"The reason is: Correct the missing e in my given name.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"birth_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"1992-09-24\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"My birth date is 1992-09-24.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"12 Paper Court, Sampletown\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"My current address is 12 Paper Court, Sampletown.\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 616,
+    "eval_count": 546,
+    "total_duration": 34985060041,
+    "load_duration": 15796564041,
+    "prompt_eval_duration": 1290412000,
+    "eval_duration": 17702876000
+  },
+  "keep_alive": 0
+}

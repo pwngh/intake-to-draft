@@ -1,0 +1,208 @@
+{
+  "scope": "Development review records only; published model metrics use the thirty holdout cases.",
+  "model": {
+    "name": "qwen3-coder:latest",
+    "digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+    "options": {
+      "seed": 17,
+      "temperature": 0,
+      "num_ctx": 8192,
+      "num_predict": 4096
+    }
+  },
+  "manifest_sha256": "aff51b8f03562f023e9bb919b4ad55154afc3b30574d3939debb63aa8783fa4a",
+  "recording_sha256": {
+    "c01": "68251c3899602b8d5aa22434c3fa70bdcda8b8fd04f47e49a9be2e83bb539f50",
+    "c02": "fe8833f26d43ae6900a521a8877d76bdb2824a46309ed5d9a12d5425ce9e1304",
+    "c03": "a959f1babac9d56e3716f80c96324477e17fb8e83296920aa11159ae20bdf95a",
+    "c11": "155e8fd99366827913aef76f39981d1b19c5524da7710f66cd090b33bded9fe4",
+    "c12": "6f19c434416be8dc30dfa653137d1cb6b6f8b9e54c984e6559120e033f1a93c5",
+    "c13": "93383a77b5e2e415b366823a75bf73abf1ab164f759de907f5ce57d02385804c",
+    "c21": "7defae7efac4a403d8ec52b7103151d3ac4325aaecdc9f75a2ef1e60e5936dc5",
+    "c22": "d46f4990f7d6164bbd32c13c27d8e6b43ebe385d1fdccb0cdda784c6c49576e9",
+    "c31": "d4ec30de3592c5695b4ab5910f57174a2b3a324213982f75eccc230bcb06ad5e",
+    "c32": "557a44190e8e838cbfba636f33918957529375787d27f2e0f82931e8ebbb06e0"
+  },
+  "approval_kind": "Scripted fact-sheet review, not a claim of human inspection; model scores precede corrections.",
+  "cases": [
+    {
+      "id": "c01",
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:11:10.992026+00:00",
+          "revision": 7,
+          "transcript_sha256": "8223bd7e96eb2b89cc002304028423e2819e6dad3d7211bf622d526af914ebcc",
+          "draft_sha256": "10db5b7f3ec1af7b891eb23930b7811bc0a2f2392055e5a915dc1af60ea1c113",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 6,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c02",
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:11:11.079409+00:00",
+          "revision": 7,
+          "transcript_sha256": "c00ca80bbbcbb8142d1424c516c78c4ba40a80b353fee673de39bf3308908396",
+          "draft_sha256": "a79167148ff5413a7f9ee34cee48908200d878c57615efb4376127a5c18cff95",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "accept": 6,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c03",
+      "review": {
+        "status": "needs_review",
+        "approval_kind": null,
+        "approval": null,
+        "actions": {
+          "accept": 4,
+          "correct": 1,
+          "reject": 1
+        }
+      }
+    },
+    {
+      "id": "c11",
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:11:11.280727+00:00",
+          "revision": 8,
+          "transcript_sha256": "8e61a925c47a259d8fb848f5cd3e6c1173612f58107041b43c149d1db9b446db",
+          "draft_sha256": "3a008d61806e7209987e7aa9daa8c3f663b2019c203744aeadfd8b5723b16ebd",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "accept": 6,
+          "correct": 1,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c12",
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:11:11.402812+00:00",
+          "revision": 9,
+          "transcript_sha256": "b537addf2c61cd751214beb974aab038cc1dfb66d2d6b94e9451f243e1156a11",
+          "draft_sha256": "be9f92eb3954aa731f63c92eb74eca7058d1188d7783b5542df533f4ad7e81b1",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 8,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c13",
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:11:11.515488+00:00",
+          "revision": 9,
+          "transcript_sha256": "5a214aa6730329eb121996a7d52a2723bc16df281afc34f51e645706827d513b",
+          "draft_sha256": "9edc1cdf0c9d13ea8db6c284a08e0c16a2a7d452b33d8b8db58542a6fd8fe594",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 8,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c21",
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:11:11.616622+00:00",
+          "revision": 7,
+          "transcript_sha256": "0fffe1b4ab5b9a97f4b6d5bf6e1935c93ed9f265887b4ec13b7fcc73cd43d8c2",
+          "draft_sha256": "05a3d27fe97bf05a74929b1b9244fd9f968296590fccdf6bbdd49ddb7281768c",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 6,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c22",
+      "review": {
+        "status": "needs_review",
+        "approval_kind": null,
+        "approval": null,
+        "actions": {
+          "correct": 5,
+          "reject": 1
+        }
+      }
+    },
+    {
+      "id": "c31",
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:11:11.795643+00:00",
+          "revision": 6,
+          "transcript_sha256": "eacd3c406e5dbfbe32573c950faf6c5bfc18e0c30f2365638cd57570d85f0c99",
+          "draft_sha256": "c584bb4f71f74c4c11ac637e704e95c730f220289a9815989142016598130bdc",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "accept": 5,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c32",
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:11:11.893348+00:00",
+          "revision": 7,
+          "transcript_sha256": "b4432666ec7f6fcced976d80fb74597a3082b3b6f6cc14c7b9a0cf1181c9941d",
+          "draft_sha256": "788e60f91f8322d861a069a6665124537bc7e3e6248e5be985937ec801bdc708",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "accept": 4,
+          "correct": 2,
+          "approve": 1
+        }
+      }
+    }
+  ]
+}

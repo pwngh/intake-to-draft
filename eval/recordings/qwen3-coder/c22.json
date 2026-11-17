@@ -1,0 +1,27 @@
+{
+  "case_id": "c22",
+  "captured_at": "2026-11-17T20:03:24.155465+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: This is about the arrangement we already have.\nCaller: I am Len Mallow; the other parent is Mira Mallow.\nCaller: My current address is 8 Sample Crescent, Demo Borough.\nInterviewer: Please give the child details.\nCaller: Sera Mallow born 2012-10-16.\nCaller: I remember a hearing on 2020-02-03, but I do not know the date of the order.\nInterviewer: What change are you requesting?\nCaller: Use Saturday mornings for visits instead of Friday evenings.\nCaller: I will need to find the order before I can supply its date.\n",
+  "note_id": "custody_change_unknown_order_date",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "b2feb072f8caf583ba60880500614a8fd34a144f61009eb112ff8e5d9fc9066d",
+  "transcript_sha256": "1d0063f849bbc032f382f9607c1da0d346fbee6aac2cd57e095a52f67ffaa6be",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Len Mallow\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"I am Len Mallow\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"8 Sample Crescent, Demo Borough\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"My current address is 8 Sample Crescent, Demo Borough\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Mira Mallow\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"the other parent is Mira Mallow\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"Sera Mallow\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Sera Mallow born 2012-10-16\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"2012-10-16\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Sera Mallow born 2012-10-16\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"prior_order_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2020-02-03\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"I remember a hearing on 2020-02-03\"\n            }\n          ]\n        },\n        {\n          \"value\": \"unknown\",\n          \"kind\": \"uncertain\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"but I do not know the date of the order\"\n            },\n            {\n              \"line\": 10,\n              \"quote\": \"I will need to find the order before I can supply its date\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Use Saturday mornings for visits instead of Friday evenings\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"Use Saturday mornings for visits instead of Friday evenings\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 671,
+    "eval_count": 718,
+    "total_duration": 36355175792,
+    "load_duration": 13247376792,
+    "prompt_eval_duration": 1354643000,
+    "eval_duration": 21613177000
+  },
+  "keep_alive": 0
+}
