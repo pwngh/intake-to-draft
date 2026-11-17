@@ -1,0 +1,13 @@
+{
+  "id": "c09",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: My spouse Una Lark now lives at 62 Sample Terrace Demo Borough.\nCaller: I am Idris Lark. My own current address is 61 Sample Terrace Sampletown.\nInterviewer: Are those two different current households?\nCaller: Yes. The first address is Una's, and the second is mine.\nCaller: We have no children and we married on 2018-08-08.\nCaller: We separated on 2025-07-02.\nCaller: Dissolve our marriage.\nInterviewer: I have kept each address attached to the person you named.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Idris Lark", "kind": "stated", "citations": [{"line": 3, "quote": "Idris Lark"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "61 Sample Terrace Sampletown", "kind": "stated", "citations": [{"line": 3, "quote": "61 Sample Terrace Sampletown"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Una Lark", "kind": "stated", "citations": [{"line": 2, "quote": "Una Lark"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2018-08-08", "kind": "stated", "citations": [{"line": 6, "quote": "2018-08-08"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2025-07-02", "kind": "stated", "citations": [{"line": 7, "quote": "2025-07-02"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "Dissolve our marriage", "kind": "stated", "citations": [{"line": 8, "quote": "Dissolve our marriage"}]}]},
+    {"field": "respondent_address", "subject": "case", "assertions": [{"value": "62 Sample Terrace Demo Borough", "kind": "stated", "citations": [{"line": 2, "quote": "62 Sample Terrace Demo Borough"}]}]}
+  ]
+}

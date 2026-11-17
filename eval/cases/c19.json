@@ -1,0 +1,14 @@
+{
+  "id": "c19",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: Olli Fable is my name; Tera Fable is my spouse.\nCaller: We married on 2012-12-01.\nCaller: I live at 44 Demonstration Terrace Demo Borough.\nCaller: Our child is Avi Fable born 2016-01-25.\nCaller: We separated on 2024-06-17.\nInterviewer: What is your holiday proposal?\nCaller: Split the winter school break equally, with the first half at Olli Fable's home.\nCaller: Tera has not agreed to that, and I am not proposing anything for other holidays.\nCaller: Dissolve our marriage.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Olli Fable", "kind": "stated", "citations": [{"line": 2, "quote": "Olli Fable"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "44 Demonstration Terrace Demo Borough", "kind": "stated", "citations": [{"line": 4, "quote": "44 Demonstration Terrace Demo Borough"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Tera Fable", "kind": "stated", "citations": [{"line": 2, "quote": "Tera Fable"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2012-12-01", "kind": "stated", "citations": [{"line": 3, "quote": "2012-12-01"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2024-06-17", "kind": "stated", "citations": [{"line": 6, "quote": "2024-06-17"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Avi Fable born 2016-01-25", "kind": "stated", "citations": [{"line": 5, "quote": "Avi Fable born 2016-01-25"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "Dissolve our marriage", "kind": "stated", "citations": [{"line": 10, "quote": "Dissolve our marriage"}]}]},
+    {"field": "parenting_schedule", "subject": "case", "assertions": [{"value": "Split the winter school break equally, with the first half at Olli Fable's home", "kind": "stated", "citations": [{"line": 8, "quote": "Split the winter school break equally, with the first half at Olli Fable's home"}]}]}
+  ]
+}

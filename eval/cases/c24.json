@@ -1,0 +1,14 @@
+{
+  "id": "c24",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Cleo Bramble, and I want an existing arrangement changed before I move.\nCaller: Rian Bramble is the other parent. My current address is 17 Sample Walk, Alderhaven.\nCaller: We have Nola Bramble born 2011-02-12.\nCaller: Our other child is Noel Bramble born 2013-08-17.\nInterviewer: What are your moving plans?\nCaller: I plan to move to Demo Borough on 2027-01-15 and reduce weekly travel.\nCaller: The present order is dated 2020-12-02.\nCaller: My requested change is: Use longer visits during school breaks.\nCaller: One correction to the child information: Noel Bramble born 2013-08-18. I gave Noel the wrong day earlier; Nola is unchanged.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Cleo Bramble", "kind": "stated", "citations": [{"line": 2, "quote": "Cleo Bramble"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Rian Bramble", "kind": "stated", "citations": [{"line": 3, "quote": "Rian Bramble"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "17 Sample Walk, Alderhaven", "kind": "stated", "citations": [{"line": 3, "quote": "17 Sample Walk, Alderhaven"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Nola Bramble born 2011-02-12", "kind": "stated", "citations": [{"line": 4, "quote": "Nola Bramble born 2011-02-12"}]}]},
+    {"field": "children", "subject": "child-2", "assertions": [{"value": "Noel Bramble born 2013-08-17", "kind": "stated", "citations": [{"line": 5, "quote": "Noel Bramble born 2013-08-17"}]}, {"value": "Noel Bramble born 2013-08-18", "kind": "correction", "citations": [{"line": 10, "quote": "Noel Bramble born 2013-08-18"}]}]},
+    {"field": "relocation_details", "subject": "case", "assertions": [{"value": "I plan to move to Demo Borough on 2027-01-15 and reduce weekly travel.", "kind": "stated", "citations": [{"line": 7, "quote": "I plan to move to Demo Borough on 2027-01-15 and reduce weekly travel."}]}]},
+    {"field": "prior_order_date", "subject": "case", "assertions": [{"value": "2020-12-02", "kind": "stated", "citations": [{"line": 8, "quote": "2020-12-02"}]}]},
+    {"field": "requested_change", "subject": "case", "assertions": [{"value": "Use longer visits during school breaks.", "kind": "stated", "citations": [{"line": 9, "quote": "Use longer visits during school breaks."}]}]}
+  ]
+}

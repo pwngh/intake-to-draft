@@ -1,0 +1,14 @@
+{
+  "id": "c17",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nInterviewer: Who is asking for the fictional divorce draft?\nCaller: Noa Kite. My spouse is Venn Kite.\nCaller: I live at 64 Sample Lane Demo Borough.\nCaller: We were married on 2011-02-26.\nCaller: Our child is Sola Kite born 2013-12-05.\nCaller: We separated on 2024-08-04.\nCaller: I request this schedule: School nights with Noa Kite and weekends with Venn Kite.\nInterviewer: Do you want to give exact pickup or return times?\nCaller: No, I have not selected those times.\nCaller: Dissolve our marriage.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Noa Kite", "kind": "stated", "citations": [{"line": 3, "quote": "Noa Kite"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "64 Sample Lane Demo Borough", "kind": "stated", "citations": [{"line": 4, "quote": "64 Sample Lane Demo Borough"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Venn Kite", "kind": "stated", "citations": [{"line": 3, "quote": "Venn Kite"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2011-02-26", "kind": "stated", "citations": [{"line": 5, "quote": "2011-02-26"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2024-08-04", "kind": "stated", "citations": [{"line": 7, "quote": "2024-08-04"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Sola Kite born 2013-12-05", "kind": "stated", "citations": [{"line": 6, "quote": "Sola Kite born 2013-12-05"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "Dissolve our marriage", "kind": "stated", "citations": [{"line": 11, "quote": "Dissolve our marriage"}]}]},
+    {"field": "parenting_schedule", "subject": "case", "assertions": [{"value": "School nights with Noa Kite and weekends with Venn Kite", "kind": "stated", "citations": [{"line": 8, "quote": "School nights with Noa Kite and weekends with Venn Kite"}]}]}
+  ]
+}

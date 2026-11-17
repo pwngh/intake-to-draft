@@ -1,0 +1,12 @@
+{
+  "id": "c03",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nInterviewer: Is this a divorce request, and are there children?\nCaller: Yes, a divorce. Jory Pike and I have no children.\nCaller: My name is Sena Pike. Jory Pike is my spouse.\nCaller: I live at 14 Demonstration Walk Sampletown.\nCaller: We married on 2016-09-20.\nInterviewer: Can you give a definite separation date?\nCaller: I think 2025-03-01, but I cannot confirm the day. That date is only a guess.\nCaller: Dissolve the marriage. Please keep the uncertain day unresolved.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Sena Pike", "kind": "stated", "citations": [{"line": 4, "quote": "Sena Pike"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "14 Demonstration Walk Sampletown", "kind": "stated", "citations": [{"line": 5, "quote": "14 Demonstration Walk Sampletown"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Jory Pike", "kind": "stated", "citations": [{"line": 4, "quote": "Jory Pike"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2016-09-20", "kind": "stated", "citations": [{"line": 6, "quote": "2016-09-20"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "Dissolve the marriage", "kind": "stated", "citations": [{"line": 9, "quote": "Dissolve the marriage"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2025-03-01", "kind": "uncertain", "citations": [{"line": 8, "quote": "I think 2025-03-01, but I cannot confirm the day. That date is only a guess."}]}]}
+  ]
+}

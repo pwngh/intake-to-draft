@@ -1,0 +1,12 @@
+{
+  "id": "c35",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: My current name is Neri Dale. This is for a standalone adult name change.\nInterviewer: Tell me the requested name exactly, including punctuation.\nCaller: Neri Dale-Fern.\nCaller: The spelling note is: Keep Dale first, a hyphen, then Fern.\nCaller: My reason is: Join the two family names I use.\nCaller: My home is 48 Sample Lane, Demo Borough.\nCaller: My birth date is 1985-07-17.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Neri Dale", "kind": "stated", "citations": [{"line": 2, "quote": "Neri Dale"}]}]},
+    {"field": "requested_name", "subject": "case", "assertions": [{"value": "Neri Dale-Fern", "kind": "stated", "citations": [{"line": 4, "quote": "Neri Dale-Fern"}]}]},
+    {"field": "spelling_note", "subject": "case", "assertions": [{"value": "Keep Dale first, a hyphen, then Fern.", "kind": "stated", "citations": [{"line": 5, "quote": "Keep Dale first, a hyphen, then Fern."}]}]},
+    {"field": "reason_for_change", "subject": "case", "assertions": [{"value": "Join the two family names I use.", "kind": "stated", "citations": [{"line": 6, "quote": "Join the two family names I use."}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "48 Sample Lane, Demo Borough", "kind": "stated", "citations": [{"line": 7, "quote": "48 Sample Lane, Demo Borough"}]}]},
+    {"field": "birth_date", "subject": "case", "assertions": [{"value": "1985-07-17", "kind": "stated", "citations": [{"line": 8, "quote": "1985-07-17"}]}]}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "c16",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: End our marriage. That is my main request.\nCaller: I am Mael Pond and my spouse is Zia Pond.\nCaller: My present home is 58 Demonstration Square Sampletown.\nCaller: We married on 2008-04-18 and separated on 2025-02-28.\nCaller: We have one child, Enna Pond born 2011-08-17.\nInterviewer: What arrangement do you want the draft to describe?\nCaller: Alternate full weeks with handover every Friday at 18:00.\nCaller: That is my proposed arrangement, not something Zia has agreed to.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Mael Pond", "kind": "stated", "citations": [{"line": 3, "quote": "Mael Pond"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "58 Demonstration Square Sampletown", "kind": "stated", "citations": [{"line": 4, "quote": "58 Demonstration Square Sampletown"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Zia Pond", "kind": "stated", "citations": [{"line": 3, "quote": "Zia Pond"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2008-04-18", "kind": "stated", "citations": [{"line": 5, "quote": "2008-04-18"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2025-02-28", "kind": "stated", "citations": [{"line": 5, "quote": "2025-02-28"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Enna Pond born 2011-08-17", "kind": "stated", "citations": [{"line": 6, "quote": "Enna Pond born 2011-08-17"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "End our marriage", "kind": "stated", "citations": [{"line": 2, "quote": "End our marriage"}]}]},
+    {"field": "parenting_schedule", "subject": "case", "assertions": [{"value": "Alternate full weeks with handover every Friday at 18:00", "kind": "stated", "citations": [{"line": 8, "quote": "Alternate full weeks with handover every Friday at 18:00"}]}]}
+  ]
+}

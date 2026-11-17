@@ -1,0 +1,12 @@
+{
+  "id": "c05",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Arlo Wren, asking for a divorce from Mira Wren.\nCaller: We have no children, and our marriage date is 2012-10-06.\nCaller: My own address is 35 Example Walk Demo Borough.\nInterviewer: Do you know Mira Wren's current address?\nCaller: No. I cannot locate my spouse and do not know that address.\nCaller: Our separation date is 2025-01-18.\nCaller: Dissolve our marriage. Do not make up an address for Mira.\nInterviewer: Only your own address has been supplied.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Arlo Wren", "kind": "stated", "citations": [{"line": 2, "quote": "Arlo Wren"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "35 Example Walk Demo Borough", "kind": "stated", "citations": [{"line": 4, "quote": "35 Example Walk Demo Borough"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Mira Wren", "kind": "stated", "citations": [{"line": 2, "quote": "Mira Wren"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2012-10-06", "kind": "stated", "citations": [{"line": 3, "quote": "2012-10-06"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2025-01-18", "kind": "stated", "citations": [{"line": 7, "quote": "2025-01-18"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "Dissolve our marriage", "kind": "stated", "citations": [{"line": 8, "quote": "Dissolve our marriage"}]}]}
+  ]
+}

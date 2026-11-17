@@ -1,0 +1,11 @@
+{
+  "id": "c04",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: My spouse is Rune Vale; I am Elin Quill.\nCaller: We do not have any children.\nCaller: The marriage began on 2008-02-19.\nInterviewer: What is your present home address?\nCaller: I am not supplying my current address today.\nCaller: We separated on 2023-12-10.\nCaller: End our marriage. That is the request I want recorded.\nInterviewer: The address remains unanswered.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Elin Quill", "kind": "stated", "citations": [{"line": 2, "quote": "Elin Quill"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Rune Vale", "kind": "stated", "citations": [{"line": 2, "quote": "Rune Vale"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2008-02-19", "kind": "stated", "citations": [{"line": 4, "quote": "2008-02-19"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2023-12-10", "kind": "stated", "citations": [{"line": 7, "quote": "2023-12-10"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "End our marriage", "kind": "stated", "citations": [{"line": 8, "quote": "End our marriage"}]}]}
+  ]
+}

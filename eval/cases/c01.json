@@ -1,0 +1,12 @@
+{
+  "id": "c01",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Nell Fern.\nInterviewer: What do you want this invented draft to say?\nCaller: Dissolve our marriage. My spouse is Ivo Reed.\nCaller: We have no children.\nCaller: Our marriage date was 2009-05-12.\nCaller: I moved out and we separated on 2025-02-03.\nCaller: My current address is 11 Sample Lane Sampletown.\nInterviewer: Those are the facts you have supplied for this demonstration.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Nell Fern", "kind": "stated", "citations": [{"line": 2, "quote": "Nell Fern"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "11 Sample Lane Sampletown", "kind": "stated", "citations": [{"line": 8, "quote": "11 Sample Lane Sampletown"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Ivo Reed", "kind": "stated", "citations": [{"line": 4, "quote": "Ivo Reed"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2009-05-12", "kind": "stated", "citations": [{"line": 6, "quote": "2009-05-12"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2025-02-03", "kind": "stated", "citations": [{"line": 7, "quote": "2025-02-03"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "Dissolve our marriage", "kind": "stated", "citations": [{"line": 4, "quote": "Dissolve our marriage"}]}]}
+  ]
+}

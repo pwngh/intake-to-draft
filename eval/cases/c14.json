@@ -1,0 +1,14 @@
+{
+  "id": "c14",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: My name is Piri Oat and my spouse is Lex Oat.\nCaller: We have two children and I am requesting a divorce.\nCaller: I now live at 73 Sample Close Sampletown.\nCaller: Our marriage date is 2007-07-07.\nCaller: One child is Fenn Oat born 2010-02-13. I am certain of that birthday.\nInterviewer: What about the other child?\nCaller: As a guess I would write Arin Oat born 2014-08-09, but I am not certain of that birthday.\nCaller: We separated on 2025-01-11.\nCaller: End our marriage. Arin's exact birthday still needs checking.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Piri Oat", "kind": "stated", "citations": [{"line": 2, "quote": "Piri Oat"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "73 Sample Close Sampletown", "kind": "stated", "citations": [{"line": 4, "quote": "73 Sample Close Sampletown"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Lex Oat", "kind": "stated", "citations": [{"line": 2, "quote": "Lex Oat"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2007-07-07", "kind": "stated", "citations": [{"line": 5, "quote": "2007-07-07"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2025-01-11", "kind": "stated", "citations": [{"line": 9, "quote": "2025-01-11"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Fenn Oat born 2010-02-13", "kind": "stated", "citations": [{"line": 6, "quote": "Fenn Oat born 2010-02-13"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "End our marriage", "kind": "stated", "citations": [{"line": 10, "quote": "End our marriage"}]}]},
+    {"field": "children", "subject": "child-2", "assertions": [{"value": "Arin Oat born 2014-08-09", "kind": "uncertain", "citations": [{"line": 8, "quote": "As a guess I would write Arin Oat born 2014-08-09, but I am not certain of that birthday."}]}]}
+  ]
+}

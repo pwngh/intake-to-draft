@@ -1,0 +1,13 @@
+{
+  "id": "c07",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Lio Bramble. My spouse is Nessa Bramble.\nCaller: There are no children in this marriage.\nCaller: My current address is 17 Sample Rise Demo Borough.\nCaller: We married on 2011-11-11.\nCaller: Divide the 2400 token joint loan equally. That is my borrowing proposal.\nInterviewer: Which separation date should be used?\nCaller: The separation date was 2024-04-06, but I also say 2024-04-08; I cannot resolve which is correct.\nCaller: Dissolve the marriage. Leave that conflicting date for review.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Lio Bramble", "kind": "stated", "citations": [{"line": 2, "quote": "Lio Bramble"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "17 Sample Rise Demo Borough", "kind": "stated", "citations": [{"line": 4, "quote": "17 Sample Rise Demo Borough"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Nessa Bramble", "kind": "stated", "citations": [{"line": 2, "quote": "Nessa Bramble"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2011-11-11", "kind": "stated", "citations": [{"line": 5, "quote": "2011-11-11"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "Dissolve the marriage", "kind": "stated", "citations": [{"line": 9, "quote": "Dissolve the marriage"}]}]},
+    {"field": "property_summary", "subject": "case", "assertions": [{"value": "Divide the 2400 token joint loan equally", "kind": "stated", "citations": [{"line": 6, "quote": "Divide the 2400 token joint loan equally"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2024-04-06", "kind": "stated", "citations": [{"line": 8, "quote": "2024-04-06"}]}, {"value": "2024-04-08", "kind": "stated", "citations": [{"line": 8, "quote": "2024-04-08"}]}]}
+  ]
+}

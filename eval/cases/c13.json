@@ -1,0 +1,14 @@
+{
+  "id": "c13",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Suri Vale. Kel Vale is the other spouse.\nCaller: My current address is 49 Demonstration Street Demo Borough.\nCaller: We married on 2008-05-24.\nCaller: We have two children of this marriage.\nCaller: The older child is Leva Vale born 2012-09-21.\nCaller: The younger child is Toma Vale born 2018-06-02.\nCaller: We separated on 2024-03-01.\nCaller: Dissolve our marriage.\nInterviewer: Did you want to correct any of those details?\nCaller: Yes. Correction for Leva: Leva Vale born 2012-09-12.\nCaller: Toma's details stay as I gave them. Only Leva's date changed.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Suri Vale", "kind": "stated", "citations": [{"line": 2, "quote": "Suri Vale"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "49 Demonstration Street Demo Borough", "kind": "stated", "citations": [{"line": 3, "quote": "49 Demonstration Street Demo Borough"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Kel Vale", "kind": "stated", "citations": [{"line": 2, "quote": "Kel Vale"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2008-05-24", "kind": "stated", "citations": [{"line": 4, "quote": "2008-05-24"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2024-03-01", "kind": "stated", "citations": [{"line": 8, "quote": "2024-03-01"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Leva Vale born 2012-09-21", "kind": "stated", "citations": [{"line": 6, "quote": "Leva Vale born 2012-09-21"}]}, {"value": "Leva Vale born 2012-09-12", "kind": "correction", "citations": [{"line": 11, "quote": "Leva Vale born 2012-09-12"}]}]},
+    {"field": "children", "subject": "child-2", "assertions": [{"value": "Toma Vale born 2018-06-02", "kind": "stated", "citations": [{"line": 7, "quote": "Toma Vale born 2018-06-02"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "Dissolve our marriage", "kind": "stated", "citations": [{"line": 9, "quote": "Dissolve our marriage"}]}]}
+  ]
+}
