@@ -59,11 +59,16 @@ def compose_command():
                          "--file", str(ROOT / "infra/langfuse.compose.yml")]
 
 
+class NoRedirects(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
 def verify_project(client):
     token = base64.b64encode(f"{client['public_key']}:{client['secret_key']}".encode()).decode()
     request = urllib.request.Request(BASE_URL + "/api/public/projects", headers={"Authorization": "Basic " + token})
     # Local traffic must not use environment-configured proxies.
-    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), NoRedirects())
     with opener.open(request, timeout=10) as response:
         result = json.load(response)
     if not any(project["id"] == PROJECT_ID for project in result["data"]):

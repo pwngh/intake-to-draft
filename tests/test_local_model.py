@@ -73,7 +73,7 @@ def test_loopback_ipv6_is_allowed_but_cloud_model_names_are_not():
     {"model": "other-model"}, {"done": False}, {"done_reason": "length"},
     {"message": {"role": "assistant", "content": 42}},
     {"message": {"role": "assistant", "content": "{}", "tool_calls": [{"name": "run"}]}},
-    {"message": {"role": "user", "content": "{}"}}, {"eval_count": True},
+    {"message": {"role": "user", "content": "{}"}}, {"eval_count": True}, {"eval_count": 10**80},
 ])
 def test_unfinished_or_unexpected_envelopes_fail_without_repair(change):
     response = {"model": DEFAULT_MODEL, "done": True, "done_reason": "stop",

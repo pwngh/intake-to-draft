@@ -158,3 +158,28 @@ def test_invalid_model_url_credentials_are_not_copied_into_node_observations(bac
     run = service.create_live(backend.record["transcript"], "adult name change")
     assert run["model_info"] == {"error": "ModelUnavailable"}
     assert "PrivateMarker" not in json.dumps(client.events)
+
+
+def test_live_http_preserves_the_validation_endpoint_source_hash_and_final_blank(backend, monkeypatch):
+    monkeypatch.setattr(api, "review_service", lambda: service_for(backend))
+    transcript = "Mara Vale\r\n\r\n"
+    with TestClient(api.app) as client:
+        source = client.post("/intakes/validate", json={"transcript": transcript}).json()
+        response = client.post("/runs", json={"transcript": transcript, "query": "adult name change"})
+    assert response.status_code == 201
+    assert response.json()["source"] == source
+    assert source["lines"][-1] == {"number": 2, "text": ""}
+
+
+def test_oversized_citation_line_reaches_persisted_review_instead_of_crashing_checkpoint(backend):
+    raw = json.loads(backend.record["raw_output"])
+    raw["facts"][0]["assertions"][0]["citations"][0]["line"] = 10**80
+    class Model:
+        def __call__(self, *args):
+            return json.dumps(raw)
+    service = ReviewService(backend.path, model_factory=lambda **kwargs: Model(), index_factory=backend.index)
+    run = service.create_live(backend.record["transcript"], "adult name change")
+    assert service.get(run["run_id"]) == run
+    assert run["report"]["issues"] == ["malformed_model_output"]
+    assert run["report"]["missing"] == run["note"]["required_fields"]
+    assert run["draft"] is None

@@ -2,7 +2,7 @@
 
 This is a reading guide to a successful invented development run, not an accuracy evaluation. Durations are measured node execution times; review spans do not include the time a person would spend between requests. Inputs and outputs below are summaries of the actual observations.
 
-Run `d8796993ffca410781e5a0767abc7e8f` used local Qwen3-Coder through Ollama 0.30.0 and Langfuse SDK 5.2.0/server 4.82.0. [Open the saved local trace](http://127.0.0.1:13000/project/intake-demo/traces/d8796993ffca410781e5a0767abc7e8f) after `./scripts/langfuse up`; use the generated local login described in the README. Select a node to inspect its complete input, output, and timing. Running `./scripts/live-demo --trace` exports the complete observations to `.runtime/live-demo.json`.
+Run `d8796993ffca410781e5a0767abc7e8f` used local Qwen3-Coder through Ollama 0.30.0 and Langfuse SDK 5.2.0/server 4.82.0. [Open the saved local trace](http://127.0.0.1:13000/project/intake-demo/traces/d8796993ffca410781e5a0767abc7e8f) only in the original checkout’s retained volumes, after `./scripts/langfuse up`. A fresh checkout should run `./scripts/live-demo --trace` and open the new URL it prints. Use the generated local login described in the README. Select a node to inspect its complete input, output, and timing. Running `./scripts/live-demo --trace` exports the complete observations to `.runtime/live-demo.json`.
 
 | Node | Observations | Seconds per observation (min–max) | Input | Output |
 | --- | ---: | ---: | --- | --- |

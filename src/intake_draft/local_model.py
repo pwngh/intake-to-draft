@@ -107,7 +107,7 @@ class LocalModel:
         except (ValueError, UnicodeError):
             raise ModelResponseError("model output exceeds the size limit or has invalid Unicode") from None
         usage = {key: result[key] for key in USAGE_FIELDS if key in result}
-        if any(type(value) is not int or value < 0 for value in usage.values()):
+        if any(type(value) is not int or not 0 <= value <= 2**63 - 1 for value in usage.values()):
             raise ModelResponseError("model service returned invalid usage metadata")
         self.last_result = {"model": self.model, "model_digest": self.expected_digest,
                             "prompt_version": PROMPT_VERSION, "prompt_sha256": prompt_hash(messages),

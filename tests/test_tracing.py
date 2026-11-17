@@ -126,6 +126,7 @@ def test_sdk_transport_is_local_isolated_and_flush_is_bounded(monkeypatch, caplo
     import requests
 
     captured = {}
+    monkeypatch.setenv("LANGFUSE_MEDIA_UPLOAD_ENABLED", "true")
     monkeypatch.setenv("HTTPS_PROXY", "http://outside.invalid:9999")
     monkeypatch.setenv("OTEL_EXPORTER_OTLP_ENDPOINT", "https://outside.invalid")
     monkeypatch.setenv("LANGFUSE_HOST", "https://cloud.langfuse.com")
@@ -194,3 +195,53 @@ def test_slow_export_flush_has_one_in_flight_worker_and_a_real_wait_bound():
         release.set()
     assert flush.pending["done"].wait(1)
     assert flush.pending["result"] is True
+
+
+@pytest.mark.parametrize("variable", ["OTEL_EXPORTER_OTLP_TRACES_HEADERS", "OTEL_EXPORTER_OTLP_HEADERS"])
+def test_enabled_tracing_rejects_inherited_headers_before_sdk_init(monkeypatch, variable, caplog):
+    monkeypatch.setenv("INTAKE_TRACING", "langfuse")
+    monkeypatch.setenv(variable, "x-api-key=secret-must-not-appear")
+    monkeypatch.setattr(tracing, "_configured_tracer", lambda *args: pytest.fail("SDK must not initialize"))
+    with pytest.raises(ValueError, match="requires.*HEADERS.*unset") as raised:
+        tracer_from_env()
+    assert "secret-must-not-appear" not in str(raised.value) + caplog.text
+    monkeypatch.setenv("INTAKE_TRACING", "off")
+    assert tracer_from_env().client is None
+
+
+def test_real_sdk_preserves_data_uri_text_without_scheduling_media(monkeypatch):
+    from uuid import uuid4
+    import httpx
+    import requests
+    import opentelemetry.exporter.otlp.proto.http.trace_exporter as exporters
+    from opentelemetry.sdk.trace.export.in_memory_span_exporter import InMemorySpanExporter
+
+    monkeypatch.setenv("LANGFUSE_MEDIA_UPLOAD_ENABLED", "true")
+    memory = InMemorySpanExporter()
+    monkeypatch.setattr(exporters, "OTLPSpanExporter", lambda **kwargs: memory)
+    network_calls = []
+    def no_network(*args, **kwargs):
+        network_calls.append(1)
+        raise AssertionError("This test must not perform network requests")
+    monkeypatch.setattr(httpx.Client, "send", no_network)
+    monkeypatch.setattr(requests.Session, "send", no_network)
+    tracer = tracing._configured_tracer.__wrapped__("http://127.0.0.1:13000", "test-" + uuid4().hex, "test-secret")
+    try:
+        media = tracer.client._resources._media_manager
+        scheduled = []
+        monkeypatch.setattr(media, "_process_media", lambda **kwargs: scheduled.append(kwargs))
+        uri = "data:text/plain;base64,aW52ZW50ZWQ="
+        payload = {"transcript_line": uri}
+        assert tracer.call("extract", uuid4().hex, payload, lambda: payload) == payload
+        tracer.flush()
+        spans = memory.get_finished_spans()
+        assert len(spans) == 1
+        for field in ("input", "output"):
+            assert json.loads(spans[0].attributes["langfuse.observation." + field]) == payload
+        assert media._enabled is False
+        assert media._queue.empty() and scheduled == []
+        assert tracer.client._resources._media_upload_consumers == []
+        assert network_calls == []
+    finally:
+        tracer.client.shutdown()
+        tracer.client._resources.httpx_client.close()

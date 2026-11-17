@@ -88,3 +88,5 @@ GitHub CLI is authenticated as `pwngh`. Antigravity is invoked by its installed 
 
 - Bound the request-side flush wait to two seconds with one in-flight export. The installed OpenTelemetry batch processor ignored its own timeout argument; a three-second local collector test verified that the caller returns before eventual delivery. Background exports have a ten-second deadline.
 - Release the local model after each request with Ollama `keep_alive: 0`. Leaving the roughly 19.5 GB loaded model beside Docker on a 32 GB laptop caused database and storage stalls; releasing it trades reload time for memory available during review and trace export.
+- Preserve the already validated HTTP transcript when starting a live run; repeating the terminal-newline normalization would remove a real final blank line. Bound citation line numbers and returned usage before checkpoint serialization; the citation bound is a runtime validator so frozen recording prompts remain unchanged.
+- Reject inherited OTLP credential headers when tracing is requested, disable implicit SDK media uploads for text-only observations, and reject redirects during authenticated local stack verification.

@@ -89,7 +89,7 @@ async def local_unavailable(_request: Request, _exc: Exception) -> JSONResponse:
 
 @app.post("/runs", status_code=201)
 def start_local_run(request: LocalRunRequest) -> dict:
-    return review_service().create_live(request.transcript, request.query)
+    return review_service().create_live(request, request.query)
 
 
 @app.exception_handler(ReviewConflict)

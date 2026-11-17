@@ -123,6 +123,10 @@ def _configured_tracer(base_url, public_key, secret_key):
     from opentelemetry.sdk.trace.sampling import ALWAYS_ON
     import requests
 
+    # SDK 5.2 exposes this only through the process environment. This text-only
+    # application must preserve data URI strings, never schedule media uploads.
+    os.environ["LANGFUSE_MEDIA_UPLOAD_ENABLED"] = "false"
+
     class LocalSession(requests.Session):
         def request(self, *args, **kwargs):
             kwargs["allow_redirects"] = False
@@ -156,6 +160,10 @@ def tracer_from_env():
     if (os.environ.get("LANGFUSE_TRACING_ENABLED", "true").lower() == "false"
             or os.environ.get("OTEL_SDK_DISABLED", "false").lower() == "true"):
         raise ValueError("Requested local tracing conflicts with LANGFUSE_TRACING_ENABLED or OTEL_SDK_DISABLED")
+    # The pinned exporter merges these headers even with Session.trust_env=False.
+    if any(os.environ.get(name) for name in (
+            "OTEL_EXPORTER_OTLP_TRACES_HEADERS", "OTEL_EXPORTER_OTLP_HEADERS")):
+        raise ValueError("Local tracing requires OTEL_EXPORTER_OTLP_TRACES_HEADERS and OTEL_EXPORTER_OTLP_HEADERS to be unset")
     path = Path(os.environ.get("INTAKE_LANGFUSE_CONFIG", ".runtime/langfuse-client.json"))
     try:
         config = json.loads(path.read_text())

@@ -308,9 +308,10 @@ class ReviewService:
             graph.invoke(initial, self._config(run_id))
             return self._view(self._state(graph, run_id))
 
-    def create_live(self, transcript: str, query: str) -> dict:
+    def create_live(self, transcript: str | TranscriptRequest, query: str) -> dict:
         run_id = uuid4().hex
-        source = number_transcript(TranscriptRequest(transcript=transcript))
+        request = transcript if isinstance(transcript, TranscriptRequest) else TranscriptRequest(transcript=transcript)
+        source = number_transcript(request)
         initial = {"run_id": run_id, "source": source.model_dump(), "query": query,
                    "model_settings": self.model_settings, "mode": "local", "decisions": {}, "audit": [],
                    "revision": 0, "status": "starting", "approval": None, "draft": None}

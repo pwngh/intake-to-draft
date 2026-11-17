@@ -33,3 +33,35 @@ def test_stack_exposes_only_loopback_ui_and_pins_every_image():
     for name in ("web", "worker"):
         assert services[name]["environment"]["TELEMETRY_ENABLED"] == "false"
     assert services["web"]["environment"]["AUTH_DISABLE_SIGNUP"] == "true"
+
+
+def test_project_verification_rejects_redirects_without_forwarding_credentials():
+    from http.server import BaseHTTPRequestHandler, HTTPServer
+    from threading import Thread
+    from urllib.error import HTTPError
+    import pytest
+
+    paths = []
+    class Redirect(BaseHTTPRequestHandler):
+        def do_GET(self):
+            paths.append(self.path)
+            self.send_response(302)
+            self.send_header("Location", "/redirected")
+            self.end_headers()
+        def log_message(self, *args):
+            pass
+    server = HTTPServer(("127.0.0.1", 0), Redirect)
+    worker = Thread(target=server.serve_forever, daemon=True)
+    worker.start()
+    try:
+        launcher = runpy.run_path(str(ROOT / "scripts/langfuse"))
+        verify = launcher["verify_project"]
+        verify.__globals__["BASE_URL"] = f"http://127.0.0.1:{server.server_port}"
+        with pytest.raises(HTTPError) as error:
+            verify({"public_key": "demo-public", "secret_key": "demo-secret"})
+        assert error.value.code == 302
+        assert paths == ["/api/public/projects"]
+    finally:
+        server.shutdown()
+        server.server_close()
+        worker.join(timeout=2)
