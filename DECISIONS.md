@@ -4,7 +4,7 @@
 - Start clean. All project code, example people, transcripts, and note text were written here. No employer or client material, court forms, statutes, or company branding is used.
 - Preserve evidence before extraction. Canonicalize only line endings and one final newline; retain interior blank lines and exact line content. Hash canonical UTF-8 text so later citations can identify the source version.
 - Fail clearly on invalid intake data. Strict JSON fields reject coercion and extra keys. Canonical text is capped at 64 KiB, 500 lines, and 2,000 characters per line; error responses do not reflect input text.
-- Replace the four-note TF-IDF prototype. Forty fictional notes are compared using a local MiniLM exact-cosine index and plain keyword overlap; the recorded-output service explicitly uses keyword search until live adapters arrive.
+- Replace the four-note TF-IDF prototype. Forty fictional notes are compared using a local MiniLM exact-cosine index and plain keyword overlap; the reference-search endpoint explicitly uses keyword search, while live workflow runs use embeddings.
 - Keep tests independent of inference. The LangGraph model node replays actual captured outputs tied to prompt and source hashes; fabricated adversarial payloads in tests are labeled test inputs, not model measurements.
 - Pin the installed environment. Python 3.12 is the supported interpreter; exact direct and transitive versions are in `requirements.lock`. The initial local verification used Python 3.12.14. Package hashes and offline dependency bundles are not included.
 - Exercise the service through real HTTP. The demo passes an OS-bound loopback socket to Uvicorn and cleans up the child process. The descriptor-passing demonstration targets macOS and Linux.
@@ -18,16 +18,19 @@ Read on November 17, 2026:
 
 - [LangGraph overview](https://docs.langchain.com/oss/python/langgraph/overview)
 - [LangGraph interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts)
+- [Ollama chat API](https://docs.ollama.com/api/chat) and [local model inventory](https://docs.ollama.com/api/tags)
 - [Langfuse SDK overview](https://langfuse.com/docs/observability/sdk/overview)
 - [Langfuse Docker Compose deployment](https://langfuse.com/self-hosting/deployment/docker-compose)
+- [Langfuse headless initialization](https://langfuse.com/self-hosting/administration/headless-initialization)
+- [Langfuse health and readiness](https://langfuse.com/self-hosting/configuration/health-readiness-endpoints)
 
-The documentation describes checkpointed interrupts and compatible SDK/server generations. LangGraph 1.2.22 is now pinned and exercised by the recorded extract/check path. Langfuse will be pinned with a compatible server version in PR 3; reading its docs does not prove a local deployment works.
+The documentation describes checkpointed interrupts and compatible SDK/server generations. LangGraph 1.2.22 is pinned and exercised by recorded and live paths. Langfuse SDK 5.2.0 requires server 4.59.0 or newer; server 4.82.0 is pinned by image digest and was checked through local health and authenticated project APIs.
 
 ## Pull request sequence
 
 1. HTTP intake validation and initial reference search. Merged by the owner.
-2. Core workflow, split at the requested review-size boundary: extraction/citations and retrieval first (PR 2a), then routing, review, and fill (PR 2b, current piece). Council reviews the extraction slice with the five attack questions; the remaining gates need review on their actual implementation, not an inherited approval.
-3. Live local model adapter and self-hosted Langfuse, with tracing optional. No hosted account requirement is acceptable.
+2. Core workflow, split at the requested review-size boundary: extraction/citations and retrieval first (PR 2a), then routing, review, and fill (PR 2b). Both are merged by the owner. Council reviews the extraction slice with the five attack questions; the remaining gates need review on their actual implementation, not an inherited approval.
+3. Live local model adapter and self-hosted Langfuse, with tracing optional (current piece). No hosted account requirement is acceptable.
 4. Forty fact-sheet-derived cases: ten development and thirty held out. Report four metrics on the thirty only, record draft approvers, and finish the five-minute demo.
 
 Each piece needs passing checks, Sol-loop review, and a full-stop handoff. No subsequent piece is described as finished before it runs.
@@ -42,10 +45,10 @@ GitHub CLI is authenticated as `pwngh`. Antigravity is invoked by its installed 
 
 - Keep PR 1's numbered source unchanged. Assertion histories are a separate layer keyed by transcript SHA-256, field, and subject; multiple citations can support one value, and child subjects stay separate.
 - Select the latest emitted assertion in code, never by model-supplied approval. Preserve earlier values and their source text. Conflicting assertions on the same last line remain unresolved; malformed or unknown fields cause atomic rejection.
-- Require human semantic verification for every proposal. Exact source quotes and ordered value-word coverage cannot detect every negation or omitted correction. This slice produces no draft and never marks a proposal approved.
+- Require human semantic verification for every proposal. Exact source quotes and ordered value-word coverage cannot detect every negation or omitted correction. The extraction layer produces proposals; only the later review gate can approve them.
 - Preserve real recording failures. Llama 3.2 returned malformed responses on two prompt attempts; the second raw failure is retained. The selected successful-path recording uses the already-installed local Qwen3-Coder model, with its full digest, generation options, and returned usage recorded. This disclosed choice is not a model-quality comparison.
 - Freeze the recording's prompt version and source hash. A changed transcript or prompt cannot silently reuse a captured response. No environment-driven LangSmith export is enabled during replay.
-- Use the Republic of Alderhaven, an explicitly fictional jurisdiction, in every requirement note and extraction result. The subsequent template must carry the same label.
+- Use the Republic of Alderhaven, an explicitly fictional jurisdiction, in every requirement note and extraction result. The template carries the same label.
 - Label 30 retrieval queries before scoring the 40 notes. These authored queries are a narrow retrieval benchmark, separate from the 30-case extraction holdout. No labels or note text were tuned after scoring.
 - Use MiniLM revision 1110a243fdf4706b3f48f1d95db1a4f5529b4d41 with local CPU ONNX inference and an exhaustive in-memory cosine index; forty vectors do not need a database. Public model assets are hash-checked, then usable offline.
 - Compare against plain keyword overlap with explicit function-word removal. Raw token overlap initially undercounted the baseline; the corrected result is 20/30, compared with embeddings at 28/30. Report both and keep the two embedding misses visible in the artifact.
@@ -69,3 +72,19 @@ GitHub CLI is authenticated as `pwngh`. Antigravity is invoked by its installed 
 - Write an original plain-text fictional petition with a value-to-lines table. Quote values as data so embedded newlines or template-looking text cannot create new document sections. Revalidate evidence at fill and preserve earlier assertions in the output table.
 - Exclude run IDs, timestamps, and identities from petition text. Identical source and selected values produce identical text; provenance and audit metadata separately record who reviewed and approved it.
 - Council was completed on PR 2a. This slice receives its own Sol-loop review of the actual human/draft gates; the earlier council approval does not cover new behavior.
+
+## Local model and tracing
+
+- Reuse the explicitly selected, installed Qwen3-Coder model; verify its full digest before calling Ollama. Never pull, substitute a model, use a recorded fallback, or accept a remote/cloud model silently. Missing embeddings stop retrieval; model failures leave required fields unresolved for review.
+- Add retrieval before extraction only for live runs. Save the three candidates and selected local note with the run; required fields come from the stored note, not model-supplied instructions. Review resumes use the checkpoint without repeating retrieval or inference.
+- Treat first-choice retrieval as tentative. The existing q24 query placed a former-name note above the general name-change note; the live example uses the already labeled, situation-specific q27 query. Labels and benchmark results are unchanged. Reviewers inspect the note and restart with a better query if needed; this PR does not add note editing.
+- Use temperature 0 and seed 17, but do not promise inference reproducibility across hardware or runtimes. Save raw output, prompt/source hashes, model digest, options, and returned usage. Deterministic rendering applies to the same saved source, note, and reviewed values.
+- Keep the default demo and tests independent of live inference and Docker. The recorded HTTP demo explicitly forces tracing off; the separate live smoke script checks only its development example, with clearly scripted reviewer and approver identities. Four holdout metrics remain unmeasured until PR 4.
+- Self-host Langfuse 4.82.0 with SDK 5.2.0 and six digest-pinned multi-platform images. Use upstream Compose as a small starting point, preserve its license, and omit unused services. A checkout-specific project name avoids touching unrelated containers; only the web port is published on loopback.
+- Generate local demo login/project credentials through documented headless initialization. These are local accounts and keys, not external signup. Keep credentials in ignored mode-0600 files, reuse them on restart, disable telemetry/signup, and preserve volumes on shutdown.
+- Export explicit node observations with a dedicated local OpenTelemetry provider, disabled environment proxies/redirects, and LangSmith off. Tracing is best effort: failures warn without rerunning the application call or changing its result. Crashes/outages can lose observations; the trace is not the durable review audit.
+- Verify actual node observations through the local Langfuse API in the traced smoke test. The report records one development demonstration, not field/citation/routing/guess-rate measurements on unseen cases.
+- During local verification, Colima 0.10.3 failed automatic SSH forwarding for port 13000 although all containers were healthy. Repaired only that missing forward with `ssh -F ~/.colima/_lima/colima/ssh.config -T -O forward -L 127.0.0.1:13000:127.0.0.1:13000 lima-colima`; no VM restart, global configuration change, or Colima transport feature was added to the project.
+
+- Bound the request-side flush wait to two seconds with one in-flight export. The installed OpenTelemetry batch processor ignored its own timeout argument; a three-second local collector test verified that the caller returns before eventual delivery. Background exports have a ten-second deadline.
+- Release the local model after each request with Ollama `keep_alive: 0`. Leaving the roughly 19.5 GB loaded model beside Docker on a 32 GB laptop caused database and storage stalls; releasing it trades reload time for memory available during review and trace export.

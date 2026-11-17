@@ -1,0 +1,186 @@
+{
+  "scope": "One invented development intake, two successful live runs. Not held-out model accuracy.",
+  "measured_at": "2026-11-17T19:19:26.050948+00:00",
+  "model_info": {
+    "model": "qwen3-coder:latest",
+    "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+    "prompt_version": "extract-v2",
+    "prompt_sha256": "22d9599bf4703f5e63e11991b1d23525203c4d9a144b4dafd36ce12ff9a12843",
+    "transcript_sha256": "0d7589b39f187ac24e2a4d38d67ebfb795be0a5f61b95221bdebbed54ea1282b",
+    "options": {
+      "seed": 17,
+      "temperature": 0,
+      "num_ctx": 8192,
+      "num_predict": 4096
+    },
+    "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Mara Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"My current name is Mara Vale.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Mara Wren\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"I request a name change to Mara Wren.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"birth_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"1991-06-18\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"My birth date is 1991-06-18.\"\n            }\n          ]\n        },\n        {\n          \"value\": \"1991-06-19\",\n          \"kind\": \"correction\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"Correction: my birth date is 1991-06-19, not the date I said earlier.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"18 Example Lane, Sampletown\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"My street address is 18 Example Lane.\"\n            },\n            {\n              \"line\": 6,\n              \"quote\": \"The city is Sampletown.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"reason_for_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"I want a name that I chose for myself.\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"I want a name that I chose for myself.\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+    "usage": {
+      "prompt_eval_count": 1,
+      "eval_count": 543,
+      "total_duration": 48532109792,
+      "load_duration": 266723084,
+      "prompt_eval_duration": 31794915000,
+      "eval_duration": 16166448000
+    },
+    "keep_alive": 0
+  },
+  "versions": {
+    "langgraph": "1.2.22",
+    "langfuse": "5.2.0",
+    "opentelemetry-sdk": "1.45.2",
+    "onnxruntime": "1.32.0",
+    "tokenizers": "0.23.3",
+    "numpy": "2.5.5",
+    "ollama": "0.30.0",
+    "langfuse_server": "4.82.0"
+  },
+  "retrieval": {
+    "query": "I have chosen a new adult name because it feels like who I am. Please use only the explanation I actually give.",
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "index": "in-memory exact cosine (L2-normalized 384-dimensional vectors)",
+    "candidates": [
+      {
+        "id": "adult_name_change_chosen_name",
+        "score": 0.6677291697550104
+      },
+      {
+        "id": "adult_name_change_single_name",
+        "score": 0.5660062008420765
+      },
+      {
+        "id": "adult_name_change_document_mismatch",
+        "score": 0.564120460831726
+      }
+    ]
+  },
+  "tracing_off_run": {
+    "run_id": "8c5feb6a9dcb408c81035b7807262090",
+    "draft_sha256": "4feaa058b6b2f16ff2e8535269b89dca2f4cb8a2dfbb8350ae35e74aa8e56ed6",
+    "inference_seconds": 54.884512375
+  },
+  "tracing_on_run": {
+    "run_id": "d8796993ffca410781e5a0767abc7e8f",
+    "url": "http://127.0.0.1:13000/project/intake-demo/traces/d8796993ffca410781e5a0767abc7e8f",
+    "node_counts": {
+      "retrieve": 1,
+      "extract": 1,
+      "check": 1,
+      "route": 7,
+      "review": 12,
+      "fill": 1
+    },
+    "all_observations_have_input_output_and_nonnegative_duration": true,
+    "node_seconds": [
+      {
+        "node": "retrieve",
+        "seconds": 1.607
+      },
+      {
+        "node": "extract",
+        "seconds": 49.001
+      },
+      {
+        "node": "check",
+        "seconds": 0.049
+      },
+      {
+        "node": "route",
+        "seconds": 0.0
+      },
+      {
+        "node": "review",
+        "seconds": 0.017
+      },
+      {
+        "node": "review",
+        "seconds": 0.001
+      },
+      {
+        "node": "route",
+        "seconds": 0.001
+      },
+      {
+        "node": "review",
+        "seconds": 0.001
+      },
+      {
+        "node": "review",
+        "seconds": 0.001
+      },
+      {
+        "node": "route",
+        "seconds": 0.001
+      },
+      {
+        "node": "review",
+        "seconds": 0.001
+      },
+      {
+        "node": "review",
+        "seconds": 0.001
+      },
+      {
+        "node": "route",
+        "seconds": 0.001
+      },
+      {
+        "node": "review",
+        "seconds": 0.001
+      },
+      {
+        "node": "review",
+        "seconds": 0.001
+      },
+      {
+        "node": "route",
+        "seconds": 0.0
+      },
+      {
+        "node": "review",
+        "seconds": 0.001
+      },
+      {
+        "node": "review",
+        "seconds": 0.002
+      },
+      {
+        "node": "route",
+        "seconds": 0.004
+      },
+      {
+        "node": "review",
+        "seconds": 0.0
+      },
+      {
+        "node": "review",
+        "seconds": 0.001
+      },
+      {
+        "node": "route",
+        "seconds": 0.0
+      },
+      {
+        "node": "fill",
+        "seconds": 0.002
+      }
+    ]
+  },
+  "approval": {
+    "reviewer": "Scripted Live Demo Approver",
+    "at": "2026-11-17T19:19:26.050948+00:00",
+    "revision": 6,
+    "transcript_sha256": "0d7589b39f187ac24e2a4d38d67ebfb795be0a5f61b95221bdebbed54ea1282b",
+    "draft_sha256": "4feaa058b6b2f16ff2e8535269b89dca2f4cb8a2dfbb8350ae35e74aa8e56ed6",
+    "confirmed_complete": true
+  },
+  "filled_values": 5,
+  "observed_same_draft_text_with_tracing_off_and_on": true,
+  "limits": [
+    "Scripted approvals validate only this fixture; no person inspected this demo as a client case.",
+    "First broad query ranked the wrong note first; the smoke uses existing labeled q27, without changing retrieval labels.",
+    "Earlier traced attempts lost observations during local VM storage/database stalls while the model remained loaded.",
+    "Final request releases model memory with keep_alive=0; tracing remains best effort, not a durable audit.",
+    "Field accuracy, citation accuracy, missing-fact routing, and escaped-guess rates remain unmeasured on the planned holdout."
+  ]
+}
