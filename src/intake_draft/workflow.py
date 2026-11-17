@@ -1,4 +1,4 @@
-"""Durable human decisions around an untrusted recorded-model extraction."""
+"""Durable human decisions around untrusted local or recorded extraction."""
 
 import copy
 import fcntl
@@ -22,6 +22,9 @@ from pydantic import Field, field_validator, model_validator
 from intake_draft.contracts import NumberedTranscript, StrictModel, TranscriptRequest, number_transcript
 from intake_draft.drafting import render_draft
 from intake_draft.extraction import Citation, RecordedModel, check_output, messages_for, note_by_id
+from intake_draft.local_model import DEFAULT_MODEL, DEFAULT_DIGEST, LocalModel, ModelUnavailable
+from intake_draft.references import EMBEDDING_MODEL, EMBEDDING_REVISION, EMBEDDING_INDEX, live_index
+from intake_draft.tracing import NodeTracer
 
 
 class ReviewConflict(ValueError):
@@ -90,6 +93,11 @@ class RunState(TypedDict, total=False):
     status: str
     approval: dict | None
     draft: dict | None
+    mode: str
+    query: str
+    model_settings: dict
+    model_info: dict
+    retrieval: dict
 
 
 def field_key(field: str, subject: str) -> str:
@@ -170,13 +178,30 @@ def apply_review(state: RunState, request: ReviewRequest, at: str) -> dict:
             "audit": [*state["audit"], copy.deepcopy(event)]}
 
 
-def build_workflow(checkpointer):
+def build_workflow(checkpointer, *, tracer=None, model_factory=LocalModel, index_factory=None):
+    tracer = tracer or NodeTracer()
+
+    def retrieve(state):
+        try:
+            matches = index_factory().search(state["query"], limit=3)
+        except (ImportError, OSError, ValueError) as exc:
+            raise ModelUnavailable("pinned local embedding files or dependencies are unavailable") from exc
+        if not matches:
+            raise ModelUnavailable("no reference candidate found; revise the reference query")
+        return {"note": note_by_id(matches[0]["id"]), "retrieval": {
+            "query": state["query"], "model": EMBEDDING_MODEL, "revision": EMBEDDING_REVISION,
+            "index": EMBEDDING_INDEX, "candidates": [{"id": m["id"], "score": m["score"]} for m in matches]}}
+
     def extract(state):
         source = NumberedTranscript.model_validate(state["source"])
         try:
-            return {"raw": RecordedModel(state["record"])(messages_for(source, state["note"]), source.sha256)}
-        except (ValueError, OSError):
-            return {"raw": "", "error": "model_step_failed"}
+            model = (model_factory(**state["model_settings"]) if state.get("mode") == "local"
+                     else RecordedModel(state["record"]))
+            raw = model(messages_for(source, state["note"]), source.sha256)
+            info = getattr(model, "last_result", {"model": state.get("record", {}).get("model", "recorded")})
+            return {"raw": raw, "model_info": info}
+        except (ValueError, OSError) as exc:
+            return {"raw": "", "error": "model_step_failed", "model_info": {"error": type(exc).__name__}}
 
     def check(state):
         report = check_output(state["raw"], NumberedTranscript.model_validate(state["source"]), state["note"])
@@ -202,9 +227,22 @@ def build_workflow(checkpointer):
         return {"draft": draft, "status": "draft"}
 
     graph = StateGraph(RunState)
-    for name, node in (("extract", extract), ("check", check), ("route", route), ("review", review), ("fill", fill)):
-        graph.add_node(name, node)
-    graph.add_edge(START, "extract")
+    input_keys = {"retrieve": ("query",), "extract": ("source", "note", "mode"),
+                  "check": ("raw", "source", "note", "error"),
+                  "route": ("revision", "decisions", "approval"),
+                  "review": ("revision", "report", "decisions"),
+                  "fill": ("source", "note", "decisions", "approval")}
+    def observed(name, node):
+        def execute(state):
+            inputs = {key: state[key] for key in input_keys[name] if key in state}
+            return tracer.call(name, state["run_id"], inputs, lambda: node(state))
+        return execute
+
+    for name, node in (("retrieve", retrieve), ("extract", extract), ("check", check),
+                       ("route", route), ("review", review), ("fill", fill)):
+        graph.add_node(name, observed(name, node))
+    graph.add_conditional_edges(START, lambda s: "retrieve" if s.get("mode") == "local" else "extract")
+    graph.add_edge("retrieve", "extract")
     graph.add_edge("extract", "check")
     graph.add_edge("check", "route")
     graph.add_conditional_edges("route", lambda s: "fill" if s["approval"] else "review")
@@ -214,19 +252,29 @@ def build_workflow(checkpointer):
 
 
 class ReviewService:
-    def __init__(self, path: str | Path):
+    def __init__(self, path: str | Path, *, tracer=None, model_factory=LocalModel, index_factory=None,
+                 model_settings=None, embedding_dir=".runtime/minilm"):
         self.path = Path(path).resolve()
+        self.tracer = tracer or NodeTracer()
+        self.model_factory = model_factory
+        self.index_factory = index_factory or (lambda: live_index(str(Path(embedding_dir).resolve())))
+        self.model_settings = model_settings or {"base_url": "http://127.0.0.1:11434",
+                                                 "model": DEFAULT_MODEL, "expected_digest": DEFAULT_DIGEST}
 
     @contextmanager
     def _graph(self):
         self.path.parent.mkdir(parents=True, exist_ok=True)
         # Serialize revision checks and resumes across local processes, not just HTTP threads.
-        with self.path.with_suffix(".lock").open("a") as lock:
-            fcntl.flock(lock, fcntl.LOCK_EX)
-            with closing(sqlite3.connect(str(self.path), check_same_thread=False)) as conn:
-                saver = SqliteSaver(conn, serde=JsonPlusSerializer(allowed_msgpack_modules=[]))
-                with tracing_context(enabled=False):
-                    yield build_workflow(saver)
+        try:
+            with self.path.with_suffix(".lock").open("a") as lock:
+                fcntl.flock(lock, fcntl.LOCK_EX)
+                with closing(sqlite3.connect(str(self.path), check_same_thread=False)) as conn:
+                    saver = SqliteSaver(conn, serde=JsonPlusSerializer(allowed_msgpack_modules=[]))
+                    with tracing_context(enabled=False):
+                        yield build_workflow(saver, tracer=self.tracer, model_factory=self.model_factory,
+                                             index_factory=self.index_factory)
+        finally:
+            self.tracer.flush()  # Export outside the database lock; tracing failures are nonfatal.
 
     @staticmethod
     def _config(run_id):
@@ -246,13 +294,25 @@ class ReviewService:
     def _view(state):
         return {key: state[key] for key in (
             "run_id", "status", "revision", "source", "note", "report", "audit", "approval", "draft")} | {
-                "review_queue": review_queue(state)}
+                "review_queue": review_queue(state), "mode": state.get("mode", "recorded"),
+                "model_info": state.get("model_info", {}), "retrieval": state.get("retrieval"),
+                "trace_id": state["run_id"]}
 
     def create(self, record: dict) -> dict:
         run_id = uuid4().hex
         source = number_transcript(TranscriptRequest(transcript=record["transcript"]))
         initial = {"run_id": run_id, "record": record, "source": source.model_dump(),
                    "note": note_by_id(record["note_id"]), "decisions": {}, "audit": [],
+                   "revision": 0, "status": "starting", "approval": None, "draft": None, "mode": "recorded"}
+        with self._graph() as graph:
+            graph.invoke(initial, self._config(run_id))
+            return self._view(self._state(graph, run_id))
+
+    def create_live(self, transcript: str, query: str) -> dict:
+        run_id = uuid4().hex
+        source = number_transcript(TranscriptRequest(transcript=transcript))
+        initial = {"run_id": run_id, "source": source.model_dump(), "query": query,
+                   "model_settings": self.model_settings, "mode": "local", "decisions": {}, "audit": [],
                    "revision": 0, "status": "starting", "approval": None, "draft": None}
         with self._graph() as graph:
             graph.invoke(initial, self._config(run_id))

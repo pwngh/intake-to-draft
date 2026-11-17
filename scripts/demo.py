@@ -60,7 +60,7 @@ def main() -> None:
             [sys.executable, "-m", "uvicorn", "intake_draft.api:app", "--fd", str(listener.fileno()),
              "--log-level", "error", "--no-access-log"],
             pass_fds=(listener.fileno(),),
-            env={**os.environ, "INTAKE_REVIEW_DB": str(Path(temporary) / "review.sqlite")},
+            env={**os.environ, "INTAKE_REVIEW_DB": str(Path(temporary) / "review.sqlite"), "INTAKE_TRACING": "off"},
         )
         try:
             with httpx.Client(base_url=f"http://127.0.0.1:{port}", timeout=2, trust_env=False) as client:

@@ -1,7 +1,10 @@
 """Local reference retrieval; matches are fictional demonstration checklists."""
 
 from importlib.resources import files
+from functools import lru_cache
+import hashlib
 import json
+from pathlib import Path
 import re
 
 
@@ -17,6 +20,10 @@ def _load_notes() -> list[dict]:
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 EMBEDDING_REVISION = "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
 EMBEDDING_INDEX = "in-memory exact cosine (L2-normalized 384-dimensional vectors)"
+MODEL_FILES = {
+    "model.onnx": ("onnx/model.onnx", "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452"),
+    "tokenizer.json": ("tokenizer.json", "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"),
+}
 
 
 STOPWORDS = set("a an and are as at be been but by for from had has have i in is it its me my "
@@ -55,11 +62,13 @@ class LocalMiniLM:
     """CPU inference from pinned local ONNX/tokenizer files; never downloads."""
 
     def __init__(self, model_dir) -> None:
-        from pathlib import Path
+        directory = Path(model_dir)
+        for name, (_, expected) in MODEL_FILES.items():
+            if hashlib.sha256((directory / name).read_bytes()).hexdigest() != expected:
+                raise ValueError("local embedding asset does not match the pinned revision")
         import onnxruntime as ort
         from tokenizers import Tokenizer
 
-        directory = Path(model_dir)
         self.tokenizer = Tokenizer.from_file(str(directory / "tokenizer.json"))
         self.tokenizer.enable_truncation(max_length=256)
         self.tokenizer.enable_padding(pad_id=0, pad_token="[PAD]")
@@ -105,5 +114,10 @@ class EmbeddingIndex:
         return _rank(self._notes, scores, limit)
 
 
-# The recorded-output demo stays model-free; PR3 will make live adapters explicit.
+@lru_cache(maxsize=1)
+def live_index(model_dir: str):
+    return EmbeddingIndex(LocalMiniLM(model_dir))
+
+
+# The recorded-output demo stays model-free; live runs use live_index explicitly.
 ReferenceIndex = KeywordIndex

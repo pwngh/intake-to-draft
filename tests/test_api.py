@@ -42,7 +42,7 @@ def test_health_identifies_the_limited_demonstration_stage(client):
     assert response.json() == {
         "status": "ok",
         "demonstration": True,
-        "stage": "review-and-draft",
+        "stage": "local-model-and-tracing",
     }
 
 
