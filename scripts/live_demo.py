@@ -14,6 +14,7 @@ import httpx
 
 from intake_draft.tracing import tracer_from_env
 from intake_draft.workflow import ReviewRequest, ReviewService
+from intake_draft.child_extraction import ChildLocalModel
 
 ROOT = Path(__file__).resolve().parent.parent
 QUERY = "I have chosen a new adult name because it feels like who I am. Please use only the explanation I actually give."
@@ -58,7 +59,7 @@ def main():
     os.environ["INTAKE_TRACING"] = "langfuse" if args.trace else "off"
     tracer = tracer_from_env()
     try:
-        service = ReviewService(ROOT / ".runtime/live-review.sqlite", tracer=tracer,
+        service = ReviewService(ROOT / ".runtime/live-review.sqlite", tracer=tracer, model_factory=ChildLocalModel,
                                 embedding_dir=ROOT / ".runtime/minilm")
         transcript = json.loads((ROOT / "examples/intake.json").read_text())["transcript"]
         print("Running pinned local Qwen3-Coder; no hosted model or fallback.", flush=True)
