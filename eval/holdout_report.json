@@ -1,0 +1,3512 @@
+{
+  "model": {
+    "name": "qwen3-coder:latest",
+    "digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+    "options": {
+      "seed": 17,
+      "temperature": 0,
+      "num_ctx": 8192,
+      "num_predict": 4096
+    }
+  },
+  "generated_at": "2026-11-17T20:36:03.591882+00:00",
+  "requirement_source": "specified fictional note; retrieval evaluated separately",
+  "manifest_sha256": "aff51b8f03562f023e9bb919b4ad55154afc3b30574d3939debb63aa8783fa4a",
+  "recording_sha256": {
+    "c04": "e6ce4f0019afefeb99aabf4ad2dfb526e176d63ddd90fbb595b749928e59a341",
+    "c05": "75edf0a0b7af05ff113a50170226e9b20f1ddbcd47a39dee12c3e583853143db",
+    "c06": "edad920eb2ff141f72b337686381e40ff62050cfb8411b188972dbb650f0ed50",
+    "c07": "2e6ec1038c94bf77a6cbc1957f5809e48f41b544cbe1787185b2bff57b97dc96",
+    "c08": "94f3f00c9da5d14720caad8dba66f9e26cad345afcd1d61d966bac85aeb3a168",
+    "c09": "448547f839d79dc309832b798e4927cfe88adfae1c4b04fd8ed4a8d8cc0f4e0d",
+    "c10": "285e19a303c887b6bef5c73930c55758933656db054c0f570b58c94158e9d3ec",
+    "c14": "fc218d7303039f50c4cabb6613c5706a1b6f34a5adcf1cbf3dab0786144a3968",
+    "c15": "c3f487e0e657c6b1f6e0dac508107bd82572061b225573c399186f5ff1b7e847",
+    "c16": "c235138a475305acb6581edbf499887d1d506f028db4063dd2f7ae77750e2095",
+    "c17": "caa2e44e6a6afcde461a6a875cb1342ab832b8ce7c60c28e407c3098f9011fec",
+    "c18": "b7858b69132144d6165b57109d84c2c98b35ebea2221aa55a77dd36687d97e00",
+    "c19": "2739b6256bc3f2e106c59b03b560a93299e33878237979405a3c03236316f2e4",
+    "c20": "bd6d1344f70f586e3f693442c9c97e263fe9c00171af1bdd6d21d96f3efdf4cc",
+    "c23": "8c3741f5aeda754076ace7c2d9377bf5e2a4001980aa302ef1d2482f8299d519",
+    "c24": "78f49f58572b2ff6815a079b60b98a5fade61a7089a8299ee0a35cf19e2eea40",
+    "c25": "df9488a22222b7b43fc31dfc943203e39d7881cb632d546152013d9213f1a725",
+    "c26": "103af2bd48922a366c575b2864d1833597243f5f4196c45bee06a245def2881a",
+    "c27": "ebb8670704f0ce876ab2151d09f94c32484a42c5bbbc6bc6acec541176a14656",
+    "c28": "ea09d1735aeb93ea11659c23ee08a0cddb55d199233696155b1f17f221aa6a76",
+    "c29": "bb44be18959da90251aa2de53bbe2cfdc4d450d90643de83c75bb7468ed117d9",
+    "c30": "46e060ddb5ec436f9e14f727724ca76b8f0be39e5d3987c7140e18db064a1f9a",
+    "c33": "db34e0c4fda910af3098e0332161d60d1433cb1f07236877d85fbf89a2c76f66",
+    "c34": "d798b9bdc155482c9073821ed5f1b1567edcf772dda184c4769aa50a344d60cd",
+    "c35": "75c67352080bb07e1d2739e729cbe21521b7b5d19b7d05eb318f3ed772c2b874",
+    "c36": "7d8bb5894f1060eee5e61a9ede8d5116f8cdb36bc4f5013a0b6fd5fc002904dd",
+    "c37": "5e72cb220be85ae85b990d67cde0e4b9f06117549c177a01bb2a726c78802952",
+    "c38": "50140757a92bcbae287add76c29e2c1202a5182b1f1e4e4b6c97194a87ad8ae0",
+    "c39": "54a1e2d9c77bbc7455519f3c3b9374a58875480a8997aa8fb852737ce65bb8e1",
+    "c40": "c369da47b3ae2be353f109027b13c37bfe0b0577040bf57b06b2d4e37d7227b9"
+  },
+  "scores": {
+    "scoring_version": "1",
+    "split": "holdout",
+    "case_count": 30,
+    "case_ids": [
+      "c04",
+      "c05",
+      "c06",
+      "c07",
+      "c08",
+      "c09",
+      "c10",
+      "c14",
+      "c15",
+      "c16",
+      "c17",
+      "c18",
+      "c19",
+      "c20",
+      "c23",
+      "c24",
+      "c25",
+      "c26",
+      "c27",
+      "c28",
+      "c29",
+      "c30",
+      "c33",
+      "c34",
+      "c35",
+      "c36",
+      "c37",
+      "c38",
+      "c39",
+      "c40"
+    ],
+    "definitions": {
+      "field_accuracy": "Correct checked proposals / known fact-sheet slots; omissions fail. Child IDs are ignored, but full name/date values must match as a multiset.",
+      "citation_accuracy": "Supported raw assertion groups / all raw assertion groups, including earlier and uncertain claims. Each group must satisfy the strict fact/assertion/citation structure. Exact quotes must exist on their cited lines and jointly contain the value words in order. This measures literal containment, not whether the caller asserted the value as a fact. Malformed claim entries count as failures; unparseable whole outputs have zero groups and are listed separately.",
+      "missing_fact_review_rate": "Unresolved fact-sheet slots with no usable proposal and an empty pending review row / all unresolved slots. Reserve empty child rows for unmatched known children first; remaining rows can cover unresolved children only when no unmatched usable child proposal exists.",
+      "escaped_guess_rate": "Incorrect checked proposals / all checked proposals, including invented, stale, misattributed, and duplicate values. This is before mandatory human approval, not a rate of incorrect released drafts.",
+      "normalization": "Unicode word tokens after case folding; punctuation and whitespace are ignored. No semantic model judge or post-hoc aliases."
+    },
+    "malformed_cases": [
+      "c04",
+      "c06",
+      "c07",
+      "c08",
+      "c10",
+      "c14",
+      "c15",
+      "c16",
+      "c17",
+      "c19",
+      "c20",
+      "c23",
+      "c24",
+      "c26",
+      "c27",
+      "c30"
+    ],
+    "model_failure_cases": [],
+    "metrics": {
+      "field_accuracy": {
+        "numerator": 73,
+        "denominator": 199,
+        "rate": 0.36683417085427134
+      },
+      "citation_accuracy": {
+        "numerator": 212,
+        "denominator": 231,
+        "rate": 0.9177489177489178
+      },
+      "missing_fact_review_rate": {
+        "numerator": 6,
+        "denominator": 10,
+        "rate": 0.6
+      },
+      "escaped_guess_rate": {
+        "numerator": 9,
+        "denominator": 82,
+        "rate": 0.10975609756097561
+      }
+    }
+  },
+  "case_results": [
+    {
+      "id": "c04",
+      "split": "holdout",
+      "note_id": "divorce_without_children_missing_address",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 5,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 5,
+          "denominator": 7,
+          "rate": 0.7142857142857143
+        },
+        "missing_fact_review_rate": {
+          "numerator": 1,
+          "denominator": 1,
+          "rate": 1.0
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Elin Quill",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Rune Vale",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2008-02-19",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2023-12-10",
+          "supported": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "End our marriage. That is the request I want recorded.",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "not supplied",
+          "supported": false
+        },
+        {
+          "field": "child_1",
+          "subject": "case",
+          "value": "none",
+          "supported": false
+        }
+      ],
+      "missing_checks": [
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "status": "missing",
+          "routed_empty": true
+        }
+      ],
+      "review": {
+        "status": "needs_review",
+        "approval_kind": null,
+        "approval": null,
+        "actions": {
+          "correct": 5,
+          "reject": 1
+        }
+      }
+    },
+    {
+      "id": "c05",
+      "split": "holdout",
+      "note_id": "divorce_without_children_unknown_spouse_location",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 5,
+          "denominator": 6,
+          "rate": 0.8333333333333334
+        },
+        "citation_accuracy": {
+          "numerator": 5,
+          "denominator": 7,
+          "rate": 0.7142857142857143
+        },
+        "missing_fact_review_rate": {
+          "numerator": 1,
+          "denominator": 1,
+          "rate": 1.0
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 5,
+          "rate": 0.0
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "35 Example Walk Demo Borough",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Arlo Wren",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "Dissolve our marriage",
+          "matches_current_fact": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Mira Wren",
+          "matches_current_fact": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2025-01-18",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Arlo Wren",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "35 Example Walk Demo Borough",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Mira Wren",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2012-10-06",
+          "supported": false
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2025-01-18",
+          "supported": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "Dissolve our marriage",
+          "supported": true
+        },
+        {
+          "field": "respondent_address",
+          "subject": "case",
+          "value": "Unknown",
+          "supported": false
+        }
+      ],
+      "missing_checks": [
+        {
+          "field": "respondent_address",
+          "subject": "case",
+          "status": "missing",
+          "routed_empty": true
+        }
+      ],
+      "review": {
+        "status": "needs_review",
+        "approval_kind": null,
+        "approval": null,
+        "actions": {
+          "accept": 5,
+          "correct": 1,
+          "reject": 1
+        }
+      }
+    },
+    {
+      "id": "c06",
+      "split": "holdout",
+      "note_id": "divorce_without_children_shared_home",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 7,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 8,
+          "denominator": 8,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Pella Dune",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "24 Example Crescent Sampletown",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Oren Dune",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2007-04-22",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2024-05-09",
+          "supported": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "Sell our jointly owned bungalow and split the proceeds equally",
+          "supported": true
+        },
+        {
+          "field": "property_summary",
+          "subject": "case",
+          "value": "jointly owned bungalow",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "case",
+          "value": "no children together or separately",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:16:17.042337+00:00",
+          "revision": 8,
+          "transcript_sha256": "e85c26849d720706ed9f7ec28633f4c3b4377d1051f4ffebdd28b776b7fdaa22",
+          "draft_sha256": "bb09a34c27e6eeb23ad727b71586bd00e2857f9ff3718e80f5bc517540984191",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 7,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c07",
+      "split": "holdout",
+      "note_id": "divorce_without_children_shared_debt",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 6,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 8,
+          "denominator": 10,
+          "rate": 0.8
+        },
+        "missing_fact_review_rate": {
+          "numerator": 1,
+          "denominator": 1,
+          "rate": 1.0
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Lio Bramble",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Nessa Bramble",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "17 Sample Rise Demo Borough",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2011-11-11",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2024-04-06",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2024-04-08",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "uncertain",
+          "supported": false
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "Dissolve the marriage. Leave that conflicting date for review.",
+          "supported": true
+        },
+        {
+          "field": "property_summary",
+          "subject": "case",
+          "value": "Divide the 2400 token joint loan equally.",
+          "supported": true
+        },
+        {
+          "field": "child_1",
+          "subject": "case",
+          "value": "none",
+          "supported": false
+        }
+      ],
+      "missing_checks": [
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "status": "conflicting",
+          "routed_empty": true
+        }
+      ],
+      "review": {
+        "status": "needs_review",
+        "approval_kind": null,
+        "approval": null,
+        "actions": {
+          "correct": 6,
+          "reject": 1
+        }
+      }
+    },
+    {
+      "id": "c08",
+      "split": "holdout",
+      "note_id": "divorce_without_children_private_contact",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 7,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 7,
+          "denominator": 9,
+          "rate": 0.7777777777777778
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Fara Thorn",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "38 Example Path, Demo Borough",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Beni Thorn",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2014-03-15",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2025-06-21",
+          "supported": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "End the marriage",
+          "supported": true
+        },
+        {
+          "field": "contact_preference",
+          "subject": "case",
+          "value": "postal mail only and do not call the shared phone",
+          "supported": true
+        },
+        {
+          "field": "child_1",
+          "subject": "case",
+          "value": "",
+          "supported": false
+        },
+        {
+          "field": "child_2",
+          "subject": "case",
+          "value": "",
+          "supported": false
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:17:29.723602+00:00",
+          "revision": 8,
+          "transcript_sha256": "109c4103a15a239b4fb675e23248ca0f579b764365e9998c6b7edd5e87e8a14a",
+          "draft_sha256": "392f8457c1dbf271893e155a03b1e7589d6df27a7c07adc4d12ce46a4b6acedf",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 7,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c09",
+      "split": "holdout",
+      "note_id": "divorce_without_children_separate_households",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "citation_accuracy": {
+          "numerator": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 7,
+          "rate": 0.0
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2018-08-08",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "61 Sample Terrace Sampletown",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Idris Lark",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "Dissolve our marriage",
+          "matches_current_fact": true
+        },
+        {
+          "field": "respondent_address",
+          "subject": "case",
+          "value": "62 Sample Terrace Demo Borough",
+          "matches_current_fact": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Una Lark",
+          "matches_current_fact": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2025-07-02",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Idris Lark",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "61 Sample Terrace Sampletown",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Una Lark",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2018-08-08",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2025-07-02",
+          "supported": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "Dissolve our marriage",
+          "supported": true
+        },
+        {
+          "field": "respondent_address",
+          "subject": "case",
+          "value": "62 Sample Terrace Demo Borough",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:18:03.018411+00:00",
+          "revision": 8,
+          "transcript_sha256": "12bfb0b152c388ba61918168339b3e87fcf4b721086925372747c8aac335c40c",
+          "draft_sha256": "45af9dc15c8c331e785e0efb9917f1e6487ae9399f08b597832fbed2999b7445",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "accept": 7,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c10",
+      "split": "holdout",
+      "note_id": "divorce_without_children_restore_name",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 8,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 8,
+          "denominator": 10,
+          "rate": 0.8
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Veda Sedge",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "46 Demonstration Lane Sampletown",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Torin Sedge",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2006-01-28",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2024-02-14",
+          "supported": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "End our marriage",
+          "supported": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Veda Flint",
+          "supported": true
+        },
+        {
+          "field": "former_name",
+          "subject": "case",
+          "value": "Veda Flint",
+          "supported": true
+        },
+        {
+          "field": "child_1",
+          "subject": "case",
+          "value": "",
+          "supported": false
+        },
+        {
+          "field": "child_2",
+          "subject": "case",
+          "value": "",
+          "supported": false
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:18:57.281473+00:00",
+          "revision": 9,
+          "transcript_sha256": "b1bc2a6771edf46e48b68ab86c9b47dc69689229b49f03c458e44b984a3d8ce3",
+          "draft_sha256": "10d1762c9f2daf218a3abc781230c40cd5dc145dbc566891ce26ed5a53ef6dfd",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 8,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c14",
+      "split": "holdout",
+      "note_id": "divorce_with_children_uncertain_birth_date",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 7,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 10,
+          "denominator": 10,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0.0
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Piri Oat",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "73 Sample Close Sampletown",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Lex Oat",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2007-07-07",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2025-01-11",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "Fenn Oat",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "2010-02-13",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-2",
+          "value": "Arin Oat",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-2",
+          "value": "2014-08-09",
+          "supported": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "End our marriage",
+          "supported": true
+        }
+      ],
+      "missing_checks": [
+        {
+          "field": "children",
+          "subject": "child-2",
+          "status": "uncertain",
+          "routed_empty": false
+        }
+      ],
+      "review": {
+        "status": "needs_review",
+        "approval_kind": null,
+        "approval": null,
+        "actions": {
+          "correct": 7,
+          "reject": 1
+        }
+      }
+    },
+    {
+      "id": "c15",
+      "split": "holdout",
+      "note_id": "divorce_with_children_missing_child_details",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 7,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 8,
+          "denominator": 11,
+          "rate": 0.7272727272727273
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0.0
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Edda Fern",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Rami Fern",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2013-10-05",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "case",
+          "value": "2",
+          "supported": false
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "31 Example Road Demo Borough",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2024-09-23",
+          "supported": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "Dissolve the marriage",
+          "supported": true
+        },
+        {
+          "field": "child_1_name",
+          "subject": "case",
+          "value": "Nolo Fern",
+          "supported": true
+        },
+        {
+          "field": "child_1_dob",
+          "subject": "case",
+          "value": "2017-10-30",
+          "supported": true
+        },
+        {
+          "field": "child_2_name",
+          "subject": "case",
+          "value": "",
+          "supported": false
+        },
+        {
+          "field": "child_2_dob",
+          "subject": "case",
+          "value": "",
+          "supported": false
+        }
+      ],
+      "missing_checks": [
+        {
+          "field": "children",
+          "subject": "child-2",
+          "status": "missing",
+          "routed_empty": false
+        }
+      ],
+      "review": {
+        "status": "needs_review",
+        "approval_kind": null,
+        "approval": null,
+        "actions": {
+          "correct": 7,
+          "reject": 1
+        }
+      }
+    },
+    {
+      "id": "c16",
+      "split": "holdout",
+      "note_id": "divorce_with_children_alternating_weeks",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 8,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 7,
+          "denominator": 8,
+          "rate": 0.875
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Mael Pond",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "58 Demonstration Square Sampletown",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Zia Pond",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2008-04-18",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2025-02-28",
+          "supported": false
+        },
+        {
+          "field": "children",
+          "subject": "case",
+          "value": "Enna Pond",
+          "supported": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "End our marriage",
+          "supported": true
+        },
+        {
+          "field": "parenting_schedule",
+          "subject": "case",
+          "value": "Alternate full weeks with handover every Friday at 18:00",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:21:37.712549+00:00",
+          "revision": 9,
+          "transcript_sha256": "bcbaa92ffdf4c8dbee78de1b860500d361bf064df5fdd42368fe2945893dae23",
+          "draft_sha256": "95b712867a65b8470405fff7e05708fb8acf07b83527a892ba507acc0588d58d",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 8,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c17",
+      "split": "holdout",
+      "note_id": "divorce_with_children_school_week",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 8,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 8,
+          "denominator": 8,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Noa Kite",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "64 Sample Lane Demo Borough",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Venn Kite",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2011-02-26",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2024-08-04",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "case",
+          "value": "Sola Kite",
+          "supported": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "Dissolve our marriage",
+          "supported": true
+        },
+        {
+          "field": "parenting_schedule",
+          "subject": "case",
+          "value": "School nights with Noa Kite and weekends with Venn Kite",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:22:23.513153+00:00",
+          "revision": 9,
+          "transcript_sha256": "166cd06ef9c371b2f028f15b923348f5d6d86da0afb885a7b9ed0873804d29fa",
+          "draft_sha256": "00aceab46dbe4c7587cb9a8c7dfc7bbe6a8a087f6e30955130b3593512505dcc",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 8,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c18",
+      "split": "holdout",
+      "note_id": "divorce_with_children_different_sibling_schedules",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 7,
+          "denominator": 9,
+          "rate": 0.7777777777777778
+        },
+        "citation_accuracy": {
+          "numerator": 8,
+          "denominator": 9,
+          "rate": 0.8888888888888888
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 1,
+          "denominator": 8,
+          "rate": 0.125
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "children",
+          "subject": "child-2",
+          "value": "Miro Marl",
+          "matches_current_fact": false
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2008-09-13",
+          "matches_current_fact": true
+        },
+        {
+          "field": "parenting_schedule",
+          "subject": "case",
+          "value": "Meri Marl stays with Esme Marl on weekdays. Miro Marl alternates weeks between Esme Marl and Juno Marl.",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "82 Example Walk Sampletown",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Esme Marl",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "End the marriage",
+          "matches_current_fact": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Juno Marl",
+          "matches_current_fact": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2025-05-19",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Esme Marl",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "82 Example Walk Sampletown",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Juno Marl",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2008-09-13",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2025-05-19",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "Meri Marl",
+          "supported": false
+        },
+        {
+          "field": "children",
+          "subject": "child-2",
+          "value": "Miro Marl",
+          "supported": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "End the marriage",
+          "supported": true
+        },
+        {
+          "field": "parenting_schedule",
+          "subject": "case",
+          "value": "Meri Marl stays with Esme Marl on weekdays. Miro Marl alternates weeks between Esme Marl and Juno Marl.",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:23:14.139549+00:00",
+          "revision": 10,
+          "transcript_sha256": "b847e884da319c51fdfd60d98b032ca491f4e7be4ec62765820c389db24cc670",
+          "draft_sha256": "66d8c4480474b4c3f591a18bb3fc7b4fb9eadcde7956052a19203e116981224a",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "accept": 6,
+          "correct": 3,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c19",
+      "split": "holdout",
+      "note_id": "divorce_with_children_holiday_plan",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 8,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 8,
+          "denominator": 8,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Olli Fable",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "44 Demonstration Terrace Demo Borough",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Tera Fable",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2012-12-01",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2024-06-17",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "case",
+          "value": "Avi Fable",
+          "supported": true
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "Dissolve our marriage",
+          "supported": true
+        },
+        {
+          "field": "parenting_schedule",
+          "subject": "case",
+          "value": "Split the winter school break equally, with the first half at Olli Fable's home",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:23:56.759060+00:00",
+          "revision": 9,
+          "transcript_sha256": "8403ba7a8727f9aeb9d93126e609dd1d6e7717b0c931b26efe80cdcb226847f2",
+          "draft_sha256": "6b9fc12cfa7a182ec399a97776e84c65b1d8548b1dab9fe4d06411c113e70ebf",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 8,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c20",
+      "split": "holdout",
+      "note_id": "divorce_with_children_handover_place",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 9,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 8,
+          "denominator": 9,
+          "rate": 0.8888888888888888
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Yani Rill",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Dova Rill",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "89 Demonstration Row Sampletown",
+          "supported": true
+        },
+        {
+          "field": "marriage_date",
+          "subject": "case",
+          "value": "2010-10-23",
+          "supported": true
+        },
+        {
+          "field": "separation_date",
+          "subject": "case",
+          "value": "2025-03-12",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "case",
+          "value": "Kiri Rill, Kira Rill",
+          "supported": false
+        },
+        {
+          "field": "requested_outcome",
+          "subject": "case",
+          "value": "End our marriage",
+          "supported": true
+        },
+        {
+          "field": "exchange_location",
+          "subject": "case",
+          "value": "Sampletown Example Library front steps",
+          "supported": true
+        },
+        {
+          "field": "exchange_location",
+          "subject": "case",
+          "value": "Sampletown Example Library rear gate",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:24:49.503941+00:00",
+          "revision": 10,
+          "transcript_sha256": "5694104382e521892e3f34e1ea8c1c137dae27b05770e407f8e119db7bae9190",
+          "draft_sha256": "d95f5a5b280b09ad6ec3d8a9066242e8152465e9151016fe7d816e312e20bd9f",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 9,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c23",
+      "split": "holdout",
+      "note_id": "custody_change_missing_order_reference",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 6,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 6,
+          "denominator": 7,
+          "rate": 0.8571428571428571
+        },
+        "missing_fact_review_rate": {
+          "numerator": 1,
+          "denominator": 1,
+          "rate": 1.0
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Ivo Tern",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "43 Paper Lane, Sampletown",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Ada Tern",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "Neri Tern",
+          "supported": true
+        },
+        {
+          "field": "prior_order_date",
+          "subject": "case",
+          "value": "2022-09-14",
+          "supported": true
+        },
+        {
+          "field": "requested_change",
+          "subject": "case",
+          "value": "Move the midweek visit to Wednesday",
+          "supported": true
+        },
+        {
+          "field": "order_reference",
+          "subject": "case",
+          "value": "",
+          "supported": false
+        }
+      ],
+      "missing_checks": [
+        {
+          "field": "order_reference",
+          "subject": "case",
+          "status": "missing",
+          "routed_empty": true
+        }
+      ],
+      "review": {
+        "status": "needs_review",
+        "approval_kind": null,
+        "approval": null,
+        "actions": {
+          "correct": 6,
+          "reject": 1
+        }
+      }
+    },
+    {
+      "id": "c24",
+      "split": "holdout",
+      "note_id": "custody_change_relocation",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 8,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 11,
+          "denominator": 11,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Cleo Bramble",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "17 Sample Walk, Alderhaven",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Rian Bramble",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "Nola Bramble",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "2011-02-12",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-2",
+          "value": "Noel Bramble",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-2",
+          "value": "2013-08-17",
+          "supported": true
+        },
+        {
+          "field": "prior_order_date",
+          "subject": "case",
+          "value": "2020-12-02",
+          "supported": true
+        },
+        {
+          "field": "requested_change",
+          "subject": "case",
+          "value": "Use longer visits during school breaks",
+          "supported": true
+        },
+        {
+          "field": "relocation_details",
+          "subject": "case",
+          "value": "Demo Borough on 2027-01-15",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-2",
+          "value": "2013-08-18",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:26:19.868761+00:00",
+          "revision": 9,
+          "transcript_sha256": "0dc2322395c1c05a09125df4a6a7a79bd426bca67eb36dde7f3bf07869b2486b",
+          "draft_sha256": "19b579f05ab9eccedc30d7c2efcf212f19dfdf28cee4cbe815a72a2bf18a5893",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 8,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c25",
+      "split": "holdout",
+      "note_id": "custody_change_school_change",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 6,
+          "denominator": 8,
+          "rate": 0.75
+        },
+        "citation_accuracy": {
+          "numerator": 8,
+          "denominator": 8,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 2,
+          "denominator": 8,
+          "rate": 0.25
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "Lina Vale",
+          "matches_current_fact": false
+        },
+        {
+          "field": "children",
+          "subject": "child-2",
+          "value": "Lila Vale",
+          "matches_current_fact": false
+        },
+        {
+          "field": "parenting_schedule",
+          "subject": "case",
+          "value": "School pickup on Monday and Wednesday at 15:30",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "62 Example Road, Demo Borough",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Perri Vale",
+          "matches_current_fact": true
+        },
+        {
+          "field": "prior_order_date",
+          "subject": "case",
+          "value": "2023-03-20",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_change",
+          "subject": "case",
+          "value": "Change pickup because Lina now attends Sample School",
+          "matches_current_fact": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Romi Vale",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Perri Vale",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "62 Example Road, Demo Borough",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Romi Vale",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "Lina Vale",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-2",
+          "value": "Lila Vale",
+          "supported": true
+        },
+        {
+          "field": "prior_order_date",
+          "subject": "case",
+          "value": "2023-03-20",
+          "supported": true
+        },
+        {
+          "field": "requested_change",
+          "subject": "case",
+          "value": "Change pickup because Lina now attends Sample School",
+          "supported": true
+        },
+        {
+          "field": "parenting_schedule",
+          "subject": "case",
+          "value": "School pickup on Monday and Wednesday at 15:30",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:27:08.096297+00:00",
+          "revision": 9,
+          "transcript_sha256": "25b680cfd67beb76f0b9bbb148298a221b3d5188ed1b100b25c19c558f8903a2",
+          "draft_sha256": "6b3ad019519eec7b65b9a3f5241d5ac9c187f23358e560fefe5a20c273f5712a",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "accept": 4,
+          "correct": 4,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c26",
+      "split": "holdout",
+      "note_id": "custody_change_work_shift",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 7,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 8,
+          "denominator": 8,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Bera Moss",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "9 Lantern Court, Sampletown",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Tovin Moss",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "Elin Moss",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "2016-11-28",
+          "supported": true
+        },
+        {
+          "field": "prior_order_date",
+          "subject": "case",
+          "value": "2021-01-19",
+          "supported": true
+        },
+        {
+          "field": "requested_change",
+          "subject": "case",
+          "value": "Change visits because I now work Saturday evenings",
+          "supported": true
+        },
+        {
+          "field": "parenting_schedule",
+          "subject": "case",
+          "value": "Sunday visits from 10:00 to 16:00",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:27:54.653786+00:00",
+          "revision": 8,
+          "transcript_sha256": "42f2b5d5043f4378df3800eac03ac90633d3b7c7d6ef093f6563f5967d639724",
+          "draft_sha256": "c8c00f32abe5fd5ca761542032a387df141cac9b8ae3591f4c634e1b48b37510",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 7,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c27",
+      "split": "holdout",
+      "note_id": "custody_change_handover_place",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 7,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 9,
+          "denominator": 9,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Davi Lark",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Nima Lark",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "70 Paper Street, Alderhaven",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "Eris Lark",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "2013-07-06",
+          "supported": true
+        },
+        {
+          "field": "prior_order_date",
+          "subject": "case",
+          "value": "2019-08-21",
+          "supported": true
+        },
+        {
+          "field": "requested_change",
+          "subject": "case",
+          "value": "Replace the old exchange point with the library entrance",
+          "supported": true
+        },
+        {
+          "field": "exchange_location",
+          "subject": "case",
+          "value": "Demo Square",
+          "supported": true
+        },
+        {
+          "field": "exchange_location",
+          "subject": "case",
+          "value": "east entrance of Sample Library",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:28:45.505931+00:00",
+          "revision": 8,
+          "transcript_sha256": "4618796d55bcb3e78396a38b0fd5a7c9c97375ffc743f945c2d399f671511b68",
+          "draft_sha256": "7d49825be0b98511b213f75c8262eabf42a8c4e6831860a7253852835fe3bcb8",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 7,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c28",
+      "split": "holdout",
+      "note_id": "custody_change_holiday_revision",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 5,
+          "denominator": 6,
+          "rate": 0.8333333333333334
+        },
+        "citation_accuracy": {
+          "numerator": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 1,
+          "denominator": 1,
+          "rate": 1.0
+        },
+        "escaped_guess_rate": {
+          "numerator": 1,
+          "denominator": 6,
+          "rate": 0.16666666666666666
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "Veda Hazel",
+          "matches_current_fact": false
+        },
+        {
+          "field": "parenting_schedule",
+          "subject": "case",
+          "value": "The first half with me and the second half with Fenn",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "33 Example Bend, Sampletown",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Suri Hazel",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_change",
+          "subject": "case",
+          "value": "Split the spring break into two equal parts",
+          "matches_current_fact": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Fenn Hazel",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Suri Hazel",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "33 Example Bend, Sampletown",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Fenn Hazel",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "Veda Hazel",
+          "supported": true
+        },
+        {
+          "field": "prior_order_date",
+          "subject": "case",
+          "value": "2022-10-09",
+          "supported": true
+        },
+        {
+          "field": "requested_change",
+          "subject": "case",
+          "value": "Split the spring break into two equal parts",
+          "supported": true
+        },
+        {
+          "field": "parenting_schedule",
+          "subject": "case",
+          "value": "The first half with me and the second half with Fenn",
+          "supported": true
+        }
+      ],
+      "missing_checks": [
+        {
+          "field": "prior_order_date",
+          "subject": "case",
+          "status": "uncertain",
+          "routed_empty": true
+        }
+      ],
+      "review": {
+        "status": "needs_review",
+        "approval_kind": null,
+        "approval": null,
+        "actions": {
+          "accept": 3,
+          "correct": 3,
+          "reject": 1
+        }
+      }
+    },
+    {
+      "id": "c29",
+      "split": "holdout",
+      "note_id": "custody_change_travel",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 5,
+          "denominator": 6,
+          "rate": 0.8333333333333334
+        },
+        "citation_accuracy": {
+          "numerator": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0.0
+        },
+        "escaped_guess_rate": {
+          "numerator": 2,
+          "denominator": 7,
+          "rate": 0.2857142857142857
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "Osa Fern",
+          "matches_current_fact": false
+        },
+        {
+          "field": "parenting_schedule",
+          "subject": "case",
+          "value": "No, I have not chosen any days or times. I cannot give a schedule yet.",
+          "matches_current_fact": false
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "26 Sample Rise, Demo Borough",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Aven Fern",
+          "matches_current_fact": true
+        },
+        {
+          "field": "prior_order_date",
+          "subject": "case",
+          "value": "2024-04-15",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_change",
+          "subject": "case",
+          "value": "Share the driving for visits equally.",
+          "matches_current_fact": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Nell Fern",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Aven Fern",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "26 Sample Rise, Demo Borough",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Nell Fern",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "Osa Fern",
+          "supported": true
+        },
+        {
+          "field": "prior_order_date",
+          "subject": "case",
+          "value": "2024-04-15",
+          "supported": true
+        },
+        {
+          "field": "requested_change",
+          "subject": "case",
+          "value": "Share the driving for visits equally.",
+          "supported": true
+        },
+        {
+          "field": "parenting_schedule",
+          "subject": "case",
+          "value": "No, I have not chosen any days or times. I cannot give a schedule yet.",
+          "supported": true
+        }
+      ],
+      "missing_checks": [
+        {
+          "field": "parenting_schedule",
+          "subject": "case",
+          "status": "missing",
+          "routed_empty": false
+        }
+      ],
+      "review": {
+        "status": "needs_review",
+        "approval_kind": null,
+        "approval": null,
+        "actions": {
+          "accept": 5,
+          "correct": 1,
+          "reject": 1
+        }
+      }
+    },
+    {
+      "id": "c30",
+      "split": "holdout",
+      "note_id": "custody_change_communication",
+      "malformed_output": true,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 0,
+          "denominator": 7,
+          "rate": 0.0
+        },
+        "citation_accuracy": {
+          "numerator": 8,
+          "denominator": 8,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        }
+      },
+      "proposal_checks": [],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Jori Vale",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "14 Lantern Lane, Alderhaven",
+          "supported": true
+        },
+        {
+          "field": "respondent_name",
+          "subject": "case",
+          "value": "Neri Vale",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "Sola Vale",
+          "supported": true
+        },
+        {
+          "field": "children",
+          "subject": "child-1",
+          "value": "2016-06-26",
+          "supported": true
+        },
+        {
+          "field": "prior_order_date",
+          "subject": "case",
+          "value": "2020-11-18",
+          "supported": true
+        },
+        {
+          "field": "requested_change",
+          "subject": "case",
+          "value": "Replace telephone discussions with written messages",
+          "supported": true
+        },
+        {
+          "field": "contact_preference",
+          "subject": "case",
+          "value": "Use messages after 18:00 and before 20:00",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:30:52.027854+00:00",
+          "revision": 8,
+          "transcript_sha256": "ad07de89395a0edd9dfa96e7c7a0870b89461ebd7bdea0d9717e7758e39bd5ec",
+          "draft_sha256": "b433e8dde4d33bd7e776375b1a9d8f9b3a6176f87aff7c78f129cd439282ac64",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "correct": 7,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c33",
+      "split": "holdout",
+      "note_id": "adult_name_change_former_name",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 6,
+          "denominator": 6,
+          "rate": 1.0
+        },
+        "citation_accuracy": {
+          "numerator": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 6,
+          "rate": 0.0
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1980-08-02",
+          "matches_current_fact": true
+        },
+        {
+          "field": "former_name",
+          "subject": "case",
+          "value": "Hali Tern",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "41 Example Way, Demo Borough",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Hali Mint",
+          "matches_current_fact": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "Return to the name I used before",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Hali Tern",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Hali Mint",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "41 Example Way, Demo Borough",
+          "supported": true
+        },
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1979-08-02",
+          "supported": true
+        },
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1980-08-02",
+          "supported": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Hali Tern",
+          "supported": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "Return to the name I used before",
+          "supported": true
+        },
+        {
+          "field": "former_name",
+          "subject": "case",
+          "value": "Hali Tern",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:31:27.617921+00:00",
+          "revision": 7,
+          "transcript_sha256": "1c24fcfeecbe543e1472fb230ba0aa5e8e557c0699e6d938f5fb8d632f693c47",
+          "draft_sha256": "e0c0ceda799b94674c54571d9ab368ea4044981d261efe98edf5fa4c5200628b",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "accept": 5,
+          "correct": 1,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c34",
+      "split": "holdout",
+      "note_id": "adult_name_change_chosen_name",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 4,
+          "denominator": 5,
+          "rate": 0.8
+        },
+        "citation_accuracy": {
+          "numerator": 4,
+          "denominator": 5,
+          "rate": 0.8
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 4,
+          "rate": 0.0
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "29 Paper Terrace, Alderhaven",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Rowan Nook",
+          "matches_current_fact": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "I want a name that fits how I see myself",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Ari Nook",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Rowan Nook",
+          "supported": true
+        },
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1996-01-30",
+          "supported": false
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "29 Paper Terrace, Alderhaven",
+          "supported": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Ari Nook",
+          "supported": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "I want a name that fits how I see myself",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:32:04.611146+00:00",
+          "revision": 6,
+          "transcript_sha256": "fe49a2050309d3ca6758597b2ed39d4790c0f020de3f6a09f2d474eee04927e6",
+          "draft_sha256": "77d17dc096bb3746e9d808b67af3be89405f8120a418723690a46547f34e7b77",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "accept": 3,
+          "correct": 2,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c35",
+      "split": "holdout",
+      "note_id": "adult_name_change_hyphenated_name",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 6,
+          "denominator": 6,
+          "rate": 1.0
+        },
+        "citation_accuracy": {
+          "numerator": 6,
+          "denominator": 6,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 6,
+          "rate": 0.0
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1985-07-17",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "48 Sample Lane, Demo Borough",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Neri Dale",
+          "matches_current_fact": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "Join the two family names I use.",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Neri Dale-Fern",
+          "matches_current_fact": true
+        },
+        {
+          "field": "spelling_note",
+          "subject": "case",
+          "value": "Keep Dale first, a hyphen, then Fern.",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Neri Dale",
+          "supported": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Neri Dale-Fern",
+          "supported": true
+        },
+        {
+          "field": "spelling_note",
+          "subject": "case",
+          "value": "Keep Dale first, a hyphen, then Fern.",
+          "supported": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "Join the two family names I use.",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "48 Sample Lane, Demo Borough",
+          "supported": true
+        },
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1985-07-17",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:32:34.775254+00:00",
+          "revision": 7,
+          "transcript_sha256": "8f681a3d7dc789daa2ec49d147944f1d9d1596dca99e9423316da638128a0f35",
+          "draft_sha256": "6b6534cb165d9a6fff2029061c179514134b90df681ac8ccf4b39807979edbe6",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "accept": 6,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c36",
+      "split": "holdout",
+      "note_id": "adult_name_change_single_name",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 5,
+          "denominator": 5,
+          "rate": 1.0
+        },
+        "citation_accuracy": {
+          "numerator": 5,
+          "denominator": 5,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 5,
+          "rate": 0.0
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1990-05-08",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "36 Example Crescent, Sampletown",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Jo Cress",
+          "matches_current_fact": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "I want to use one name.",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Vela",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Jo Cress",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "36 Example Crescent, Sampletown",
+          "supported": true
+        },
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1990-05-08",
+          "supported": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Vela",
+          "supported": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "I want to use one name.",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:33:27.367306+00:00",
+          "revision": 6,
+          "transcript_sha256": "f3a9ebff5add9ead2e8973f09a8ffb3942be8756cc891817c7398ceb44c718bf",
+          "draft_sha256": "fb28b7f69902c0ceb6a0a1be2a0e81d2db8bd49add2fca014354cce238ba3f1e",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "accept": 5,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c37",
+      "split": "holdout",
+      "note_id": "adult_name_change_uncertain_birth_date",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 4,
+          "denominator": 4,
+          "rate": 1.0
+        },
+        "citation_accuracy": {
+          "numerator": 5,
+          "denominator": 5,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 1,
+          "denominator": 1,
+          "rate": 1.0
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 4,
+          "rate": 0.0
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "54 Paper Walk, Alderhaven",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Tuli Birch",
+          "matches_current_fact": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "Use the name my friends call me",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Tuli Dawn",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Tuli Birch",
+          "supported": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Tuli Dawn",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "54 Paper Walk, Alderhaven",
+          "supported": true
+        },
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1987-03-04",
+          "supported": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "Use the name my friends call me",
+          "supported": true
+        }
+      ],
+      "missing_checks": [
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "status": "uncertain",
+          "routed_empty": true
+        }
+      ],
+      "review": {
+        "status": "needs_review",
+        "approval_kind": null,
+        "approval": null,
+        "actions": {
+          "accept": 3,
+          "correct": 1,
+          "reject": 1
+        }
+      }
+    },
+    {
+      "id": "c38",
+      "split": "holdout",
+      "note_id": "adult_name_change_missing_address",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 4,
+          "denominator": 4,
+          "rate": 1.0
+        },
+        "citation_accuracy": {
+          "numerator": 5,
+          "denominator": 5,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0.0
+        },
+        "escaped_guess_rate": {
+          "numerator": 1,
+          "denominator": 5,
+          "rate": 0.2
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1994-10-05",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "999 Fabrication Way",
+          "matches_current_fact": false
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Miri Pond",
+          "matches_current_fact": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "Use the surname I selected for myself",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Miri Reed",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Miri Pond",
+          "supported": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Miri Reed",
+          "supported": true
+        },
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1994-10-05",
+          "supported": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "Use the surname I selected for myself",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "999 Fabrication Way",
+          "supported": true
+        }
+      ],
+      "missing_checks": [
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "status": "missing",
+          "routed_empty": false
+        }
+      ],
+      "review": {
+        "status": "needs_review",
+        "approval_kind": null,
+        "approval": null,
+        "actions": {
+          "accept": 3,
+          "correct": 1,
+          "reject": 1
+        }
+      }
+    },
+    {
+      "id": "c39",
+      "split": "holdout",
+      "note_id": "adult_name_change_document_mismatch",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 4,
+          "denominator": 6,
+          "rate": 0.6666666666666666
+        },
+        "citation_accuracy": {
+          "numerator": 6,
+          "denominator": 6,
+          "rate": 1.0
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 2,
+          "denominator": 6,
+          "rate": 0.3333333333333333
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1978-06-23",
+          "matches_current_fact": true
+        },
+        {
+          "field": "document_name",
+          "subject": "case",
+          "value": "diploma",
+          "matches_current_fact": false
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "11 Example Grove, Demo Borough",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Talia Wisp",
+          "matches_current_fact": false
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "Use my chosen surname consistently",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Tala Spar",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Talia Wisp",
+          "supported": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Tala Spar",
+          "supported": true
+        },
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1978-06-23",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "11 Example Grove, Demo Borough",
+          "supported": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "Use my chosen surname consistently",
+          "supported": true
+        },
+        {
+          "field": "document_name",
+          "subject": "case",
+          "value": "diploma",
+          "supported": true
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:35:20.874836+00:00",
+          "revision": 7,
+          "transcript_sha256": "0f67019c53188d79e5f53df67f102c60c52b2454e76384d71185da73d32edd57",
+          "draft_sha256": "ed9bef927c65ae16fd54d643b7422aa7b9b0bf710b6c5d17a7f4705302ebdf5b",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "accept": 3,
+          "correct": 3,
+          "approve": 1
+        }
+      }
+    },
+    {
+      "id": "c40",
+      "split": "holdout",
+      "note_id": "adult_name_change_mailing_address",
+      "malformed_output": false,
+      "model_step_failed": false,
+      "metrics": {
+        "field_accuracy": {
+          "numerator": 5,
+          "denominator": 6,
+          "rate": 0.8333333333333334
+        },
+        "citation_accuracy": {
+          "numerator": 5,
+          "denominator": 6,
+          "rate": 0.8333333333333334
+        },
+        "missing_fact_review_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null
+        },
+        "escaped_guess_rate": {
+          "numerator": 0,
+          "denominator": 5,
+          "rate": 0.0
+        }
+      },
+      "proposal_checks": [
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1982-12-14",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "59 Demo Road, Alderhaven",
+          "matches_current_fact": true
+        },
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Adri Zinn",
+          "matches_current_fact": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "Use the surname I have chosen",
+          "matches_current_fact": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Adri Venn",
+          "matches_current_fact": true
+        }
+      ],
+      "citation_checks": [
+        {
+          "field": "petitioner_name",
+          "subject": "case",
+          "value": "Adri Zinn",
+          "supported": true
+        },
+        {
+          "field": "petitioner_address",
+          "subject": "case",
+          "value": "59 Demo Road, Alderhaven",
+          "supported": true
+        },
+        {
+          "field": "birth_date",
+          "subject": "case",
+          "value": "1982-12-14",
+          "supported": true
+        },
+        {
+          "field": "requested_name",
+          "subject": "case",
+          "value": "Adri Venn",
+          "supported": true
+        },
+        {
+          "field": "reason_for_change",
+          "subject": "case",
+          "value": "Use the surname I have chosen",
+          "supported": true
+        },
+        {
+          "field": "address_note",
+          "subject": "case",
+          "value": "Send letters to 4 Paper Lane, Sampletown. This is only a mailing instruction: Send letters to 4 Paper Lane, Sampletown. The mailing destination does not replace my residential address.",
+          "supported": false
+        }
+      ],
+      "missing_checks": [],
+      "review": {
+        "status": "draft",
+        "approval_kind": "scripted_fixture",
+        "approval": {
+          "reviewer": "Scripted Fact-Sheet Approver",
+          "at": "2026-11-17T20:36:03.539645+00:00",
+          "revision": 7,
+          "transcript_sha256": "5a93a8d02ad06fc893f7e6e5fb28b2ce3b2ce109be3d1aaf0db56a26fbf1439a",
+          "draft_sha256": "4306ad5621cf13d450820387e5487fa9488b30dc78720922e69c0b4edf1b6948",
+          "confirmed_complete": true
+        },
+        "actions": {
+          "accept": 4,
+          "correct": 2,
+          "approve": 1
+        }
+      }
+    }
+  ],
+  "review_outcomes": {
+    "needs_review": 10,
+    "draft": 20
+  },
+  "approval_kind": "Scripted fact-sheet review, not a claim of human inspection; model scores precede corrections."
+}

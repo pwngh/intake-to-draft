@@ -1,0 +1,13 @@
+{
+  "id": "c15",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Edda Fern; my spouse is Rami Fern.\nCaller: We married on 2013-10-05.\nCaller: There are two children of this marriage.\nCaller: One is Nolo Fern born 2017-10-30.\nCaller: There is a second child, but I will not give their name or birthday today.\nInterviewer: I will leave the second child's details unanswered.\nCaller: My current address is 31 Example Road Demo Borough.\nCaller: Our separation date is 2024-09-23.\nCaller: Dissolve the marriage.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Edda Fern", "kind": "stated", "citations": [{"line": 2, "quote": "Edda Fern"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "31 Example Road Demo Borough", "kind": "stated", "citations": [{"line": 8, "quote": "31 Example Road Demo Borough"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Rami Fern", "kind": "stated", "citations": [{"line": 2, "quote": "Rami Fern"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2013-10-05", "kind": "stated", "citations": [{"line": 3, "quote": "2013-10-05"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2024-09-23", "kind": "stated", "citations": [{"line": 9, "quote": "2024-09-23"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Nolo Fern born 2017-10-30", "kind": "stated", "citations": [{"line": 5, "quote": "Nolo Fern born 2017-10-30"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "Dissolve the marriage", "kind": "stated", "citations": [{"line": 10, "quote": "Dissolve the marriage"}]}]}
+  ]
+}

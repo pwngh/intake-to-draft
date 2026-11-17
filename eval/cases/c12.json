@@ -1,0 +1,14 @@
+{
+  "id": "c12",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: Ela Brook speaking. Darin Brook is my spouse.\nCaller: My home address is 27 Example Court Sampletown.\nCaller: We married on 2009-12-19 and separated on 2025-04-16.\nCaller: The first child is Neri Brook born 2014-04-04.\nInterviewer: You said two children with similar names. Please give the second separately.\nCaller: The second child is Nira Brook born 2016-04-04.\nCaller: Neri and Nira are different children of our marriage.\nCaller: End the marriage. Keep both children in the draft.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Ela Brook", "kind": "stated", "citations": [{"line": 2, "quote": "Ela Brook"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "27 Example Court Sampletown", "kind": "stated", "citations": [{"line": 3, "quote": "27 Example Court Sampletown"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Darin Brook", "kind": "stated", "citations": [{"line": 2, "quote": "Darin Brook"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2009-12-19", "kind": "stated", "citations": [{"line": 4, "quote": "2009-12-19"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2025-04-16", "kind": "stated", "citations": [{"line": 4, "quote": "2025-04-16"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Neri Brook born 2014-04-04", "kind": "stated", "citations": [{"line": 5, "quote": "Neri Brook born 2014-04-04"}]}]},
+    {"field": "children", "subject": "child-2", "assertions": [{"value": "Nira Brook born 2016-04-04", "kind": "stated", "citations": [{"line": 7, "quote": "Nira Brook born 2016-04-04"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "End the marriage", "kind": "stated", "citations": [{"line": 9, "quote": "End the marriage"}]}]}
+  ]
+}

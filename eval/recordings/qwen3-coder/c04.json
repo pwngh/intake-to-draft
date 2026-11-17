@@ -1,0 +1,27 @@
+{
+  "case_id": "c04",
+  "captured_at": "2026-11-17T20:14:46.341625+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: My spouse is Rune Vale; I am Elin Quill.\nCaller: We do not have any children.\nCaller: The marriage began on 2008-02-19.\nInterviewer: What is your present home address?\nCaller: I am not supplying my current address today.\nCaller: We separated on 2023-12-10.\nCaller: End our marriage. That is the request I want recorded.\nInterviewer: The address remains unanswered.\n",
+  "note_id": "divorce_without_children_missing_address",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "f3598aa69dc65e74a72e8b27cff20c857fe2a0e5d23d85c2777b1537f21264e9",
+  "transcript_sha256": "dec0dce369cb04ead39ddfdbcd7e3f7e8d1ece7f3bd3ad89db5cfe94fa7d12db",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Elin Quill\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"My spouse is Rune Vale; I am Elin Quill.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Rune Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"My spouse is Rune Vale; I am Elin Quill.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2008-02-19\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"The marriage began on 2008-02-19.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2023-12-10\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"We separated on 2023-12-10.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"End our marriage. That is the request I want recorded.\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"End our marriage. That is the request I want recorded.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"not supplied\",\n          \"kind\": \"uncertain\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"I am not supplying my current address today.\"\n            },\n            {\n              \"line\": 9,\n              \"quote\": \"The address remains unanswered.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"child_1\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"none\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"We do not have any children.\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 621,
+    "eval_count": 647,
+    "total_duration": 56729769125,
+    "load_duration": 27001918708,
+    "prompt_eval_duration": 1382339000,
+    "eval_duration": 27800083000
+  },
+  "keep_alive": 0
+}

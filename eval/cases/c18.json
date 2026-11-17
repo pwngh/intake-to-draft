@@ -1,0 +1,15 @@
+{
+  "id": "c18",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Esme Marl. Juno Marl is my spouse.\nCaller: My home is 82 Example Walk Sampletown.\nCaller: Our marriage date was 2008-09-13.\nCaller: We have two children: Meri Marl born 2010-05-01.\nCaller: The second child is Miro Marl born 2015-11-09.\nCaller: We separated on 2025-05-19.\nInterviewer: You mentioned different arrangements for the siblings.\nCaller: Yes. Please record both parts of my proposed schedule.\nCaller: Meri Marl stays with Esme Marl on weekdays.\nCaller: Miro Marl alternates weeks between Esme Marl and Juno Marl.\nCaller: End the marriage. Neither proposed arrangement is an existing agreement.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Esme Marl", "kind": "stated", "citations": [{"line": 2, "quote": "Esme Marl"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "82 Example Walk Sampletown", "kind": "stated", "citations": [{"line": 3, "quote": "82 Example Walk Sampletown"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Juno Marl", "kind": "stated", "citations": [{"line": 2, "quote": "Juno Marl"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2008-09-13", "kind": "stated", "citations": [{"line": 4, "quote": "2008-09-13"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2025-05-19", "kind": "stated", "citations": [{"line": 7, "quote": "2025-05-19"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Meri Marl born 2010-05-01", "kind": "stated", "citations": [{"line": 5, "quote": "Meri Marl born 2010-05-01"}]}]},
+    {"field": "children", "subject": "child-2", "assertions": [{"value": "Miro Marl born 2015-11-09", "kind": "stated", "citations": [{"line": 6, "quote": "Miro Marl born 2015-11-09"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "End the marriage", "kind": "stated", "citations": [{"line": 12, "quote": "End the marriage"}]}]},
+    {"field": "parenting_schedule", "subject": "case", "assertions": [{"value": "Meri Marl stays with Esme Marl on weekdays; Miro Marl alternates weeks between Esme Marl and Juno Marl", "kind": "stated", "citations": [{"line": 10, "quote": "Meri Marl stays with Esme Marl on weekdays"}, {"line": 11, "quote": "Miro Marl alternates weeks between Esme Marl and Juno Marl"}]}]}
+  ]
+}

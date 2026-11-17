@@ -1,0 +1,13 @@
+{
+  "id": "c27",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: We currently exchange at Demo Square, but I am asking for a different place.\nInterviewer: First, your name and the other parent?\nCaller: Davi Lark and Nima Lark, respectively. I am Davi.\nCaller: My residential address is 70 Paper Street, Alderhaven.\nCaller: The child is Eris Lark born 2013-07-06, and the order date is 2019-08-21.\nCaller: My request: Replace the old exchange point with the library entrance.\nCaller: The proposed exchange location is the east entrance of Sample Library.\nInterviewer: That is a request recorded for this demonstration.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Davi Lark", "kind": "stated", "citations": [{"line": 4, "quote": "Davi Lark"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Nima Lark", "kind": "stated", "citations": [{"line": 4, "quote": "Nima Lark"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "70 Paper Street, Alderhaven", "kind": "stated", "citations": [{"line": 5, "quote": "70 Paper Street, Alderhaven"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Eris Lark born 2013-07-06", "kind": "stated", "citations": [{"line": 6, "quote": "Eris Lark born 2013-07-06"}]}]},
+    {"field": "prior_order_date", "subject": "case", "assertions": [{"value": "2019-08-21", "kind": "stated", "citations": [{"line": 6, "quote": "2019-08-21"}]}]},
+    {"field": "requested_change", "subject": "case", "assertions": [{"value": "Replace the old exchange point with the library entrance.", "kind": "stated", "citations": [{"line": 7, "quote": "Replace the old exchange point with the library entrance."}]}]},
+    {"field": "exchange_location", "subject": "case", "assertions": [{"value": "the east entrance of Sample Library", "kind": "stated", "citations": [{"line": 8, "quote": "the east entrance of Sample Library"}]}]}
+  ]
+}

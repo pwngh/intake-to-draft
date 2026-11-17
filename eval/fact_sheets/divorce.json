@@ -1,0 +1,190 @@
+[
+  {"id": "c01", "split": "dev", "note_id": "divorce_without_children", "tags": ["basic"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Nell Fern", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "11 Sample Lane Sampletown", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Ivo Reed", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2009-05-12", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2025-02-03", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "Dissolve our marriage", "status": "known"}
+  ]},
+  {"id": "c02", "split": "dev", "note_id": "divorce_without_children_corrected_marriage_date", "tags": ["corrected_date"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Orin Moss", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "22 Example Row Demo Borough", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Tavi Moss", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2010-07-14", "status": "known", "context": "Earlier wedding date was 2010-07-13; caller explicitly corrects it later to 2010-07-14."},
+    {"field": "separation_date", "subject": "case", "value": "2024-11-30", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "End the marriage", "status": "known"}
+  ]},
+  {"id": "c03", "split": "dev", "note_id": "divorce_without_children_uncertain_separation_date", "tags": ["uncertain_date"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Sena Pike", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "14 Demonstration Walk Sampletown", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Jory Pike", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2016-09-20", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": null, "status": "uncertain", "context": "Caller guesses 2025-03-01 but explicitly cannot confirm the day."},
+    {"field": "requested_outcome", "subject": "case", "value": "Dissolve the marriage", "status": "known"}
+  ]},
+  {"id": "c04", "split": "holdout", "note_id": "divorce_without_children_missing_address", "tags": ["missing_address"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Elin Quill", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": null, "status": "missing"},
+    {"field": "respondent_name", "subject": "case", "value": "Rune Vale", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2008-02-19", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2023-12-10", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "End our marriage", "status": "known"}
+  ]},
+  {"id": "c05", "split": "holdout", "note_id": "divorce_without_children_unknown_spouse_location", "tags": ["unknown_spouse_location"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Arlo Wren", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "35 Example Walk Demo Borough", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Mira Wren", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2012-10-06", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2025-01-18", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "Dissolve our marriage", "status": "known"},
+    {"field": "respondent_address", "subject": "case", "value": null, "status": "missing"}
+  ]},
+  {"id": "c06", "split": "holdout", "note_id": "divorce_without_children_shared_home", "tags": ["shared_home"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Pella Dune", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "24 Example Crescent Sampletown", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Oren Dune", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2007-04-22", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2024-05-09", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "End our marriage", "status": "known"},
+    {"field": "property_summary", "subject": "case", "value": "Sell our jointly owned bungalow and split the proceeds equally", "status": "known"}
+  ]},
+  {"id": "c07", "split": "holdout", "note_id": "divorce_without_children_shared_debt", "tags": ["shared_debt", "same_line_conflict"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Lio Bramble", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "17 Sample Rise Demo Borough", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Nessa Bramble", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2011-11-11", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": null, "status": "conflicting", "context": "The same statement gives 2024-04-06 and 2024-04-08 without resolving which is correct."},
+    {"field": "requested_outcome", "subject": "case", "value": "Dissolve the marriage", "status": "known"},
+    {"field": "property_summary", "subject": "case", "value": "Divide the 2400 token joint loan equally", "status": "known"}
+  ]},
+  {"id": "c08", "split": "holdout", "note_id": "divorce_without_children_private_contact", "tags": ["private_contact", "multiline_address"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Fara Thorn", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "38 Example Path Demo Borough", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Beni Thorn", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2014-03-15", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2025-06-21", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "End the marriage", "status": "known"},
+    {"field": "contact_preference", "subject": "case", "value": "Use postal mail only and do not call the shared phone", "status": "known"}
+  ]},
+  {"id": "c09", "split": "holdout", "note_id": "divorce_without_children_separate_households", "tags": ["separate_households", "reversed_address_order"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Idris Lark", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "61 Sample Terrace Sampletown", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Una Lark", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2018-08-08", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2025-07-02", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "Dissolve our marriage", "status": "known"},
+    {"field": "respondent_address", "subject": "case", "value": "62 Sample Terrace Demo Borough", "status": "known"}
+  ]},
+  {"id": "c10", "split": "holdout", "note_id": "divorce_without_children_restore_name", "tags": ["restore_former_name"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Veda Sedge", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "46 Demonstration Lane Sampletown", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Torin Sedge", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2006-01-28", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2024-02-14", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "End our marriage", "status": "known"},
+    {"field": "requested_name", "subject": "case", "value": "Veda Flint", "status": "known"},
+    {"field": "former_name", "subject": "case", "value": "Veda Flint", "status": "known"}
+  ]},
+  {"id": "c11", "split": "dev", "note_id": "divorce_with_children", "tags": ["basic_children"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Rowan Loam", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "15 Sample Grove Demo Borough", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Eris Loam", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2010-06-12", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2024-10-09", "status": "known"},
+    {"field": "children", "subject": "child-1", "value": "Milo Loam born 2015-03-08", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "Dissolve our marriage", "status": "known"}
+  ]},
+  {"id": "c12", "split": "dev", "note_id": "divorce_with_children_similar_names", "tags": ["similar_child_names"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Ela Brook", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "27 Example Court Sampletown", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Darin Brook", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2009-12-19", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2025-04-16", "status": "known"},
+    {"field": "children", "subject": "child-1", "value": "Neri Brook born 2014-04-04", "status": "known"},
+    {"field": "children", "subject": "child-2", "value": "Nira Brook born 2016-04-04", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "End the marriage", "status": "known"}
+  ]},
+  {"id": "c13", "split": "dev", "note_id": "divorce_with_children_corrected_birth_date", "tags": ["corrected_child_birth_date"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Suri Vale", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "49 Demonstration Street Demo Borough", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Kel Vale", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2008-05-24", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2024-03-01", "status": "known"},
+    {"field": "children", "subject": "child-1", "value": "Leva Vale born 2012-09-12", "status": "known", "context": "Earlier birthday statement: Leva Vale born 2012-09-21."},
+    {"field": "children", "subject": "child-2", "value": "Toma Vale born 2018-06-02", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "Dissolve our marriage", "status": "known"}
+  ]},
+  {"id": "c14", "split": "holdout", "note_id": "divorce_with_children_uncertain_birth_date", "tags": ["uncertain_child_birth_date", "resolved_sibling"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Piri Oat", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "73 Sample Close Sampletown", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Lex Oat", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2007-07-07", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2025-01-11", "status": "known"},
+    {"field": "children", "subject": "child-1", "value": "Fenn Oat born 2010-02-13", "status": "known"},
+    {"field": "children", "subject": "child-2", "value": null, "status": "uncertain", "context": "Arin Oat is identified, but the caller only guesses Arin Oat born 2014-08-09."},
+    {"field": "requested_outcome", "subject": "case", "value": "End our marriage", "status": "known"}
+  ]},
+  {"id": "c15", "split": "holdout", "note_id": "divorce_with_children_missing_child_details", "tags": ["missing_child_details", "partial_child_list"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Edda Fern", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "31 Example Road Demo Borough", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Rami Fern", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2013-10-05", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2024-09-23", "status": "known"},
+    {"field": "children", "subject": "child-1", "value": "Nolo Fern born 2017-10-30", "status": "known"},
+    {"field": "children", "subject": "child-2", "value": null, "status": "missing", "context": "A second child exists but no name or birthday is provided."},
+    {"field": "requested_outcome", "subject": "case", "value": "Dissolve the marriage", "status": "known"}
+  ]},
+  {"id": "c16", "split": "holdout", "note_id": "divorce_with_children_alternating_weeks", "tags": ["alternating_weeks"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Mael Pond", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "58 Demonstration Square Sampletown", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Zia Pond", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2008-04-18", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2025-02-28", "status": "known"},
+    {"field": "children", "subject": "child-1", "value": "Enna Pond born 2011-08-17", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "End our marriage", "status": "known"},
+    {"field": "parenting_schedule", "subject": "case", "value": "Alternate full weeks with handover every Friday at 18:00", "status": "known"}
+  ]},
+  {"id": "c17", "split": "holdout", "note_id": "divorce_with_children_school_week", "tags": ["school_week", "unspecified_times"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Noa Kite", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "64 Sample Lane Demo Borough", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Venn Kite", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2011-02-26", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2024-08-04", "status": "known"},
+    {"field": "children", "subject": "child-1", "value": "Sola Kite born 2013-12-05", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "Dissolve our marriage", "status": "known"},
+    {"field": "parenting_schedule", "subject": "case", "value": "School nights with Noa Kite and weekends with Venn Kite", "status": "known"}
+  ]},
+  {"id": "c18", "split": "holdout", "note_id": "divorce_with_children_different_sibling_schedules", "tags": ["different_sibling_schedules", "multiline_value"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Esme Marl", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "82 Example Walk Sampletown", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Juno Marl", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2008-09-13", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2025-05-19", "status": "known"},
+    {"field": "children", "subject": "child-1", "value": "Meri Marl born 2010-05-01", "status": "known"},
+    {"field": "children", "subject": "child-2", "value": "Miro Marl born 2015-11-09", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "End the marriage", "status": "known"},
+    {"field": "parenting_schedule", "subject": "case", "value": "Meri Marl stays with Esme Marl on weekdays; Miro Marl alternates weeks between Esme Marl and Juno Marl", "status": "known"}
+  ]},
+  {"id": "c19", "split": "holdout", "note_id": "divorce_with_children_holiday_plan", "tags": ["holiday_request", "not_agreed"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Olli Fable", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "44 Demonstration Terrace Demo Borough", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Tera Fable", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2012-12-01", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2024-06-17", "status": "known"},
+    {"field": "children", "subject": "child-1", "value": "Avi Fable born 2016-01-25", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "Dissolve our marriage", "status": "known"},
+    {"field": "parenting_schedule", "subject": "case", "value": "Split the winter school break equally, with the first half at Olli Fable's home", "status": "known"}
+  ]},
+  {"id": "c20", "split": "holdout", "note_id": "divorce_with_children_handover_place", "tags": ["handover_location", "corrected_place", "similar_child_names"], "facts": [
+    {"field": "petitioner_name", "subject": "case", "value": "Yani Rill", "status": "known"},
+    {"field": "petitioner_address", "subject": "case", "value": "89 Demonstration Row Sampletown", "status": "known"},
+    {"field": "respondent_name", "subject": "case", "value": "Dova Rill", "status": "known"},
+    {"field": "marriage_date", "subject": "case", "value": "2010-10-23", "status": "known"},
+    {"field": "separation_date", "subject": "case", "value": "2025-03-12", "status": "known"},
+    {"field": "children", "subject": "child-1", "value": "Kiri Rill born 2014-02-16", "status": "known"},
+    {"field": "children", "subject": "child-2", "value": "Kira Rill born 2018-02-16", "status": "known"},
+    {"field": "requested_outcome", "subject": "case", "value": "End our marriage", "status": "known"},
+    {"field": "exchange_location", "subject": "case", "value": "Sampletown Example Library front steps", "status": "known", "context": "Earlier proposed meeting place was Sampletown Example Library rear gate."}
+  ]}
+]

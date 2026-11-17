@@ -1,0 +1,13 @@
+{
+  "id": "c30",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Jori Vale. I want a change in communication under an existing parenting arrangement.\nInterviewer: What is your current address?\nCaller: The street part is 14 Lantern Lane.\nCaller: The city part of that same address is Alderhaven.\nCaller: Neri Vale is the other parent, and our child is Sola Vale born 2016-06-26.\nCaller: The existing order date is 2020-11-18.\nCaller: My requested change: Replace telephone discussions with written messages.\nCaller: My contact preference: Use messages after 18:00 and before 20:00.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Jori Vale", "kind": "stated", "citations": [{"line": 2, "quote": "Jori Vale"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "14 Lantern Lane, Alderhaven", "kind": "stated", "citations": [{"line": 4, "quote": "14 Lantern Lane"}, {"line": 5, "quote": "Alderhaven"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Neri Vale", "kind": "stated", "citations": [{"line": 6, "quote": "Neri Vale"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Sola Vale born 2016-06-26", "kind": "stated", "citations": [{"line": 6, "quote": "Sola Vale born 2016-06-26"}]}]},
+    {"field": "prior_order_date", "subject": "case", "assertions": [{"value": "2020-11-18", "kind": "stated", "citations": [{"line": 7, "quote": "2020-11-18"}]}]},
+    {"field": "requested_change", "subject": "case", "assertions": [{"value": "Replace telephone discussions with written messages.", "kind": "stated", "citations": [{"line": 8, "quote": "Replace telephone discussions with written messages."}]}]},
+    {"field": "contact_preference", "subject": "case", "assertions": [{"value": "Use messages after 18:00 and before 20:00.", "kind": "stated", "citations": [{"line": 9, "quote": "Use messages after 18:00 and before 20:00."}]}]}
+  ]
+}

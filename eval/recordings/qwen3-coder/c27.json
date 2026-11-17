@@ -1,0 +1,27 @@
+{
+  "case_id": "c27",
+  "captured_at": "2026-11-17T20:28:45.006462+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: We currently exchange at Demo Square, but I am asking for a different place.\nInterviewer: First, your name and the other parent?\nCaller: Davi Lark and Nima Lark, respectively. I am Davi.\nCaller: My residential address is 70 Paper Street, Alderhaven.\nCaller: The child is Eris Lark born 2013-07-06, and the order date is 2019-08-21.\nCaller: My request: Replace the old exchange point with the library entrance.\nCaller: The proposed exchange location is the east entrance of Sample Library.\nInterviewer: That is a request recorded for this demonstration.\n",
+  "note_id": "custody_change_handover_place",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "f46e046584e6cee77e9047184f8e742a01a7889c7fbbe05921d5c998642947a9",
+  "transcript_sha256": "4618796d55bcb3e78396a38b0fd5a7c9c97375ffc743f945c2d399f671511b68",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Davi Lark\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"Davi Lark\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Nima Lark\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"Nima Lark\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"70 Paper Street, Alderhaven\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"My residential address is 70 Paper Street, Alderhaven\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"Eris Lark\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"The child is Eris Lark\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"2013-07-06\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"born 2013-07-06\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"prior_order_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2019-08-21\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"the order date is 2019-08-21\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Replace the old exchange point with the library entrance\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"My request: Replace the old exchange point with the library entrance\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"exchange_location\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Demo Square\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"We currently exchange at Demo Square\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"exchange_location\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"east entrance of Sample Library\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"The proposed exchange location is the east entrance of Sample Library\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 678,
+    "eval_count": 786,
+    "total_duration": 49821844875,
+    "load_duration": 16115954125,
+    "prompt_eval_duration": 1326522000,
+    "eval_duration": 32093960000
+  },
+  "keep_alive": 0
+}

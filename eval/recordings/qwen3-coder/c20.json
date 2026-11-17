@@ -1,0 +1,27 @@
+{
+  "case_id": "c20",
+  "captured_at": "2026-11-17T20:24:48.892665+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Yani Rill. The other spouse is Dova Rill.\nCaller: I currently live at 89 Demonstration Row Sampletown.\nCaller: We married on 2010-10-23.\nCaller: There are two children of our marriage.\nCaller: One is Kiri Rill born 2014-02-16.\nCaller: The other is Kira Rill born 2018-02-16.\nCaller: We separated on 2025-03-12.\nCaller: End our marriage.\nCaller: My proposed meeting place for exchanging the children is Sampletown Example Library rear gate.\nInterviewer: Is that the place you want kept in the draft?\nCaller: Correction: the exchange location should be Sampletown Example Library front steps.\nCaller: The library is only a proposed meeting place; it is not my home address.\n",
+  "note_id": "divorce_with_children_handover_place",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "ae883a076395301d6a6e4a94778404aaf946e5c55a1833f230ba9798901e7ac0",
+  "transcript_sha256": "5694104382e521892e3f34e1ea8c1c137dae27b05770e407f8e119db7bae9190",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Yani Rill\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"I am Yani Rill\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Dova Rill\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"The other spouse is Dova Rill\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"89 Demonstration Row Sampletown\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"I currently live at 89 Demonstration Row Sampletown\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2010-10-23\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"We married on 2010-10-23\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2025-03-12\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"We separated on 2025-03-12\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Kiri Rill, Kira Rill\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"There are two children of our marriage\"\n            },\n            {\n              \"line\": 6,\n              \"quote\": \"One is Kiri Rill born 2014-02-16\"\n            },\n            {\n              \"line\": 7,\n              \"quote\": \"The other is Kira Rill born 2018-02-16\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"End our marriage\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"End our marriage\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"exchange_location\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Sampletown Example Library front steps\",\n          \"kind\": \"correction\",\n          \"citations\": [\n            {\n              \"line\": 12,\n              \"quote\": \"Correction: the exchange location should be Sampletown Example Library front steps\"\n            }\n          ]\n        },\n        {\n          \"value\": \"Sampletown Example Library rear gate\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 10,\n              \"quote\": \"My proposed meeting place for exchanging the children is Sampletown Example Library rear gate\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 779,
+    "eval_count": 842,
+    "total_duration": 50764193208,
+    "load_duration": 13401057041,
+    "prompt_eval_duration": 2514682000,
+    "eval_duration": 34503385000
+  },
+  "keep_alive": 0
+}

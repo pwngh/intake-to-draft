@@ -1,0 +1,13 @@
+{
+  "id": "c11",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Rowan Loam and I want a divorce from Eris Loam.\nCaller: My current address is 15 Sample Grove Demo Borough.\nCaller: We married on 2010-06-12.\nCaller: We have one child of this marriage.\nCaller: Our child record is Milo Loam born 2015-03-08.\nCaller: Our separation date is 2024-10-09.\nCaller: Dissolve our marriage.\nInterviewer: The child is listed separately from the two adults.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Rowan Loam", "kind": "stated", "citations": [{"line": 2, "quote": "Rowan Loam"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "15 Sample Grove Demo Borough", "kind": "stated", "citations": [{"line": 3, "quote": "15 Sample Grove Demo Borough"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Eris Loam", "kind": "stated", "citations": [{"line": 2, "quote": "Eris Loam"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2010-06-12", "kind": "stated", "citations": [{"line": 4, "quote": "2010-06-12"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2024-10-09", "kind": "stated", "citations": [{"line": 7, "quote": "2024-10-09"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Milo Loam born 2015-03-08", "kind": "stated", "citations": [{"line": 6, "quote": "Milo Loam born 2015-03-08"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "Dissolve our marriage", "kind": "stated", "citations": [{"line": 8, "quote": "Dissolve our marriage"}]}]}
+  ]
+}

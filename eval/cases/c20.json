@@ -1,0 +1,15 @@
+{
+  "id": "c20",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Yani Rill. The other spouse is Dova Rill.\nCaller: I currently live at 89 Demonstration Row Sampletown.\nCaller: We married on 2010-10-23.\nCaller: There are two children of our marriage.\nCaller: One is Kiri Rill born 2014-02-16.\nCaller: The other is Kira Rill born 2018-02-16.\nCaller: We separated on 2025-03-12.\nCaller: End our marriage.\nCaller: My proposed meeting place for exchanging the children is Sampletown Example Library rear gate.\nInterviewer: Is that the place you want kept in the draft?\nCaller: Correction: the exchange location should be Sampletown Example Library front steps.\nCaller: The library is only a proposed meeting place; it is not my home address.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Yani Rill", "kind": "stated", "citations": [{"line": 2, "quote": "Yani Rill"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "89 Demonstration Row Sampletown", "kind": "stated", "citations": [{"line": 3, "quote": "89 Demonstration Row Sampletown"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Dova Rill", "kind": "stated", "citations": [{"line": 2, "quote": "Dova Rill"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2010-10-23", "kind": "stated", "citations": [{"line": 4, "quote": "2010-10-23"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2025-03-12", "kind": "stated", "citations": [{"line": 8, "quote": "2025-03-12"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Kiri Rill born 2014-02-16", "kind": "stated", "citations": [{"line": 6, "quote": "Kiri Rill born 2014-02-16"}]}]},
+    {"field": "children", "subject": "child-2", "assertions": [{"value": "Kira Rill born 2018-02-16", "kind": "stated", "citations": [{"line": 7, "quote": "Kira Rill born 2018-02-16"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "End our marriage", "kind": "stated", "citations": [{"line": 9, "quote": "End our marriage"}]}]},
+    {"field": "exchange_location", "subject": "case", "assertions": [{"value": "Sampletown Example Library rear gate", "kind": "stated", "citations": [{"line": 10, "quote": "Sampletown Example Library rear gate"}]}, {"value": "Sampletown Example Library front steps", "kind": "correction", "citations": [{"line": 12, "quote": "Sampletown Example Library front steps"}]}]}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "case_id": "c16",
+  "captured_at": "2026-11-17T20:21:37.368764+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: End our marriage. That is my main request.\nCaller: I am Mael Pond and my spouse is Zia Pond.\nCaller: My present home is 58 Demonstration Square Sampletown.\nCaller: We married on 2008-04-18 and separated on 2025-02-28.\nCaller: We have one child, Enna Pond born 2011-08-17.\nInterviewer: What arrangement do you want the draft to describe?\nCaller: Alternate full weeks with handover every Friday at 18:00.\nCaller: That is my proposed arrangement, not something Zia has agreed to.\n",
+  "note_id": "divorce_with_children_alternating_weeks",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "803a9dd79c9ce16a446a025faea7e06f200268823bf770ba9605d6717dd77720",
+  "transcript_sha256": "bcbaa92ffdf4c8dbee78de1b860500d361bf064df5fdd42368fe2945893dae23",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Mael Pond\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"Caller: I am Mael Pond\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"58 Demonstration Square Sampletown\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"Caller: My present home is 58 Demonstration Square Sampletown\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Zia Pond\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"Caller: I am Mael Pond and my spouse is Zia Pond\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2008-04-18\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Caller: We married on 2008-04-18\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2025-02-28\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Caller: We separated on 2025-02-28\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Enna Pond\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Caller: We have one child, Enna Pond born 2011-08-17\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"End our marriage\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"Caller: End our marriage. That is my main request.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"parenting_schedule\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Alternate full weeks with handover every Friday at 18:00\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"Caller: Alternate full weeks with handover every Friday at 18:00\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 675,
+    "eval_count": 747,
+    "total_duration": 52315889791,
+    "load_duration": 16688751333,
+    "prompt_eval_duration": 1455219000,
+    "eval_duration": 33614563000
+  },
+  "keep_alive": 0
+}

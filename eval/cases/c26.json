@@ -1,0 +1,13 @@
+{
+  "id": "c26",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: The current visits run on Saturday from 16:00 to 20:00. That is the old arrangement.\nCaller: I am Bera Moss and the other parent is Tovin Moss.\nCaller: My home address is 9 Lantern Court, Sampletown.\nCaller: Our child is Elin Moss born 2016-11-28.\nCaller: The existing order is dated 2021-01-19.\nCaller: This is the change I want: Change visits because I now work Saturday evenings.\nInterviewer: Please state the replacement schedule, rather than the current one.\nCaller: Sunday visits from 10:00 to 16:00.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Bera Moss", "kind": "stated", "citations": [{"line": 3, "quote": "Bera Moss"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Tovin Moss", "kind": "stated", "citations": [{"line": 3, "quote": "Tovin Moss"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "9 Lantern Court, Sampletown", "kind": "stated", "citations": [{"line": 4, "quote": "9 Lantern Court, Sampletown"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Elin Moss born 2016-11-28", "kind": "stated", "citations": [{"line": 5, "quote": "Elin Moss born 2016-11-28"}]}]},
+    {"field": "prior_order_date", "subject": "case", "assertions": [{"value": "2021-01-19", "kind": "stated", "citations": [{"line": 6, "quote": "2021-01-19"}]}]},
+    {"field": "requested_change", "subject": "case", "assertions": [{"value": "Change visits because I now work Saturday evenings.", "kind": "stated", "citations": [{"line": 7, "quote": "Change visits because I now work Saturday evenings."}]}]},
+    {"field": "parenting_schedule", "subject": "case", "assertions": [{"value": "Sunday visits from 10:00 to 16:00.", "kind": "stated", "citations": [{"line": 9, "quote": "Sunday visits from 10:00 to 16:00."}]}]}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "case_id": "c08",
+  "captured_at": "2026-11-17T20:17:29.355325+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: End the marriage. I want that request recorded first.\nCaller: I am Fara Thorn, married to Beni Thorn.\nCaller: We have no children.\nCaller: For my present address, the street part is 38 Example Path.\nCaller: The town for that same home address is Demo Borough.\nCaller: Our marriage date was 2014-03-15.\nCaller: We separated on 2025-06-21.\nCaller: Use postal mail only and do not call the shared phone.\nInterviewer: Your contact preference is separate from the residential address.\n",
+  "note_id": "divorce_without_children_private_contact",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "096473ed90c0a661bc7235ac0b7b6444290a52e799b475734b15cc89fc977f66",
+  "transcript_sha256": "109c4103a15a239b4fb675e23248ca0f579b764365e9998c6b7edd5e87e8a14a",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Fara Thorn\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"Caller: I am Fara Thorn, married to Beni Thorn.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"38 Example Path, Demo Borough\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Caller: For my present address, the street part is 38 Example Path.\"\n            },\n            {\n              \"line\": 6,\n              \"quote\": \"Caller: The town for that same home address is Demo Borough.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Beni Thorn\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"Caller: I am Fara Thorn, married to Beni Thorn.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2014-03-15\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"Caller: Our marriage date was 2014-03-15.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2025-06-21\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"Caller: We separated on 2025-06-21.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"End the marriage\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"Caller: End the marriage. I want that request recorded first.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"contact_preference\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"postal mail only and do not call the shared phone\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"Caller: Use postal mail only and do not call the shared phone.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"child_1\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"Caller: We have no children.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"child_2\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"Caller: We have no children.\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 675,
+    "eval_count": 833,
+    "total_duration": 35220131833,
+    "load_duration": 9022706125,
+    "prompt_eval_duration": 1318559000,
+    "eval_duration": 24639243000
+  },
+  "keep_alive": 0
+}

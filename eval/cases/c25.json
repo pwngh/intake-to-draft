@@ -1,0 +1,14 @@
+{
+  "id": "c25",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nInterviewer: Is this a new divorce intake?\nCaller: No, a change to our existing parenting arrangement. I am Perri Vale.\nCaller: The other parent is Romi Vale. I live at 62 Example Road, Demo Borough.\nCaller: Please keep the names separate: Lina Vale born 2014-04-02.\nCaller: Then Lila Vale born 2017-05-03. Lina and Lila are different children.\nCaller: The order date is 2023-03-20.\nCaller: My request is: Change pickup because Lina now attends Sample School.\nInterviewer: What timing would you put in the proposed schedule?\nCaller: School pickup on Monday and Wednesday at 15:30.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Perri Vale", "kind": "stated", "citations": [{"line": 3, "quote": "Perri Vale"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Romi Vale", "kind": "stated", "citations": [{"line": 4, "quote": "Romi Vale"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "62 Example Road, Demo Borough", "kind": "stated", "citations": [{"line": 4, "quote": "62 Example Road, Demo Borough"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Lina Vale born 2014-04-02", "kind": "stated", "citations": [{"line": 5, "quote": "Lina Vale born 2014-04-02"}]}]},
+    {"field": "children", "subject": "child-2", "assertions": [{"value": "Lila Vale born 2017-05-03", "kind": "stated", "citations": [{"line": 6, "quote": "Lila Vale born 2017-05-03"}]}]},
+    {"field": "prior_order_date", "subject": "case", "assertions": [{"value": "2023-03-20", "kind": "stated", "citations": [{"line": 7, "quote": "2023-03-20"}]}]},
+    {"field": "requested_change", "subject": "case", "assertions": [{"value": "Change pickup because Lina now attends Sample School.", "kind": "stated", "citations": [{"line": 8, "quote": "Change pickup because Lina now attends Sample School."}]}]},
+    {"field": "parenting_schedule", "subject": "case", "assertions": [{"value": "School pickup on Monday and Wednesday at 15:30.", "kind": "stated", "citations": [{"line": 10, "quote": "School pickup on Monday and Wednesday at 15:30."}]}]}
+  ]
+}

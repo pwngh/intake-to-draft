@@ -1,0 +1,13 @@
+{
+  "id": "c28",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Suri Hazel, calling about a holiday change to our existing arrangement.\nCaller: Fenn Hazel is the other parent; Veda Hazel born 2010-12-01 is our child.\nCaller: I currently live at 33 Example Bend, Sampletown.\nInterviewer: When was the order dated?\nCaller: It might have been 2022-10-09, but I cannot confirm that date. I am uncertain.\nCaller: Here is my request: Split the spring break into two equal parts.\nInterviewer: How would those parts be allocated in your proposal?\nCaller: The first half with me and the second half with Fenn.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Suri Hazel", "kind": "stated", "citations": [{"line": 2, "quote": "Suri Hazel"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Fenn Hazel", "kind": "stated", "citations": [{"line": 3, "quote": "Fenn Hazel"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Veda Hazel born 2010-12-01", "kind": "stated", "citations": [{"line": 3, "quote": "Veda Hazel born 2010-12-01"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "33 Example Bend, Sampletown", "kind": "stated", "citations": [{"line": 4, "quote": "33 Example Bend, Sampletown"}]}]},
+    {"field": "prior_order_date", "subject": "case", "assertions": [{"value": "2022-10-09", "kind": "uncertain", "citations": [{"line": 6, "quote": "2022-10-09"}]}]},
+    {"field": "requested_change", "subject": "case", "assertions": [{"value": "Split the spring break into two equal parts.", "kind": "stated", "citations": [{"line": 7, "quote": "Split the spring break into two equal parts."}]}]},
+    {"field": "parenting_schedule", "subject": "case", "assertions": [{"value": "The first half with me and the second half with Fenn.", "kind": "stated", "citations": [{"line": 9, "quote": "The first half with me and the second half with Fenn."}]}]}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "c02",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: Tavi Moss is the other spouse in this request.\nCaller: I am Orin Moss, and we have no children.\nCaller: We married on 2010-07-13.\nCaller: 22 Example Row Demo Borough is my current home address.\nCaller: We separated on 2024-11-30.\nCaller: End the marriage. That is my requested outcome.\nCaller: I found my note. Correction: our marriage date is 2010-07-14.\nCaller: The wedding date I said earlier was wrong.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Orin Moss", "kind": "stated", "citations": [{"line": 3, "quote": "Orin Moss"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "22 Example Row Demo Borough", "kind": "stated", "citations": [{"line": 5, "quote": "22 Example Row Demo Borough"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Tavi Moss", "kind": "stated", "citations": [{"line": 2, "quote": "Tavi Moss"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2010-07-13", "kind": "stated", "citations": [{"line": 4, "quote": "2010-07-13"}]}, {"value": "2010-07-14", "kind": "correction", "citations": [{"line": 8, "quote": "2010-07-14"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2024-11-30", "kind": "stated", "citations": [{"line": 6, "quote": "2024-11-30"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "End the marriage", "kind": "stated", "citations": [{"line": 7, "quote": "End the marriage"}]}]}
+  ]
+}

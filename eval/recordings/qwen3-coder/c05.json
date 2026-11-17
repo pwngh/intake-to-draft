@@ -1,0 +1,27 @@
+{
+  "case_id": "c05",
+  "captured_at": "2026-11-17T20:15:45.012455+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Arlo Wren, asking for a divorce from Mira Wren.\nCaller: We have no children, and our marriage date is 2012-10-06.\nCaller: My own address is 35 Example Walk Demo Borough.\nInterviewer: Do you know Mira Wren's current address?\nCaller: No. I cannot locate my spouse and do not know that address.\nCaller: Our separation date is 2025-01-18.\nCaller: Dissolve our marriage. Do not make up an address for Mira.\nInterviewer: Only your own address has been supplied.\n",
+  "note_id": "divorce_without_children_unknown_spouse_location",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "e3a420a43cbe4c122d5738543292bc0044b08f4dd184a9a5841306e25d157da8",
+  "transcript_sha256": "164d779114f79339a5e5610fb56a728b3df685d24cabd417a7cc0a416e331a97",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Arlo Wren\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"I am Arlo Wren\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"35 Example Walk Demo Borough\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"My own address is 35 Example Walk Demo Borough\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Mira Wren\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"divorce from Mira Wren\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2012-10-06\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"Our marriage date is 2012-10-06\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2025-01-18\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"Our separation date is 2025-01-18\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Dissolve our marriage\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"Dissolve our marriage\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Unknown\",\n          \"kind\": \"uncertain\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"No. I cannot locate my spouse and do not know that address.\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 670,
+    "eval_count": 619,
+    "total_duration": 57885387750,
+    "load_duration": 33983877709,
+    "prompt_eval_duration": 1451292000,
+    "eval_duration": 22204359000
+  },
+  "keep_alive": 0
+}

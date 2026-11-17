@@ -1,0 +1,27 @@
+{
+  "case_id": "c39",
+  "captured_at": "2026-11-17T20:35:19.438461+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: My diploma shows Talia Wisp, but that is the name on the document, not the name I currently use.\nInterviewer: What is your current name?\nCaller: Tala Wisp. I request an adult name change to Tala Spar.\nCaller: My birth date is 1978-06-23.\nCaller: My current home is 11 Example Grove, Demo Borough.\nInterviewer: What reason should be recorded?\nCaller: Use my chosen surname consistently.\n",
+  "note_id": "adult_name_change_document_mismatch",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "767f46f06d451c8f0b272a58afb4d50bc73e05c769017e217ea3724bda12c013",
+  "transcript_sha256": "0f67019c53188d79e5f53df67f102c60c52b2454e76384d71185da73d32edd57",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Talia Wisp\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"My diploma shows Talia Wisp\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Tala Spar\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"I request an adult name change to Tala Spar\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"birth_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"1978-06-23\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"My birth date is 1978-06-23\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"11 Example Grove, Demo Borough\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"My current home is 11 Example Grove, Demo Borough\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"reason_for_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Use my chosen surname consistently\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"Use my chosen surname consistently\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"document_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"diploma\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"My diploma shows Talia Wisp\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 621,
+    "eval_count": 521,
+    "total_duration": 39867036375,
+    "load_duration": 11230805667,
+    "prompt_eval_duration": 1312241000,
+    "eval_duration": 25990164000
+  },
+  "keep_alive": 0
+}

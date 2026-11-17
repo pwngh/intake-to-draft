@@ -1,0 +1,12 @@
+{
+  "id": "c29",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nInterviewer: What do you want changed about the existing parenting arrangement?\nCaller: Share the driving for visits equally.\nCaller: My name is Aven Fern. The other parent is Nell Fern.\nCaller: I live at 26 Sample Rise, Demo Borough.\nCaller: Osa Fern born 2018-03-13 is our child.\nCaller: The existing order carries the date 2024-04-15.\nInterviewer: Do you have replacement days or times for a proposed schedule?\nCaller: No, I have not chosen any days or times. I cannot give a schedule yet.\n",
+  "evidence": [
+    {"field": "requested_change", "subject": "case", "assertions": [{"value": "Share the driving for visits equally.", "kind": "stated", "citations": [{"line": 3, "quote": "Share the driving for visits equally."}]}]},
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Aven Fern", "kind": "stated", "citations": [{"line": 4, "quote": "Aven Fern"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Nell Fern", "kind": "stated", "citations": [{"line": 4, "quote": "Nell Fern"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "26 Sample Rise, Demo Borough", "kind": "stated", "citations": [{"line": 5, "quote": "26 Sample Rise, Demo Borough"}]}]},
+    {"field": "children", "subject": "child-1", "assertions": [{"value": "Osa Fern born 2018-03-13", "kind": "stated", "citations": [{"line": 6, "quote": "Osa Fern born 2018-03-13"}]}]},
+    {"field": "prior_order_date", "subject": "case", "assertions": [{"value": "2024-04-15", "kind": "stated", "citations": [{"line": 7, "quote": "2024-04-15"}]}]}
+  ]
+}

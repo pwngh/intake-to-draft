@@ -1,0 +1,27 @@
+{
+  "case_id": "c13",
+  "captured_at": "2026-11-17T20:02:13.178886+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Suri Vale. Kel Vale is the other spouse.\nCaller: My current address is 49 Demonstration Street Demo Borough.\nCaller: We married on 2008-05-24.\nCaller: We have two children of this marriage.\nCaller: The older child is Leva Vale born 2012-09-21.\nCaller: The younger child is Toma Vale born 2018-06-02.\nCaller: We separated on 2024-03-01.\nCaller: Dissolve our marriage.\nInterviewer: Did you want to correct any of those details?\nCaller: Yes. Correction for Leva: Leva Vale born 2012-09-12.\nCaller: Toma's details stay as I gave them. Only Leva's date changed.\n",
+  "note_id": "divorce_with_children_corrected_birth_date",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "6b9addc7fadcc0acf3d2e478ca03dac5de275cbc7eb00e11d09266d4a50caf37",
+  "transcript_sha256": "5a214aa6730329eb121996a7d52a2723bc16df281afc34f51e645706827d513b",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Suri Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"I am Suri Vale\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"49 Demonstration Street Demo Borough\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"My current address is 49 Demonstration Street Demo Borough\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Kel Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"Kel Vale is the other spouse\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2008-05-24\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"We married on 2008-05-24\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2024-03-01\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"We separated on 2024-03-01\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Leva Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"The older child is Leva Vale born 2012-09-21\"\n            }\n          ]\n        },\n        {\n          \"value\": \"Toma Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"The younger child is Toma Vale born 2018-06-02\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Dissolve our marriage\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"Dissolve our marriage\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"2012-09-12\",\n          \"kind\": \"correction\",\n          \"citations\": [\n            {\n              \"line\": 11,\n              \"quote\": \"Correction for Leva: Leva Vale born 2012-09-12\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-2\",\n      \"assertions\": [\n        {\n          \"value\": \"2018-06-02\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"The younger child is Toma Vale born 2018-06-02\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 752,
+    "eval_count": 887,
+    "total_duration": 33827533042,
+    "load_duration": 4177929250,
+    "prompt_eval_duration": 1553164000,
+    "eval_duration": 27999271000
+  },
+  "keep_alive": 0
+}

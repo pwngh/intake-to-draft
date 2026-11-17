@@ -1,0 +1,13 @@
+{
+  "id": "c08",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: End the marriage. I want that request recorded first.\nCaller: I am Fara Thorn, married to Beni Thorn.\nCaller: We have no children.\nCaller: For my present address, the street part is 38 Example Path.\nCaller: The town for that same home address is Demo Borough.\nCaller: Our marriage date was 2014-03-15.\nCaller: We separated on 2025-06-21.\nCaller: Use postal mail only and do not call the shared phone.\nInterviewer: Your contact preference is separate from the residential address.\n",
+  "evidence": [
+    {"field": "petitioner_name", "subject": "case", "assertions": [{"value": "Fara Thorn", "kind": "stated", "citations": [{"line": 3, "quote": "Fara Thorn"}]}]},
+    {"field": "petitioner_address", "subject": "case", "assertions": [{"value": "38 Example Path Demo Borough", "kind": "stated", "citations": [{"line": 5, "quote": "38 Example Path"}, {"line": 6, "quote": "Demo Borough"}]}]},
+    {"field": "respondent_name", "subject": "case", "assertions": [{"value": "Beni Thorn", "kind": "stated", "citations": [{"line": 3, "quote": "Beni Thorn"}]}]},
+    {"field": "marriage_date", "subject": "case", "assertions": [{"value": "2014-03-15", "kind": "stated", "citations": [{"line": 7, "quote": "2014-03-15"}]}]},
+    {"field": "separation_date", "subject": "case", "assertions": [{"value": "2025-06-21", "kind": "stated", "citations": [{"line": 8, "quote": "2025-06-21"}]}]},
+    {"field": "requested_outcome", "subject": "case", "assertions": [{"value": "End the marriage", "kind": "stated", "citations": [{"line": 2, "quote": "End the marriage"}]}]},
+    {"field": "contact_preference", "subject": "case", "assertions": [{"value": "Use postal mail only and do not call the shared phone", "kind": "stated", "citations": [{"line": 9, "quote": "Use postal mail only and do not call the shared phone"}]}]}
+  ]
+}

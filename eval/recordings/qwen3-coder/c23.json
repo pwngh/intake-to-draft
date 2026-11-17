@@ -1,0 +1,27 @@
+{
+  "case_id": "c23",
+  "captured_at": "2026-11-17T20:25:25.388307+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: The date on my existing parenting order is 2022-09-14.\nInterviewer: And its document identifier?\nCaller: I cannot locate that identifier. Please leave it blank for now.\nCaller: My name is Ivo Tern. Ada Tern is the other parent.\nCaller: Neri Tern born 2015-05-22 is our child.\nInterviewer: Where are you living currently?\nCaller: 43 Paper Lane, Sampletown.\nCaller: I would like this change: Move the midweek visit to Wednesday.\n",
+  "note_id": "custody_change_missing_order_reference",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "a2aa36288322f23ac9bdb8861b129bc9457bfd39508988bda0152472580ea603",
+  "transcript_sha256": "8b9316c9f01692561496835eb1c103dc97f50084f10434a42250437b91421495",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Ivo Tern\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"My name is Ivo Tern\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"43 Paper Lane, Sampletown\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"43 Paper Lane, Sampletown\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Ada Tern\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Ada Tern is the other parent\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"Neri Tern\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Neri Tern born 2015-05-22 is our child\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"prior_order_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2022-09-14\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"The date on my existing parenting order is 2022-09-14\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Move the midweek visit to Wednesday\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"I would like this change: Move the midweek visit to Wednesday\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"order_reference\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"\",\n          \"kind\": \"uncertain\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"I cannot locate that identifier. Please leave it blank for now\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 656,
+    "eval_count": 623,
+    "total_duration": 35740188250,
+    "load_duration": 12791724375,
+    "prompt_eval_duration": 1307363000,
+    "eval_duration": 21401354000
+  },
+  "keep_alive": 0
+}
