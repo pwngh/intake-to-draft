@@ -237,8 +237,8 @@ class ReviewService:
         snapshot = graph.get_state(config)
         if not snapshot.values:
             raise RunNotFound("run not found")
-        if snapshot.next and not snapshot.interrupts:
-            # Recover a crash between an applied decision and the next pause/fill.
+        if snapshot.tasks and not snapshot.interrupts:
+            # next omits completed pending writes; tasks also covers that crash window.
             graph.invoke(None, config)
         return graph.get_state(config).values
 

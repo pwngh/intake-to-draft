@@ -5,6 +5,9 @@ from datetime import datetime
 import hashlib
 import json
 from pathlib import Path
+import signal
+import subprocess
+import sys
 
 import pytest
 
@@ -218,3 +221,45 @@ def test_failure_after_approval_checkpoint_recovers_without_duplicate_audit(serv
     assert [event["action"] for event in recovered["audit"]].count("approve") == 1
     assert recovered["revision"] == run["revision"] + 1
     assert service.get(run["run_id"]) == recovered
+
+
+@pytest.mark.parametrize(("action", "stage"), [
+    ("accept", "review"), ("approve", "review"), ("approve", "route"), ("approve", "fill"),
+])
+def test_killed_worker_pending_writes_recover_before_the_next_decision(service, recording, action, stage):
+    run = service.create(recording)
+    if action == "approve":
+        run = accept_all(service, run)
+    request = {"action": action, "reviewer": "Interrupted Reviewer", "expected_revision": run["revision"]}
+    request.update({"confirmed_complete": True} if action == "approve" else {"field": "birth_date"})
+    # Kill a separate worker AFTER SQLite commits node writes but BEFORE the next checkpoint.
+    worker = '''
+import json, os, signal, sys
+from intake_draft.workflow import ReviewRequest, ReviewService, SqliteSaver
+original = SqliteSaver.put_writes
+def put_writes(self, config, writes, task_id, task_path=""):
+    result = original(self, config, writes, task_id, task_path)
+    channels = {channel for channel, _ in writes}
+    required = {"review": {"revision", "audit", "branch:to:route"},
+                "route": {"status", "branch:to:fill"}, "fill": {"draft", "status"}}[sys.argv[3]]
+    if required <= channels:
+        os.kill(os.getpid(), signal.SIGKILL)
+    return result
+SqliteSaver.put_writes = put_writes
+ReviewService(sys.argv[1]).submit(sys.argv[2], ReviewRequest.model_validate_json(sys.argv[4]))
+'''
+    child = subprocess.run([sys.executable, "-c", worker, str(service.path), run["run_id"], stage,
+                            json.dumps(request)], capture_output=True, text=True, timeout=30)
+    assert child.returncode == -signal.SIGKILL, child.stderr
+    reopened = ReviewService(service.path)
+    recovered = reopened.get(run["run_id"])
+    assert recovered["revision"] == run["revision"] + 1
+    assert len(recovered["audit"]) == len(run["audit"]) + 1
+    assert reopened.get(run["run_id"]) == recovered
+    if action == "approve":
+        assert recovered["status"] == "draft" and recovered["draft"] is not None
+        assert sum(e["action"] == "approve" for e in recovered["audit"]) == 1
+    else:
+        following = decide(reopened, recovered, "accept", "requested_name")
+        assert following["revision"] == recovered["revision"] + 1
+        assert following["audit"][-1]["field"] == "requested_name"
