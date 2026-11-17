@@ -30,7 +30,7 @@ The documentation describes checkpointed interrupts and compatible SDK/server ge
 
 1. HTTP intake validation and initial reference search. Merged by the owner.
 2. Core workflow, split at the requested review-size boundary: extraction/citations and retrieval first (PR 2a), then routing, review, and fill (PR 2b). Both are merged by the owner. Council reviews the extraction slice with the five attack questions; the remaining gates need review on their actual implementation, not an inherited approval.
-3. Live local model adapter and self-hosted Langfuse, with tracing optional (current piece). No hosted account requirement is acceptable.
+3. Live local model adapter and self-hosted Langfuse, with tracing optional. Merged by the owner. No hosted account requirement is acceptable.
 4. Forty fact-sheet-derived cases: ten development and thirty held out. Report four metrics on the thirty only, record draft approvers, and finish the five-minute demo.
 
 Each piece needs passing checks, Sol-loop review, and a full-stop handoff. No subsequent piece is described as finished before it runs.
@@ -79,7 +79,7 @@ GitHub CLI is authenticated as `pwngh`. Antigravity is invoked by its installed 
 - Add retrieval before extraction only for live runs. Save the three candidates and selected local note with the run; required fields come from the stored note, not model-supplied instructions. Review resumes use the checkpoint without repeating retrieval or inference.
 - Treat first-choice retrieval as tentative. The existing q24 query placed a former-name note above the general name-change note; the live example uses the already labeled, situation-specific q27 query. Labels and benchmark results are unchanged. Reviewers inspect the note and restart with a better query if needed; this PR does not add note editing.
 - Use temperature 0 and seed 17, but do not promise inference reproducibility across hardware or runtimes. Save raw output, prompt/source hashes, model digest, options, and returned usage. Deterministic rendering applies to the same saved source, note, and reviewed values.
-- Keep the default demo and tests independent of live inference and Docker. The recorded HTTP demo explicitly forces tracing off; the separate live smoke script checks only its development example, with clearly scripted reviewer and approver identities. Four holdout metrics remain unmeasured until PR 4.
+- Keep the default demo and tests independent of live inference and Docker. The recorded HTTP demo explicitly forces tracing off; the separate live smoke script checks only its development example, with clearly scripted reviewer and approver identities. The four holdout metrics are measured separately in PR 4.
 - Self-host Langfuse 4.82.0 with SDK 5.2.0 and six digest-pinned multi-platform images. Use upstream Compose as a small starting point, preserve its license, and omit unused services. A checkout-specific project name avoids touching unrelated containers; only the web port is published on loopback.
 - Generate local demo login/project credentials through documented headless initialization. These are local accounts and keys, not external signup. Keep credentials in ignored mode-0600 files, reuse them on restart, disable telemetry/signup, and preserve volumes on shutdown.
 - Export explicit node observations with a dedicated local OpenTelemetry provider, disabled environment proxies/redirects, and LangSmith off. Tracing is best effort: failures warn without rerunning the application call or changing its result. Crashes/outages can lose observations; the trace is not the durable review audit.
@@ -102,3 +102,7 @@ GitHub CLI is authenticated as `pwngh`. Antigravity is invoked by its installed 
 - Score before scripted fact-sheet corrections. Every released evaluation draft records “Scripted Fact-Sheet Approver”; unresolved facts and unsupported extra subjects remain blocked. These are simulated reviewer actions, not claims that a person inspected the drafts.
 - Capture under a local file lock and atomically publish complete records without replacement. Report output is confined to ignored runtime files, and checking compares the committed baseline before writing.
 - Fix evaluator defects found during development before the holdout. Keep the local model, extraction prompt, transcripts, and expected facts unchanged; report rejected and inaccurate outputs rather than tuning against the thirty test cases.
+
+- Preserve the first thirty holdout responses unchanged. Sixteen fail the extraction schema; the injection case passes the lexical checker with an invented address. Publish these failures without tuning the prompt or scorer after capture.
+- Make the default demo replay and compare the full holdout report after the HTTP review example. It needs neither inference nor Docker; the five-minute walkthrough starts after package installation.
+- Keep post-review success separate from model quality. Scripted evidence-based corrections produce twenty holdout drafts with named test approvers; ten unresolved cases remain blocked. This is regression evidence, not an independent human evaluation.
