@@ -9,9 +9,31 @@ from intake_draft.api import app
 
 
 @pytest.fixture
-def client():
+def client(monkeypatch, tmp_path):
+    monkeypatch.setenv("INTAKE_REVIEW_DB", str(tmp_path / "review.sqlite"))
     with TestClient(app) as test_client:
         yield test_client
+
+
+def test_review_http_boundary_keeps_invalid_actions_out_of_the_audit(client):
+    assert client.get("/runs/unknown").status_code == 404
+    response = client.post("/demo/runs")
+    assert response.status_code == 201
+    run = response.json()
+    base = f"/runs/{run['run_id']}"
+    assert client.get(base).json() == run
+    assert client.get(base + "/draft").status_code == 409
+    payload = {"action": "accept", "reviewer": "Example Reviewer", "expected_revision": 0,
+               "field": "birth_date"}
+    assert client.post(base + "/review", json={**payload, "approved": True}).status_code == 422
+    assert client.post(base + "/review", json={**payload, "value": "1991-06-18"}).status_code == 422
+    assert client.post(base + "/review", json={**payload, "field": "execute_command"}).status_code == 422
+    assert client.get(base).json()["audit"] == []
+    accepted = client.post(base + "/review", json=payload)
+    assert accepted.status_code == 200
+    assert accepted.json()["audit"][0]["after"]["value"] == "1991-06-19"
+    assert client.post(base + "/review", json=payload).status_code == 409
+    assert len(client.get(base).json()["audit"]) == 1
 
 
 def test_health_identifies_the_limited_demonstration_stage(client):
@@ -20,7 +42,7 @@ def test_health_identifies_the_limited_demonstration_stage(client):
     assert response.json() == {
         "status": "ok",
         "demonstration": True,
-        "stage": "recorded-extraction",
+        "stage": "review-and-draft",
     }
 
 

@@ -1,25 +1,66 @@
 """Exercise real HTTP on an OS-selected loopback port, then stop the server."""
 
 import json
+import os
 import socket
 import subprocess
 import sys
 import time
+import tempfile
 from pathlib import Path
 
 import httpx
 
 
+def reviewed_run(client) -> dict:
+    response = client.post("/demo/runs")
+    response.raise_for_status()
+    run = response.json()
+    base = f"/runs/{run['run_id']}"
+    assert run["status"] == "needs_review" and run["audit"] == []
+    assert client.get(base + "/draft").status_code == 409
+
+    def decide(action, **fields):
+        nonlocal run
+        response = client.post(base + "/review", json={
+            "action": action, "reviewer": "Scripted Demo Reviewer", "expected_revision": run["revision"], **fields})
+        response.raise_for_status()
+        run = response.json()
+
+    for row in run["review_queue"]:
+        if row["field"] == "petitioner_address":
+            decide("reject", field=row["field"], reason="Check both address fragments before using them.")
+        else:
+            decide("accept", field=row["field"], subject=row["subject"])
+    approval = {"action": "approve", "reviewer": "Scripted Demo Approver",
+                "expected_revision": run["revision"], "confirmed_complete": True}
+    assert client.post(base + "/review", json=approval).status_code == 409
+    decide("correct", field="petitioner_address", value="18 Example Lane Sampletown",
+           citations=[{"line": 5, "quote": "18 Example Lane"}, {"line": 6, "quote": "Sampletown"}],
+           reason="Combine the street and city confirmed on source lines 5 and 6.")
+    assert client.get(base + "/draft").status_code == 409  # Field decisions alone are not final approval.
+    decide("approve", reviewer="Scripted Demo Approver", confirmed_complete=True)
+    artifact = client.get(base + "/draft")
+    artifact.raise_for_status()
+    assert artifact.json()["approval"]["reviewer"] == "Scripted Demo Approver"
+    birth = next(row for row in run["draft"]["provenance_table"] if row["field"] == "birth_date")
+    assert birth["value"] == "1991-06-19" and birth["lines"] == [8]
+    assert birth["earlier_assertions"][0]["citations"][0]["line"] == 4
+    assert [e["action"] for e in run["audit"] if e["field"] == "petitioner_address"] == ["reject", "correct"]
+    return run
+
+
 def main() -> None:
     example = json.loads((Path(__file__).resolve().parent.parent / "examples/intake.json").read_text())
     # Pass the bound socket to Uvicorn so port selection has no release/rebind race.
-    with socket.socket() as listener:
+    with tempfile.TemporaryDirectory(prefix="intake-demo-") as temporary, socket.socket() as listener:
         listener.bind(("127.0.0.1", 0))
         port = listener.getsockname()[1]
         process = subprocess.Popen(
             [sys.executable, "-m", "uvicorn", "intake_draft.api:app", "--fd", str(listener.fileno()),
              "--log-level", "error", "--no-access-log"],
             pass_fds=(listener.fileno(),),
+            env={**os.environ, "INTAKE_REVIEW_DB": str(Path(temporary) / "review.sqlite")},
         )
         try:
             with httpx.Client(base_url=f"http://127.0.0.1:{port}", timeout=2, trust_env=False) as client:
@@ -68,8 +109,19 @@ def main() -> None:
                 print("Field | Proposed or earlier value | Source lines | Selection")
                 for row in report["provenance_table"]:
                     print(f"{row['field']} | {row['value']} | {row['lines']} | {row['selection']}")
-                print("PASS: recorded LangGraph extraction, citation history, and repeatability.")
-                print("Every proposal needs human verification. Review actions and draft filling are next.")
+                run = reviewed_run(client)
+                repeated_run = reviewed_run(client)
+                assert run["draft"]["text"] == repeated_run["draft"]["text"]
+                assert run["draft"]["provenance_table"] == repeated_run["draft"]["provenance_table"]
+                print("\nScripted review audit (manual actions use the same API):")
+                for event in run["audit"]:
+                    print(f"{event['revision']}: {event['action']} {event['field'] or 'draft'} by {event['reviewer']}")
+                print("\n" + run["draft"]["text"])
+                print("Filled value | Source lines | Reviewer | Earlier assertions")
+                for row in run["draft"]["provenance_table"]:
+                    earlier = [a["value"] for a in row["earlier_assertions"]]
+                    print(f"{row['value']} | {row['lines']} | {row['reviewer']} | {earlier}")
+                print("PASS: human review gate, cited fictional draft, persistent audit, and repeatability.")
         finally:
             process.terminate()
             try:
