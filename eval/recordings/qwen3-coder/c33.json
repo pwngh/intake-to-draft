@@ -1,0 +1,27 @@
+{
+  "case_id": "c33",
+  "captured_at": "2026-11-17T20:31:27.343999+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: This is a standalone adult name change, not a divorce request.\nCaller: My current name is Hali Mint. I live at 41 Example Way, Demo Borough.\nCaller: My birth date is 1979-08-02.\nCaller: A name I previously used was Hali Tern.\nInterviewer: Which exact name do you now want?\nCaller: I request Hali Tern.\nCaller: My reason: Return to the name I used before.\nInterviewer: Anything to correct in the details?\nCaller: Yes. My birth date is actually 1980-08-02. That replaces the date I gave earlier.\n",
+  "note_id": "adult_name_change_former_name",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "134ea81c642b093e491c3780a21f65888183f63264a0934546af3f62581ce674",
+  "transcript_sha256": "1c24fcfeecbe543e1472fb230ba0aa5e8e557c0699e6d938f5fb8d632f693c47",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Hali Mint\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"My current name is Hali Mint\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"41 Example Way, Demo Borough\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"I live at 41 Example Way, Demo Borough\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"birth_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"1979-08-02\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"My birth date is 1979-08-02\"\n            }\n          ]\n        },\n        {\n          \"value\": \"1980-08-02\",\n          \"kind\": \"correction\",\n          \"citations\": [\n            {\n              \"line\": 10,\n              \"quote\": \"My birth date is actually 1980-08-02\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Hali Tern\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"I request Hali Tern\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"reason_for_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Return to the name I used before\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"My reason: Return to the name I used before\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"former_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Hali Tern\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"A name I previously used was Hali Tern\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 677,
+    "eval_count": 597,
+    "total_duration": 35007161250,
+    "load_duration": 11856915416,
+    "prompt_eval_duration": 1370170000,
+    "eval_duration": 21639427000
+  },
+  "keep_alive": 0
+}

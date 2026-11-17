@@ -1,0 +1,27 @@
+{
+  "case_id": "c29",
+  "captured_at": "2026-11-17T20:30:18.716368+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nInterviewer: What do you want changed about the existing parenting arrangement?\nCaller: Share the driving for visits equally.\nCaller: My name is Aven Fern. The other parent is Nell Fern.\nCaller: I live at 26 Sample Rise, Demo Borough.\nCaller: Osa Fern born 2018-03-13 is our child.\nCaller: The existing order carries the date 2024-04-15.\nInterviewer: Do you have replacement days or times for a proposed schedule?\nCaller: No, I have not chosen any days or times. I cannot give a schedule yet.\n",
+  "note_id": "custody_change_travel",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "023104c2b68b2d45e41cb74496f6a0dc62349294d56a60b2f0d5298530cf6cc9",
+  "transcript_sha256": "e729c0c60c46d5c5a9509079517788a028e25a3884dc3083b2276c151aeeb81c",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Aven Fern\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"Caller: My name is Aven Fern.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"26 Sample Rise, Demo Borough\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Caller: I live at 26 Sample Rise, Demo Borough.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Nell Fern\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"The other parent is Nell Fern.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"Osa Fern\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Osa Fern born 2018-03-13 is our child.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"prior_order_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2024-04-15\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"Caller: The existing order carries the date 2024-04-15.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Share the driving for visits equally.\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"Caller: Share the driving for visits equally.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"parenting_schedule\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"No, I have not chosen any days or times. I cannot give a schedule yet.\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"Caller: No, I have not chosen any days or times. I cannot give a schedule yet.\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 666,
+    "eval_count": 647,
+    "total_duration": 39680773166,
+    "load_duration": 15401507625,
+    "prompt_eval_duration": 1431668000,
+    "eval_duration": 21833104000
+  },
+  "keep_alive": 0
+}

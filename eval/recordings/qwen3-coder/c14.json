@@ -1,0 +1,27 @@
+{
+  "case_id": "c14",
+  "captured_at": "2026-11-17T20:19:48.981564+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: My name is Piri Oat and my spouse is Lex Oat.\nCaller: We have two children and I am requesting a divorce.\nCaller: I now live at 73 Sample Close Sampletown.\nCaller: Our marriage date is 2007-07-07.\nCaller: One child is Fenn Oat born 2010-02-13. I am certain of that birthday.\nInterviewer: What about the other child?\nCaller: As a guess I would write Arin Oat born 2014-08-09, but I am not certain of that birthday.\nCaller: We separated on 2025-01-11.\nCaller: End our marriage. Arin's exact birthday still needs checking.\n",
+  "note_id": "divorce_with_children_uncertain_birth_date",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "1714324c42c93b0f027642cc694aa8441fa382684c4950f3a704f5c708aa7a8d",
+  "transcript_sha256": "3f098c311189abef7c61ccce15dbf8edd0bb5e84df3d89fa4d39a97151007aec",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Piri Oat\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"My name is Piri Oat\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"73 Sample Close Sampletown\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"I now live at 73 Sample Close Sampletown\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Lex Oat\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"my spouse is Lex Oat\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2007-07-07\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Our marriage date is 2007-07-07\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2025-01-11\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"We separated on 2025-01-11\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"Fenn Oat\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"One child is Fenn Oat born 2010-02-13\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"2010-02-13\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"One child is Fenn Oat born 2010-02-13\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-2\",\n      \"assertions\": [\n        {\n          \"value\": \"Arin Oat\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"As a guess I would write Arin Oat born 2014-08-09\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-2\",\n      \"assertions\": [\n        {\n          \"value\": \"2014-08-09\",\n          \"kind\": \"uncertain\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"As a guess I would write Arin Oat born 2014-08-09\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"End our marriage\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 10,\n              \"quote\": \"End our marriage\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 706,
+    "eval_count": 923,
+    "total_duration": 51256550958,
+    "load_duration": 14295008541,
+    "prompt_eval_duration": 1484792000,
+    "eval_duration": 34915462000
+  },
+  "keep_alive": 0
+}

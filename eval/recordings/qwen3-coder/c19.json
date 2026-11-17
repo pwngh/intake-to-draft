@@ -1,0 +1,27 @@
+{
+  "case_id": "c19",
+  "captured_at": "2026-11-17T20:23:55.748207+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: Olli Fable is my name; Tera Fable is my spouse.\nCaller: We married on 2012-12-01.\nCaller: I live at 44 Demonstration Terrace Demo Borough.\nCaller: Our child is Avi Fable born 2016-01-25.\nCaller: We separated on 2024-06-17.\nInterviewer: What is your holiday proposal?\nCaller: Split the winter school break equally, with the first half at Olli Fable's home.\nCaller: Tera has not agreed to that, and I am not proposing anything for other holidays.\nCaller: Dissolve our marriage.\n",
+  "note_id": "divorce_with_children_holiday_plan",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "f97ac70a34fe4152dc69a1a142055d6666ee7df566e19fc54e84a7d38222f774",
+  "transcript_sha256": "8403ba7a8727f9aeb9d93126e609dd1d6e7717b0c931b26efe80cdcb226847f2",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Olli Fable\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"Olli Fable is my name\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"44 Demonstration Terrace Demo Borough\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"I live at 44 Demonstration Terrace Demo Borough\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Tera Fable\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"Tera Fable is my spouse\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2012-12-01\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"We married on 2012-12-01\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2024-06-17\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"We separated on 2024-06-17\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Avi Fable\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Our child is Avi Fable born 2016-01-25\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Dissolve our marriage\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 10,\n              \"quote\": \"Dissolve our marriage\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"parenting_schedule\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Split the winter school break equally, with the first half at Olli Fable's home\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"Split the winter school break equally, with the first half at Olli Fable's home\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 695,
+    "eval_count": 734,
+    "total_duration": 40076319667,
+    "load_duration": 15357614750,
+    "prompt_eval_duration": 1432794000,
+    "eval_duration": 23000148000
+  },
+  "keep_alive": 0
+}

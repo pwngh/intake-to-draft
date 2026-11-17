@@ -1,0 +1,27 @@
+{
+  "case_id": "c09",
+  "captured_at": "2026-11-17T20:18:02.467068+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: My spouse Una Lark now lives at 62 Sample Terrace Demo Borough.\nCaller: I am Idris Lark. My own current address is 61 Sample Terrace Sampletown.\nInterviewer: Are those two different current households?\nCaller: Yes. The first address is Una's, and the second is mine.\nCaller: We have no children and we married on 2018-08-08.\nCaller: We separated on 2025-07-02.\nCaller: Dissolve our marriage.\nInterviewer: I have kept each address attached to the person you named.\n",
+  "note_id": "divorce_without_children_separate_households",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "2171d841761e0a9aec6996c84e2daa13dfc327fc384dd51ce5fec79f25948453",
+  "transcript_sha256": "12bfb0b152c388ba61918168339b3e87fcf4b721086925372747c8aac335c40c",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Idris Lark\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"Caller: I am Idris Lark.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"61 Sample Terrace Sampletown\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"Caller: I am Idris Lark. My own current address is 61 Sample Terrace Sampletown.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Una Lark\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"Caller: My spouse Una Lark now lives at 62 Sample Terrace Demo Borough.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2018-08-08\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Caller: We have no children and we married on 2018-08-08.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2025-07-02\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"Caller: We separated on 2025-07-02.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Dissolve our marriage\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"Caller: Dissolve our marriage.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"62 Sample Terrace Demo Borough\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"Caller: My spouse Una Lark now lives at 62 Sample Terrace Demo Borough.\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 666,
+    "eval_count": 659,
+    "total_duration": 31972292417,
+    "load_duration": 5476900083,
+    "prompt_eval_duration": 1437635000,
+    "eval_duration": 24897878000
+  },
+  "keep_alive": 0
+}

@@ -1,0 +1,27 @@
+{
+  "case_id": "c10",
+  "captured_at": "2026-11-17T20:18:56.503095+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: My current name is Veda Sedge and my spouse is Torin Sedge.\nCaller: We have no children.\nCaller: The address where I live now is 46 Demonstration Lane Sampletown.\nCaller: Our wedding date was 2006-01-28.\nCaller: We separated on 2024-02-14.\nInterviewer: What do you request in the invented draft?\nCaller: End our marriage.\nCaller: My former name was Veda Flint. I request the name Veda Flint again.\nInterviewer: Recording the request does not promise a name change.\n",
+  "note_id": "divorce_without_children_restore_name",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "b31c11a4e172d47e2349ab22cc9f70f30bf25b16965783307dd2344332b6ca5e",
+  "transcript_sha256": "b1bc2a6771edf46e48b68ab86c9b47dc69689229b49f03c458e44b984a3d8ce3",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Veda Sedge\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"My current name is Veda Sedge\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"46 Demonstration Lane Sampletown\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"The address where I live now is 46 Demonstration Lane Sampletown\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Torin Sedge\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"my spouse is Torin Sedge\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2006-01-28\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Our wedding date was 2006-01-28\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2024-02-14\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"We separated on 2024-02-14\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"End our marriage\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"End our marriage\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Veda Flint\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"I request the name Veda Flint again\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"former_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Veda Flint\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"My former name was Veda Flint\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"child_1\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"We have no children\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"child_2\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"We have no children\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 681,
+    "eval_count": 845,
+    "total_duration": 52685447375,
+    "load_duration": 12481091334,
+    "prompt_eval_duration": 1450500000,
+    "eval_duration": 38274895000
+  },
+  "keep_alive": 0
+}

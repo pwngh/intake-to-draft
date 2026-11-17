@@ -1,0 +1,27 @@
+{
+  "case_id": "c35",
+  "captured_at": "2026-11-17T20:32:34.293478+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: My current name is Neri Dale. This is for a standalone adult name change.\nInterviewer: Tell me the requested name exactly, including punctuation.\nCaller: Neri Dale-Fern.\nCaller: The spelling note is: Keep Dale first, a hyphen, then Fern.\nCaller: My reason is: Join the two family names I use.\nCaller: My home is 48 Sample Lane, Demo Borough.\nCaller: My birth date is 1985-07-17.\n",
+  "note_id": "adult_name_change_hyphenated_name",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "60399e7ae1b54e6946d10a8f8e27546ab992ca392a8e670c0a500892abb5843d",
+  "transcript_sha256": "8f681a3d7dc789daa2ec49d147944f1d9d1596dca99e9423316da638128a0f35",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Neri Dale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"My current name is Neri Dale.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Neri Dale-Fern\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"Neri Dale-Fern.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"spelling_note\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Keep Dale first, a hyphen, then Fern.\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"The spelling note is: Keep Dale first, a hyphen, then Fern.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"reason_for_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Join the two family names I use.\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"My reason is: Join the two family names I use.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"48 Sample Lane, Demo Borough\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"My home is 48 Sample Lane, Demo Borough.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"birth_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"1985-07-17\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"My birth date is 1985-07-17.\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 622,
+    "eval_count": 540,
+    "total_duration": 29427024709,
+    "load_duration": 8360802292,
+    "prompt_eval_duration": 1252669000,
+    "eval_duration": 19585133000
+  },
+  "keep_alive": 0
+}

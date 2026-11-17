@@ -1,0 +1,27 @@
+{
+  "case_id": "c28",
+  "captured_at": "2026-11-17T20:29:38.249984+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Suri Hazel, calling about a holiday change to our existing arrangement.\nCaller: Fenn Hazel is the other parent; Veda Hazel born 2010-12-01 is our child.\nCaller: I currently live at 33 Example Bend, Sampletown.\nInterviewer: When was the order dated?\nCaller: It might have been 2022-10-09, but I cannot confirm that date. I am uncertain.\nCaller: Here is my request: Split the spring break into two equal parts.\nInterviewer: How would those parts be allocated in your proposal?\nCaller: The first half with me and the second half with Fenn.\n",
+  "note_id": "custody_change_holiday_revision",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "58f9550e8c038ad5d9db3434f2bb02e952e1f6cddd6ef9182f459508d9ebec7d",
+  "transcript_sha256": "d075b15ec8ef0db6ce5ce313b979c4f51a194936704e3289b9db3724d8203e97",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Suri Hazel\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"I am Suri Hazel\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"33 Example Bend, Sampletown\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"I currently live at 33 Example Bend, Sampletown\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Fenn Hazel\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"Fenn Hazel is the other parent\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"Veda Hazel\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"Veda Hazel born 2010-12-01 is our child\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"prior_order_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2022-10-09\",\n          \"kind\": \"uncertain\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"It might have been 2022-10-09, but I cannot confirm that date. I am uncertain\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Split the spring break into two equal parts\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"Here is my request: Split the spring break into two equal parts\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"parenting_schedule\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"The first half with me and the second half with Fenn\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"The first half with me and the second half with Fenn\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 676,
+    "eval_count": 645,
+    "total_duration": 51547721542,
+    "load_duration": 11696412250,
+    "prompt_eval_duration": 1480034000,
+    "eval_duration": 37681395000
+  },
+  "keep_alive": 0
+}

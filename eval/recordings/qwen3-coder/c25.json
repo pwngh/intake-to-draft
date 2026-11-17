@@ -1,0 +1,27 @@
+{
+  "case_id": "c25",
+  "captured_at": "2026-11-17T20:27:07.688404+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nInterviewer: Is this a new divorce intake?\nCaller: No, a change to our existing parenting arrangement. I am Perri Vale.\nCaller: The other parent is Romi Vale. I live at 62 Example Road, Demo Borough.\nCaller: Please keep the names separate: Lina Vale born 2014-04-02.\nCaller: Then Lila Vale born 2017-05-03. Lina and Lila are different children.\nCaller: The order date is 2023-03-20.\nCaller: My request is: Change pickup because Lina now attends Sample School.\nInterviewer: What timing would you put in the proposed schedule?\nCaller: School pickup on Monday and Wednesday at 15:30.\n",
+  "note_id": "custody_change_school_change",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "b8ff6691d43646ba09d445a8d85d4d1371f89c815a283790b62813493bc18667",
+  "transcript_sha256": "25b680cfd67beb76f0b9bbb148298a221b3d5188ed1b100b25c19c558f8903a2",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Perri Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"I am Perri Vale\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"62 Example Road, Demo Borough\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"I live at 62 Example Road, Demo Borough\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Romi Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"The other parent is Romi Vale\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"Lina Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Lina Vale born 2014-04-02\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-2\",\n      \"assertions\": [\n        {\n          \"value\": \"Lila Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Then Lila Vale born 2017-05-03\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"prior_order_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2023-03-20\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"The order date is 2023-03-20\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Change pickup because Lina now attends Sample School\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"My request is: Change pickup because Lina now attends Sample School\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"parenting_schedule\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"School pickup on Monday and Wednesday at 15:30\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 10,\n              \"quote\": \"School pickup on Monday and Wednesday at 15:30\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 709,
+    "eval_count": 724,
+    "total_duration": 47494565042,
+    "load_duration": 19531509875,
+    "prompt_eval_duration": 1460509000,
+    "eval_duration": 26134674000
+  },
+  "keep_alive": 0
+}

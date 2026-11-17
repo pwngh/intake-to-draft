@@ -1,0 +1,27 @@
+{
+  "case_id": "c37",
+  "captured_at": "2026-11-17T20:34:09.412451+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: My current name is Tuli Birch; I am asking for an adult name change.\nCaller: I request Tuli Dawn.\nCaller: My address is 54 Paper Walk, Alderhaven.\nInterviewer: What is your complete birth date?\nCaller: I think it is 1987-03-04, but that is only a guess. I cannot confirm the date.\nInterviewer: What is your reason for the name request?\nCaller: Use the name my friends call me.\n",
+  "note_id": "adult_name_change_uncertain_birth_date",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "3caffeb82dc49863523eef7b918c321176088e1285db982a086dccba96211896",
+  "transcript_sha256": "b9549a8e3f087426d39b99b41533e2c822ef352160e0f292bf42d73b67e6eb3b",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Tuli Birch\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"My current name is Tuli Birch\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Tuli Dawn\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"I request Tuli Dawn\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"54 Paper Walk, Alderhaven\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"My address is 54 Paper Walk, Alderhaven\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"birth_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"1987-03-04\",\n          \"kind\": \"uncertain\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"I think it is 1987-03-04, but that is only a guess. I cannot confirm the date\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"reason_for_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Use the name my friends call me\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"Use the name my friends call me\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 620,
+    "eval_count": 453,
+    "total_duration": 41226978583,
+    "load_duration": 21822999041,
+    "prompt_eval_duration": 1362362000,
+    "eval_duration": 17882088000
+  },
+  "keep_alive": 0
+}

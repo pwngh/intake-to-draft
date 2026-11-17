@@ -1,0 +1,27 @@
+{
+  "case_id": "c30",
+  "captured_at": "2026-11-17T20:30:51.647683+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Jori Vale. I want a change in communication under an existing parenting arrangement.\nInterviewer: What is your current address?\nCaller: The street part is 14 Lantern Lane.\nCaller: The city part of that same address is Alderhaven.\nCaller: Neri Vale is the other parent, and our child is Sola Vale born 2016-06-26.\nCaller: The existing order date is 2020-11-18.\nCaller: My requested change: Replace telephone discussions with written messages.\nCaller: My contact preference: Use messages after 18:00 and before 20:00.\n",
+  "note_id": "custody_change_communication",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "4e3610f62a1c67d126b94821666f0353eebbc175e5a5b626ae91416204f3fcbb",
+  "transcript_sha256": "ad07de89395a0edd9dfa96e7c7a0870b89461ebd7bdea0d9717e7758e39bd5ec",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Jori Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"I am Jori Vale\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"14 Lantern Lane, Alderhaven\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"The street part is 14 Lantern Lane\"\n            },\n            {\n              \"line\": 5,\n              \"quote\": \"The city part of that same address is Alderhaven\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Neri Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Neri Vale is the other parent\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"Sola Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"our child is Sola Vale\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"2016-06-26\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"born 2016-06-26\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"prior_order_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2020-11-18\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"The existing order date is 2020-11-18\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Replace telephone discussions with written messages\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"My requested change: Replace telephone discussions with written messages\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"contact_preference\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Use messages after 18:00 and before 20:00\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"My contact preference: Use messages after 18:00 and before 20:00\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 667,
+    "eval_count": 750,
+    "total_duration": 32426721709,
+    "load_duration": 6058286334,
+    "prompt_eval_duration": 1313396000,
+    "eval_duration": 24768013000
+  },
+  "keep_alive": 0
+}

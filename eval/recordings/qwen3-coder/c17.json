@@ -1,0 +1,27 @@
+{
+  "case_id": "c17",
+  "captured_at": "2026-11-17T20:22:23.079522+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nInterviewer: Who is asking for the fictional divorce draft?\nCaller: Noa Kite. My spouse is Venn Kite.\nCaller: I live at 64 Sample Lane Demo Borough.\nCaller: We were married on 2011-02-26.\nCaller: Our child is Sola Kite born 2013-12-05.\nCaller: We separated on 2024-08-04.\nCaller: I request this schedule: School nights with Noa Kite and weekends with Venn Kite.\nInterviewer: Do you want to give exact pickup or return times?\nCaller: No, I have not selected those times.\nCaller: Dissolve our marriage.\n",
+  "note_id": "divorce_with_children_school_week",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "a6fd7dc486a6cec53d2c130da9e76f101c1c43904d2d01d83d6f1f7a62ab2f75",
+  "transcript_sha256": "166cd06ef9c371b2f028f15b923348f5d6d86da0afb885a7b9ed0873804d29fa",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Noa Kite\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"Noa Kite\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"64 Sample Lane Demo Borough\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"64 Sample Lane Demo Borough\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Venn Kite\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"Venn Kite\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2011-02-26\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"2011-02-26\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2024-08-04\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"2024-08-04\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Sola Kite\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Sola Kite\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Dissolve our marriage\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 11,\n              \"quote\": \"Dissolve our marriage\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"parenting_schedule\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"School nights with Noa Kite and weekends with Venn Kite\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"School nights with Noa Kite and weekends with Venn Kite\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 713,
+    "eval_count": 691,
+    "total_duration": 44749799875,
+    "load_duration": 13889863292,
+    "prompt_eval_duration": 1373975000,
+    "eval_duration": 29266329000
+  },
+  "keep_alive": 0
+}

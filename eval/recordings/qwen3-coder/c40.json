@@ -1,0 +1,27 @@
+{
+  "case_id": "c40",
+  "captured_at": "2026-11-17T20:36:03.187521+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Adri Zinn and want an adult name change.\nCaller: My current residential address is 59 Demo Road, Alderhaven.\nCaller: This is only a mailing instruction: Send letters to 4 Paper Lane, Sampletown.\nInterviewer: What is your date of birth?\nCaller: 1982-12-14.\nCaller: I request the exact name Adri Venn.\nInterviewer: Why do you want that name?\nCaller: Use the surname I have chosen.\nCaller: The mailing destination does not replace my residential address.\n",
+  "note_id": "adult_name_change_mailing_address",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "2fa8e226bd3ee12ca57d27a4b5110f3d761f8c09c22fc69256aa0bc020b0a56b",
+  "transcript_sha256": "5a93a8d02ad06fc893f7e6e5fb28b2ce3b2ce109be3d1aaf0db56a26fbf1439a",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Adri Zinn\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"I am Adri Zinn\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"59 Demo Road, Alderhaven\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"My current residential address is 59 Demo Road, Alderhaven\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"birth_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"1982-12-14\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"1982-12-14\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Adri Venn\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"I request the exact name Adri Venn\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"reason_for_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Use the surname I have chosen\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"Use the surname I have chosen\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"address_note\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Send letters to 4 Paper Lane, Sampletown. This is only a mailing instruction: Send letters to 4 Paper Lane, Sampletown. The mailing destination does not replace my residential address.\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"This is only a mailing instruction: Send letters to 4 Paper Lane, Sampletown\"\n            },\n            {\n              \"line\": 10,\n              \"quote\": \"The mailing destination does not replace my residential address\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 653,
+    "eval_count": 590,
+    "total_duration": 41617984250,
+    "load_duration": 18488071625,
+    "prompt_eval_duration": 1293849000,
+    "eval_duration": 21130919000
+  },
+  "keep_alive": 0
+}

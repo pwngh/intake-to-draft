@@ -1,0 +1,27 @@
+{
+  "case_id": "c34",
+  "captured_at": "2026-11-17T20:32:03.744800+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: For an adult name change, I want the name Ari Nook.\nInterviewer: Please give your current name.\nCaller: Rowan Nook. My date of birth is 1996-01-30.\nCaller: My current street address is 29 Paper Terrace.\nCaller: Alderhaven is the city for that address.\nInterviewer: What is your stated reason for requesting the new name?\nCaller: I want a name that fits how I see myself.\n",
+  "note_id": "adult_name_change_chosen_name",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "b0e6b91bc1f61fc6bc24195f7b92466a1bfa56e8c44b79594e75780c4096e781",
+  "transcript_sha256": "fe49a2050309d3ca6758597b2ed39d4790c0f020de3f6a09f2d474eee04927e6",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Rowan Nook\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"Caller: Rowan Nook\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"birth_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"1996-01-30\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"Caller: My date of birth is 1996-01-30\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"29 Paper Terrace, Alderhaven\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Caller: My current street address is 29 Paper Terrace\"\n            },\n            {\n              \"line\": 6,\n              \"quote\": \"Caller: Alderhaven is the city for that address\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Ari Nook\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"Caller: For an adult name change, I want the name Ari Nook\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"reason_for_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"I want a name that fits how I see myself\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"Caller: I want a name that fits how I see myself\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 613,
+    "eval_count": 490,
+    "total_duration": 35896907917,
+    "load_duration": 17408321959,
+    "prompt_eval_duration": 1299852000,
+    "eval_duration": 16832206999
+  },
+  "keep_alive": 0
+}

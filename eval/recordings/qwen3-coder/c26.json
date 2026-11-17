@@ -1,0 +1,27 @@
+{
+  "case_id": "c26",
+  "captured_at": "2026-11-17T20:27:54.054365+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: The current visits run on Saturday from 16:00 to 20:00. That is the old arrangement.\nCaller: I am Bera Moss and the other parent is Tovin Moss.\nCaller: My home address is 9 Lantern Court, Sampletown.\nCaller: Our child is Elin Moss born 2016-11-28.\nCaller: The existing order is dated 2021-01-19.\nCaller: This is the change I want: Change visits because I now work Saturday evenings.\nInterviewer: Please state the replacement schedule, rather than the current one.\nCaller: Sunday visits from 10:00 to 16:00.\n",
+  "note_id": "custody_change_work_shift",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "23cc39600a27e739248e7383f645f1d9c0aeb02b9b53d494688eac2bb84fa166",
+  "transcript_sha256": "42f2b5d5043f4378df3800eac03ac90633d3b7c7d6ef093f6563f5967d639724",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Bera Moss\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"I am Bera Moss\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"9 Lantern Court, Sampletown\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"My home address is 9 Lantern Court, Sampletown\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Tovin Moss\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"the other parent is Tovin Moss\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"Elin Moss\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"Our child is Elin Moss\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"2016-11-28\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"born 2016-11-28\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"prior_order_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2021-01-19\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"The existing order is dated 2021-01-19\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Change visits because I now work Saturday evenings\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"This is the change I want: Change visits because I now work Saturday evenings\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"parenting_schedule\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Sunday visits from 10:00 to 16:00\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 9,\n              \"quote\": \"Sunday visits from 10:00 to 16:00\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 686,
+    "eval_count": 726,
+    "total_duration": 45735235417,
+    "load_duration": 18513547167,
+    "prompt_eval_duration": 1798556000,
+    "eval_duration": 24474996000
+  },
+  "keep_alive": 0
+}
