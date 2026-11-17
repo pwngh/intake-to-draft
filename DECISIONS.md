@@ -26,7 +26,7 @@ The documentation describes checkpointed interrupts and compatible SDK/server ge
 ## Pull request sequence
 
 1. HTTP intake validation and initial reference search. Merged by the owner.
-2. Core workflow, split at the requested review-size boundary: extraction/citations and retrieval first (PR 2a), then routing, review, and fill (PR 2b). Council reviews the extraction slice with the five attack questions; the remaining gates need review on their actual implementation, not an inherited approval.
+2. Core workflow, split at the requested review-size boundary: extraction/citations and retrieval first (PR 2a), then routing, review, and fill (PR 2b, current piece). Council reviews the extraction slice with the five attack questions; the remaining gates need review on their actual implementation, not an inherited approval.
 3. Live local model adapter and self-hosted Langfuse, with tracing optional. No hosted account requirement is acceptable.
 4. Forty fact-sheet-derived cases: ten development and thirty held out. Report four metrics on the thirty only, record draft approvers, and finish the five-minute demo.
 
@@ -55,3 +55,16 @@ GitHub CLI is authenticated as `pwngh`. Antigravity is invoked by its installed 
 - Keep `missing` as required fields without a usable proposal. The accompanying field history and issues explain why; adding a second list of unresolved fields would duplicate that information.
 - Declare LangSmith directly because replay imports its tracing-off context. Its exact version was already in the installed lock file; the lock was produced by `pip freeze --exclude-editable` before optional retrieval packages were installed.
 - Check requirement coverage across every emitted subject. If either child's evidence is unresolved, `children` remains missing even when the sibling has a usable proposal; completely omitted subjects still require human detection.
+
+## Human review and drafting
+
+- Use actual LangGraph interrupts and SQLite checkpoints for `extract → check → route → review → route → fill`. Re-read the [interrupt](https://docs.langchain.com/oss/python/langgraph/interrupts) and [checkpoint](https://reference.langchain.com/python/langgraph/checkpoints) documentation on November 17, 2026; pin `langgraph-checkpoint-sqlite==3.1.3` alongside LangGraph 1.2.22. The optional SQLite vector-store dependency is upstream packaging; this workflow does not use it for retrieval.
+- Keep checkpoint state to JSON-compatible values and restrict the serializer's module allowlist. The immutable extraction report and separate decision log preserve model history across restarts.
+- Route every field to a person, including apparently supported proposals. Accept selects the stored proposal; correction requires quoted transcript evidence and a reason; rejection removes the usable decision and blocks required coverage. Missing source facts need a revised intake, not an uncited override.
+- Preserve every emitted child subject and permit a reviewer to add an omitted child when its transcript evidence exists. The final reviewer must inspect the whole source for omissions and misattribution; lexical checks cannot certify completeness.
+- Require a separate final approval at the current revision, recording approver identity and the transcript/draft hashes. Seal approved runs so later edits cannot silently invalidate an already issued draft.
+- Serialize local revision checks and graph resumes with a file lock across processes. Reject stale revisions. Generate event times outside the resumable node, append audit updates only after resume, and recover an unfinished fill from its checkpoint without repeating the approval event.
+- Use the local API documentation for manual review. Demo decisions are explicitly scripted; reviewer identities are self-declared because this loopback demonstration has no authentication. The SQLite owner can modify the database, so the log is persistent rather than tamper-proof.
+- Write an original plain-text fictional petition with a value-to-lines table. Quote values as data so embedded newlines or template-looking text cannot create new document sections. Revalidate evidence at fill and preserve earlier assertions in the output table.
+- Exclude run IDs, timestamps, and identities from petition text. Identical source and selected values produce identical text; provenance and audit metadata separately record who reviewed and approved it.
+- Council was completed on PR 2a. This slice receives its own Sol-loop review of the actual human/draft gates; the earlier council approval does not cover new behavior.
