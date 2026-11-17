@@ -11,10 +11,12 @@ dependencies = [
   "fastapi==0.163.1",
   "pydantic==2.14.3",
   "uvicorn==0.54.0",
+  "langgraph==1.2.22",
 ]
 
 [project.optional-dependencies]
 dev = ["httpx==0.28.1", "pytest==9.2.0"]
+retrieval = ["onnxruntime==1.32.0", "tokenizers==0.23.3", "numpy==2.5.5"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

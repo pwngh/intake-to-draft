@@ -1,0 +1,23 @@
+{
+  "id": "corrected-name-change",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "22d9599bf4703f5e63e11991b1d23525203c4d9a144b4dafd36ce12ff9a12843",
+  "transcript_sha256": "0d7589b39f187ac24e2a4d38d67ebfb795be0a5f61b95221bdebbed54ea1282b",
+  "transcript": "Interviewer: This is the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: My current name is Mara Vale.\nCaller: I request a name change to Mara Wren.\nCaller: My birth date is 1991-06-18.\nCaller: My street address is 18 Example Lane.\nCaller: The city is Sampletown.\nCaller: I want a name that I chose for myself.\nCaller: Correction: my birth date is 1991-06-19, not the date I said earlier.\n",
+  "note_id": "adult_name_change",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "recorded_at": "2026-11-17T17:46:45.257375Z",
+  "options": {
+    "temperature": 0,
+    "seed": 17,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "usage": {
+    "prompt_eval_count": 605,
+    "eval_count": 543,
+    "total_duration": 78224197542
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Mara Vale\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"My current name is Mara Vale.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Mara Wren\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"I request a name change to Mara Wren.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"birth_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"1991-06-18\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"My birth date is 1991-06-18.\"\n            }\n          ]\n        },\n        {\n          \"value\": \"1991-06-19\",\n          \"kind\": \"correction\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"Correction: my birth date is 1991-06-19, not the date I said earlier.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"18 Example Lane, Sampletown\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 5,\n              \"quote\": \"My street address is 18 Example Lane.\"\n            },\n            {\n              \"line\": 6,\n              \"quote\": \"The city is Sampletown.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"reason_for_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"I want a name that I chose for myself.\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"I want a name that I chose for myself.\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+}
