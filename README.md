@@ -6,6 +6,6 @@ This repository is currently a bootstrap only; it contains no working service, l
 
 Implementation has not started. There is no runnable demo or test command yet.
 
-Work stopped on local branch `codex/intake-draft-bootstrap` under the requested unavailable-model rule: TStack is installed, but Council's non-OpenAI review providers are not configured. See [DECISIONS.md](DECISIONS.md) for the verified setup, documentation read, and planned pull request pieces.
+Work stopped on local branch `codex/intake-draft-bootstrap` under the requested unavailable-model rule: TStack is installed and Claude connectivity is verified, but Council's Gemini provider is not configured. See [DECISIONS.md](DECISIONS.md) for the verified setup, documentation read, and planned pull request pieces.
 
 Portfolio project for Preston Neal.
