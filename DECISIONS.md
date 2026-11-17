@@ -90,3 +90,9 @@ GitHub CLI is authenticated as `pwngh`. Antigravity is invoked by its installed 
 - Release the local model after each request with Ollama `keep_alive: 0`. Leaving the roughly 19.5 GB loaded model beside Docker on a 32 GB laptop caused database and storage stalls; releasing it trades reload time for memory available during review and trace export.
 - Preserve the already validated HTTP transcript when starting a live run; repeating the terminal-newline normalization would remove a real final blank line. Bound citation line numbers and returned usage before checkpoint serialization; the citation bound is a runtime validator so frozen recording prompts remain unchanged.
 - Reject inherited OTLP credential headers when tracing is requested, disable implicit SDK media uploads for text-only observations, and reject redirects during authenticated local stack verification.
+
+## Forty-case evaluation
+
+- Author fact sheets before transcripts. Use one invented case per existing fictional requirement note: ten per petition type, with ten development cases and thirty held out. Freeze inputs, gold evidence, scoring rules, and prompt before the holdout capture.
+- Evaluate extraction with the case's specified fictional note. This isolates the four model metrics from retrieval, which retains its separate thirty-query benchmark. No fact sheets or gold evidence enter model messages.
+- Use recorded local outputs for repeatable, keyless evaluation. Live capture is explicit, uses the same pinned local adapter, and never replaces an existing capture or silently changes models.
