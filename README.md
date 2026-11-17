@@ -16,7 +16,7 @@ From a clean checkout:
 ./scripts/demo
 ```
 
-The command creates `.venv`, installs `requirements.lock`, forces tracing off, runs the HTTP review demonstration, then replays and checks the thirty held-out captures. It removes the temporary server/database and keeps evaluation JSON artifacts under `.runtime/evaluation/holdout/`. Set `PYTHON=/path/to/python3.12` if that interpreter is not on your PATH.
+The command creates `.venv`, installs `requirements.lock`, forces tracing off, runs the HTTP review demonstration, then replays the original thirty held-out captures and the separate ten-case child development comparison. It removes the temporary server/database and keeps evaluation JSON artifacts under `.runtime/evaluation/holdout/` and `.runtime/child-extraction/`. Set `PYTHON=/path/to/python3.12` if that interpreter is not on your PATH.
 
 To keep the service running:
 
@@ -40,7 +40,7 @@ Open [the local API documentation](http://127.0.0.1:8000/docs). The service bind
 
 ## Demo script
 
-`./scripts/demo` makes real HTTP requests to validate and number `examples/intake.json`, retrieve the fictional name-change note, and replay extraction. It then performs explicitly **scripted** reviewer actions: accepts the corrected birth date, rejects the address, proves approval is blocked, corrects the address using lines 5 and 6, and approves the completed draft. It prints the source, citation history, review audit, draft, and filled-value provenance table. A second run must produce identical draft text and provenance. The wrapper then runs the recorded holdout evaluation with `--check`, verifying its scores and draft hashes against the committed report.
+`./scripts/demo` makes real HTTP requests to validate and number `examples/intake.json`, retrieve the fictional name-change note, and replay extraction. It then performs explicitly **scripted** reviewer actions: accepts the corrected birth date, rejects the address, proves approval is blocked, corrects the address using lines 5 and 6, and approves the completed draft. It prints the source, citation history, review audit, draft, and filled-value provenance table. A second run must produce identical draft text and provenance. The wrapper then checks the original recorded holdout scores and draft hashes, followed by the separate child development comparison. Neither replay calls a model.
 
 The scripted reviewers are demonstration actors, not a claim that a person inspected the draft. A person uses the same review endpoint through the local API documentation.
 
@@ -114,17 +114,19 @@ One command runs the tests:
 ./scripts/test
 ```
 
-The suite covers source preservation, adversarial extraction, review/draft gates, competing submissions, crash recovery, local model identity, tracing failures, and the scoring rules. All forty authored cases exercise named review using labeled synthetic test payloads; actual model captures are replayed separately. CI runs tests and the recorded HTTP/holdout demo on Python 3.12 without a model, Docker, or key.
+The suite covers source preservation, adversarial extraction, review/draft gates, competing submissions, crash recovery, local model identity, tracing failures, and the scoring rules. All forty authored cases exercise named review using labeled synthetic test payloads; actual model captures are replayed separately. CI runs tests and the recorded HTTP/holdout/development demo on Python 3.12 without a model, Docker, or key.
 
-## Held-out extraction evaluation
+## Original held-out extraction evaluation
 
 The corpus contains **forty invented cases**, ten each for divorce without children, divorce with children, custody changes, and adult name changes. [Fact sheets](eval/fact_sheets) were written before [transcripts and cited expected evidence](eval/cases). Ten cases are development diagnostics; thirty are held out. The split, data, prompt, model settings, and scorer are recorded in [the frozen manifest](eval/manifest.json) before holdout inference. Dates corrected later, missing addresses, similar child names, uncertain facts, omitted child details, and caller prompt injection are included.
 
-The published numbers use the **thirty held-out cases only**, with each case's specified fictional requirement note. They measure extraction/checking under known requirements, not automatic note selection or the whole live retrieval pipeline. Retrieval has its own benchmark below. Only local Qwen3-Coder is scored; the older malformed Llama response is a failure fixture, not a model comparison.
+These unchanged `extract-v2` numbers use the **thirty held-out cases only**, with each case's specified fictional requirement note. They measure extraction/checking under known requirements, not automatic note selection or the whole live retrieval pipeline. Retrieval has its own benchmark below. Only local Qwen3-Coder is scored; the older malformed Llama response is a failure fixture, not a model comparison.
 
 | Local model | Field accuracy | Citation accuracy | Missing-fact review rate | Escaped-guess rate |
 | --- | --- | --- | --- | --- |
 | `qwen3-coder:latest` (pinned digest above) | 36.68% (73/199) | 91.77% (212/231) | 60.00% (6/10) | 10.98% (9/82) |
+
+The newer child prompt below has no holdout measurement.
 
 Sixteen of thirty outputs failed the strict extraction schema and were rejected atomically; no inference request failed. After scoring, scripted fact-sheet review produced twenty approved drafts and left ten unresolved cases blocked. Those corrected drafts do not improve the model scores.
 
@@ -157,6 +159,32 @@ Scripted review then accepts exact supported values, corrects differences using 
 
 `./scripts/evaluate --live --split holdout` uses the pinned local model only when a capture is absent; it never overwrites one. A normal checkout already contains the captures, so that command reuses them and does not imply new inference. There is intentionally no force-recapture option. A new experiment needs a separate checkout and deliberately separate capture storage, with its own frozen protocol. No hosted account or paid key is used.
 
+## Child extraction development follow-up
+
+The live API now uses `extract-children-v1` when the selected fictional note requires children. It asks for one complete name/birth-details record per child and groups earlier statements and corrections under the same child subject. The local model, JSON schema, citation checker, scoring rules, and review/approval gates are unchanged. Notes without a children requirement still use `extract-v2`; the original recorded workflow remains available unchanged.
+
+This change uses **only the ten development cases**: c01, c02, c03, c11, c12, c13, c21, c22, c31, and c32. Five involve children and contain seven known child values, including similar sibling names and one corrected birth date. Five fresh responses use the new prompt; the five non-child baseline outputs are reused unchanged on both sides. The [development manifest](eval/child_extraction/manifest.json) fixes the inputs and implementation, and [raw child captures](eval/child_extraction/recordings) retain their exact output and prompt/model provenance.
+
+| Development measure | Original v2 | Child prompt v1 |
+| --- | --- | --- |
+| Complete child values | 0/7 | 7/7 |
+| Supported correction-history assertions | 0/2 | 2/2 |
+| Field accuracy (all fields) | 43.55% (27/62) | 87.10% (54/62) |
+| Citation accuracy | 95.83% (69/72) | 95.59% (65/68) |
+| Missing-fact review rate | 100.00% (2/2) | 100.00% (2/2) |
+| Escaped-guess rate | 3.57% (1/28) | 1.82% (1/55) |
+| Malformed outputs | 5/10 | 1/10 |
+
+All five new child outputs pass the strict schema; the remaining malformed case c01 is an unchanged non-child baseline. Avoiding whole-output rejection accounts for much of the all-field gain. Case c12 still includes an instruction in the requested outcome, and c22 retains an unsupported order-date history that the checker leaves unresolved. These seven child values are known facts; missing or uncertain child details are not measured by this development subset.
+
+The [separate report](eval/child_extraction/report.json) measures proposals before any review or correction. It includes per-case scores, citation histories, and pending review queues. These runs issue no drafts or approvals. The child metric counts complete checked child values using the original token matching; the correction check requires the earlier and corrected assertions to remain supported and grouped under one child.
+
+```sh
+./scripts/evaluate-children --check
+```
+
+The runner accepts only the fixed ten-case development comparison. `--live` can capture the five child cases only when their files are absent; existing captures are reused and never replaced. There is no holdout selector or implicit fallback. The original holdout report, captures, manifest, and replay implementation remain unchanged; regression checks replay that original version only. A new untouched set is needed to evaluate the child prompt beyond development data.
+
 ## Retrieval measurement
 
 | Retrieval method | Right note in top three | Local model / index |
@@ -187,4 +215,4 @@ The forty-case set is small and authored for this project; it does not establish
 
 The same saved transcript, selected note, and reviewed values produce byte-identical petition text. Live extraction uses seed 17 and temperature 0, but repeated inference can vary across hardware or runtimes; identical live drafts are not guaranteed. Different human choices can also change the draft; reviewer changes affect provenance, and run IDs, audit times, and approval metadata intentionally differ outside the text.
 
-With two more days, I would improve constrained child extraction using development cases, then obtain an independent human audit and a new held-out set before making broader claims. See [DECISIONS.md](DECISIONS.md) for the choices and split.
+With two more days, I would obtain an independent human audit and a new held-out set for the child prompt, including incomplete and uncertain child details, before making broader claims. See [DECISIONS.md](DECISIONS.md) for the choices and split.

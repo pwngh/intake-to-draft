@@ -1,0 +1,27 @@
+{
+  "case_id": "c21",
+  "captured_at": "2026-11-17T21:09:24.057931+00:00",
+  "transcript": "Interviewer: This intake is for the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I want to change an existing parenting arrangement, not start a divorce.\nCaller: My name is Tessa Flint.\nCaller: I live at 21 Example Row, Alderhaven.\nInterviewer: Who is the other parent?\nCaller: Oren Flint. Our child is Tavi Flint born 2014-04-09.\nCaller: The existing order is dated 2021-06-11.\nCaller: My request is this: Move the weekly visit from Tuesday to Thursday.\n",
+  "note_id": "custody_change",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-children-v1",
+  "prompt_sha256": "c9c0890cbfc3735f031bfc1bec8ce599e34765774a1ceaab52e3374f1bf3a2fa",
+  "transcript_sha256": "0fffe1b4ab5b9a97f4b6d5bf6e1935c93ed9f265887b4ec13b7fcc73cd43d8c2",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Tessa Flint\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"My name is Tessa Flint.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"21 Example Row, Alderhaven\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"I live at 21 Example Row, Alderhaven.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Oren Flint\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Oren Flint. Our child is Tavi Flint born 2014-04-09.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"Tavi Flint born 2014-04-09\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Our child is Tavi Flint born 2014-04-09.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"prior_order_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2021-06-11\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"The existing order is dated 2021-06-11.\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_change\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Move the weekly visit from Tuesday to Thursday.\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"My request is this: Move the weekly visit from Tuesday to Thursday.\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 1137,
+    "eval_count": 569,
+    "total_duration": 55677776250,
+    "load_duration": 19647788708,
+    "prompt_eval_duration": 2686218000,
+    "eval_duration": 33116667999
+  },
+  "keep_alive": 0
+}
