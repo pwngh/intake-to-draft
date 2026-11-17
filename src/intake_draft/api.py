@@ -1,4 +1,4 @@
-"""Local demonstration boundary; model recordings are replayed without inference."""
+"""Local API for recorded or live extraction, human review, and fictional drafts."""
 
 import json
 import os
@@ -7,6 +7,7 @@ from importlib.resources import files
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from pydantic import Field, field_validator
 
 from intake_draft.contracts import (
     NumberedTranscript,
@@ -17,6 +18,8 @@ from intake_draft.contracts import (
 from intake_draft.references import ReferenceIndex
 from intake_draft.extraction import JURISDICTION, citation_table, replay_record
 from intake_draft.workflow import InvalidReview, ReviewConflict, ReviewRequest, ReviewService, RunNotFound
+from intake_draft.local_model import DEFAULT_MODEL, DEFAULT_DIGEST, ModelUnavailable
+from intake_draft.tracing import tracer_from_env
 
 app = FastAPI(
     title="Intake to draft demonstration",
@@ -42,7 +45,7 @@ async def validation_error(_request: Request, exc: RequestValidationError) -> JS
 
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "demonstration": True, "stage": "review-and-draft"}
+    return {"status": "ok", "demonstration": True, "stage": "local-model-and-tracing"}
 
 
 @app.post("/intakes/validate", response_model=NumberedTranscript)
@@ -64,7 +67,29 @@ def replay_extraction() -> dict:
 
 
 def review_service() -> ReviewService:
-    return ReviewService(os.environ.get("INTAKE_REVIEW_DB", ".runtime/review.sqlite"))
+    return ReviewService(os.environ.get("INTAKE_REVIEW_DB", ".runtime/review.sqlite"),
+                         tracer=tracer_from_env(), embedding_dir=os.environ.get("INTAKE_EMBEDDING_DIR", ".runtime/minilm"),
+                         model_settings={"base_url": os.environ.get("INTAKE_OLLAMA_URL", "http://127.0.0.1:11434"),
+                                         "model": DEFAULT_MODEL, "expected_digest": DEFAULT_DIGEST})
+
+
+class LocalRunRequest(TranscriptRequest):
+    query: str = Field(min_length=1, max_length=1_000)
+
+    @field_validator("query")
+    @classmethod
+    def valid_query(cls, value):
+        return SearchRequest(query=value).query
+
+
+@app.exception_handler(ModelUnavailable)
+async def local_unavailable(_request: Request, _exc: Exception) -> JSONResponse:
+    return JSONResponse(status_code=503, content={"detail": "local model or embedding dependency unavailable; no fallback used"})
+
+
+@app.post("/runs", status_code=201)
+def start_local_run(request: LocalRunRequest) -> dict:
+    return review_service().create_live(request, request.query)
 
 
 @app.exception_handler(ReviewConflict)

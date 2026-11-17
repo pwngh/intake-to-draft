@@ -8,9 +8,9 @@ from typing import Literal, TypedDict
 
 from langgraph.graph import END, START, StateGraph
 from langsmith import tracing_context
-from pydantic import Field, ValidationError
+from pydantic import Field, ValidationError, field_validator
 
-from intake_draft.contracts import NumberedTranscript, StrictModel, TranscriptRequest, number_transcript
+from intake_draft.contracts import MAX_LINES, NumberedTranscript, StrictModel, TranscriptRequest, number_transcript
 
 JURISDICTION = "Republic of Alderhaven — Fictional Demonstration Jurisdiction"
 PROMPT_VERSION = "extract-v2"
@@ -19,6 +19,14 @@ PROMPT_VERSION = "extract-v2"
 class Citation(StrictModel):
     line: int = Field(ge=1)
     quote: str = Field(min_length=1, max_length=2_000)
+
+    @field_validator("line")
+    @classmethod
+    def source_line_limit(cls, value):
+        # Runtime bound keeps the frozen recording's prompt/schema unchanged.
+        if value > MAX_LINES:
+            raise ValueError("citation exceeds the source line limit")
+        return value
 
 
 class Assertion(StrictModel):

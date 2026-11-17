@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+"""Run only this checkout's local Langfuse demonstration; preserve data on down."""
+
+import argparse
+import base64
+import fcntl
+import hashlib
+import json
+import os
+from pathlib import Path
+import secrets
+import shutil
+import subprocess
+import urllib.request
+
+ROOT = Path(__file__).resolve().parent.parent
+RUNTIME = ROOT / ".runtime"
+BASE_URL = "http://127.0.0.1:13000"
+PROJECT_ID = "intake-demo"
+
+
+def private_write(path, text):
+    descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+    with os.fdopen(descriptor, "w") as handle:
+        handle.write(text)
+    path.chmod(0o600)
+
+
+def configuration(directory=RUNTIME):
+    directory.mkdir(parents=True, exist_ok=True)
+    with (directory / "langfuse.init.lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        env_file = directory / "langfuse.env"
+        if env_file.exists():
+            values = dict(line.split("=", 1) for line in env_file.read_text().splitlines() if line)
+        else:
+            values = {key: secrets.token_hex(32) for key in (
+                "POSTGRES_PASSWORD", "CLICKHOUSE_PASSWORD", "REDIS_PASSWORD", "MINIO_PASSWORD",
+                "SALT", "ENCRYPTION_KEY", "NEXTAUTH_SECRET", "LANGFUSE_LOGIN_PASSWORD")}
+            values.update(LANGFUSE_PUBLIC_KEY="pk-lf-" + secrets.token_hex(16),
+                          LANGFUSE_SECRET_KEY="sk-lf-" + secrets.token_hex(32),
+                          LANGFUSE_LOGIN_EMAIL="reviewer@alderhaven.invalid")
+            private_write(env_file, "".join(f"{key}={value}\n" for key, value in values.items()))
+        client = {"base_url": BASE_URL, "public_key": values["LANGFUSE_PUBLIC_KEY"],
+                  "secret_key": values["LANGFUSE_SECRET_KEY"], "project_id": PROJECT_ID}
+        private_write(directory / "langfuse-client.json", json.dumps(client, indent=2) + "\n")
+        return values, client
+
+
+def compose_command():
+    if subprocess.run(["docker", "compose", "version"], capture_output=True).returncode == 0:
+        executable = ["docker", "compose"]
+    elif shutil.which("docker-compose"):
+        executable = ["docker-compose"]
+    else:
+        raise RuntimeError("Docker Compose is required")
+    project = "intake-draft-langfuse-" + hashlib.sha256(str(ROOT).encode()).hexdigest()[:8]
+    return executable + ["--project-name", project, "--env-file", str(RUNTIME / "langfuse.env"),
+                         "--file", str(ROOT / "infra/langfuse.compose.yml")]
+
+
+class NoRedirects(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+def verify_project(client):
+    token = base64.b64encode(f"{client['public_key']}:{client['secret_key']}".encode()).decode()
+    request = urllib.request.Request(BASE_URL + "/api/public/projects", headers={"Authorization": "Basic " + token})
+    # Local traffic must not use environment-configured proxies.
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), NoRedirects())
+    with opener.open(request, timeout=10) as response:
+        result = json.load(response)
+    if not any(project["id"] == PROJECT_ID for project in result["data"]):
+        raise RuntimeError("local demo project was not initialized")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("action", choices=("up", "down", "status"))
+    action = parser.parse_args().action
+    if action != "up" and not (RUNTIME / "langfuse.env").exists():
+        print("Local Langfuse is not initialized; run ./scripts/langfuse up.")
+        return
+    values, client = configuration()
+    command = compose_command()
+    environment = {key: value for key, value in os.environ.items() if key not in values}
+    arguments = ["up", "--detach", "--wait", "--wait-timeout", "240"] if action == "up" else ["down"] if action == "down" else ["ps"]
+    subprocess.run(command + arguments, env=environment, check=True)
+    if action == "up":
+        verify_project(client)
+        print(f"Local Langfuse is ready: {BASE_URL}/project/{PROJECT_ID}/traces")
+        print("Local-only login: .runtime/langfuse.env; SDK configuration: .runtime/langfuse-client.json")
+        print("No cloud account or external API key is used. Down preserves local data volumes.")
+
+
+if __name__ == "__main__":
+    main()

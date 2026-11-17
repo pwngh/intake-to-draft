@@ -14,14 +14,10 @@ import urllib.request
 
 from intake_draft.references import (
     EMBEDDING_INDEX, EMBEDDING_MODEL, EMBEDDING_REVISION,
-    EmbeddingIndex, KeywordIndex, LocalMiniLM, STOPWORDS,
+    EmbeddingIndex, KeywordIndex, LocalMiniLM, STOPWORDS, MODEL_FILES,
 )
 
 ROOT = Path(__file__).resolve().parent.parent
-MODEL_FILES = {
-    "model.onnx": ("onnx/model.onnx", "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452"),
-    "tokenizer.json": ("tokenizer.json", "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"),
-}
 
 
 def sha256(path: Path) -> str:
