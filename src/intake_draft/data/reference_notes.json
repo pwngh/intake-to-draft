@@ -1,0 +1,58 @@
+[
+  {
+    "id": "divorce_without_children",
+    "title": "Divorce without children",
+    "demonstration": true,
+    "body": "Invented demonstration note, not legal guidance. Fictional case type: divorce without children. Use this sample checklist when the transcript explicitly says no children. For this demo, collect the petitioner's name and address, the respondent's name, marriage date, separation date, and requested outcome. These are invented template requirements, not court requirements.",
+    "required_fields": [
+      "petitioner_name",
+      "petitioner_address",
+      "respondent_name",
+      "marriage_date",
+      "separation_date",
+      "requested_outcome"
+    ]
+  },
+  {
+    "id": "divorce_with_children",
+    "title": "Divorce with children",
+    "demonstration": true,
+    "body": "Invented demonstration note, not legal guidance. Fictional case type: divorce with children. Use this sample checklist when the transcript describes children of the marriage. For this demo, collect the petitioner's name and address, the respondent's name, marriage date, separation date, each child's name and birth date, and requested outcome. Keep each child in a separate record, even when names are similar. These are invented template requirements, not court requirements.",
+    "required_fields": [
+      "petitioner_name",
+      "petitioner_address",
+      "respondent_name",
+      "marriage_date",
+      "separation_date",
+      "children",
+      "requested_outcome"
+    ]
+  },
+  {
+    "id": "custody_change",
+    "title": "Custody change",
+    "demonstration": true,
+    "body": "Invented demonstration note, not legal guidance. Fictional case type: custody change or custody modification. Use this sample checklist for a requested change to an existing parenting arrangement. For this demo, collect the petitioner's name and address, the respondent's name, each child's name and birth date, the prior order date, and the requested change. These are invented template requirements, not court requirements.",
+    "required_fields": [
+      "petitioner_name",
+      "petitioner_address",
+      "respondent_name",
+      "children",
+      "prior_order_date",
+      "requested_change"
+    ]
+  },
+  {
+    "id": "adult_name_change",
+    "title": "Adult name change",
+    "demonstration": true,
+    "body": "Invented demonstration note, not legal guidance. Fictional case type: adult name change. Use this sample checklist when an adult wants a different name. For this demo, collect the petitioner's current name, address, birth date, requested new name, and reason for the change. These are invented template requirements, not court requirements.",
+    "required_fields": [
+      "petitioner_name",
+      "petitioner_address",
+      "birth_date",
+      "requested_name",
+      "reason_for_change"
+    ]
+  }
+]
