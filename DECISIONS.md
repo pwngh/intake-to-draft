@@ -106,3 +106,16 @@ GitHub CLI is authenticated as `pwngh`. Antigravity is invoked by its installed 
 - Preserve the first thirty holdout responses unchanged. Sixteen fail the extraction schema; the injection case passes the lexical checker with an invented address. Publish these failures without tuning the prompt or scorer after capture.
 - Make the default demo replay and compare the full holdout report after the HTTP review example. It needs neither inference nor Docker; the five-minute walkthrough starts after package installation.
 - Keep post-review success separate from model quality. Scripted evidence-based corrections produce twenty holdout drafts with named test approvers; ten unresolved cases remain blocked. This is regression evidence, not an independent human evaluation.
+
+## Development-only child extraction follow-up
+
+- Tune only the ten existing development cases. The five child-bearing cases expose split name/date facts, duplicate subjects, case-level children, and lost correction history. Do not inspect or recapture the thirty holdout cases for this change.
+- Add `extract-children-v1` as a prompt supplement for notes requiring children. Require complete cited child values, one stable subject per child, and earlier/corrected assertions grouped together. Keep the original strict schema/checker and unmodified model responses; no JSON repair or fact-sheet answers enter inference.
+- Preserve the original evaluation implementation and all its frozen files. The API and live smoke script select the new adapter; archived recorded runs keep the original v2 path. The new adapter delegates transport, digest verification, schema, options, and failure behavior to the existing local adapter.
+- Compare all ten development cases, with five new child captures and the same five non-child captures on both sides. Reusing those outputs reflects the conditional prompt change and avoids presenting unchanged cases as new inference. This is development feedback, not a new holdout score.
+- Re-read [Ollama structured outputs](https://docs.ollama.com/capabilities/structured-outputs) and [chat](https://docs.ollama.com/api/chat) on November 17, 2026. Keep the installed Ollama 0.30.0, pinned Qwen digest, generation settings, and existing JSON schema unchanged; only the child-specific system guidance changes.
+
+- Retain the first five new responses. Complete child values improve from 0/7 to 7/7 and both assertions of the corrected child date are supported in one subject. The remaining requested-outcome error and unsupported order-date history stay visible. Do not infer general accuracy or missing-child robustness from these seven known child values.
+- Extend the one-command demo with the separate development replay. Keep the original holdout replay on v2 and keep its report byte-identical; no new holdout score is computed.
+
+- Protect saved reports from aliased runtime paths. Reject aliased parent directories and atomically replace the runtime file, so symlinks and hard links cannot truncate a committed report. Keep the pre-capture manifest alongside the replay manifest after this output-only fix; prove all measurements and per-case evidence are unchanged without new inference.

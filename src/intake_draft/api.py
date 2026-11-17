@@ -19,6 +19,7 @@ from intake_draft.references import ReferenceIndex
 from intake_draft.extraction import JURISDICTION, citation_table, replay_record
 from intake_draft.workflow import InvalidReview, ReviewConflict, ReviewRequest, ReviewService, RunNotFound
 from intake_draft.local_model import DEFAULT_MODEL, DEFAULT_DIGEST, ModelUnavailable
+from intake_draft.child_extraction import ChildLocalModel
 from intake_draft.tracing import tracer_from_env
 
 app = FastAPI(
@@ -68,6 +69,7 @@ def replay_extraction() -> dict:
 
 def review_service() -> ReviewService:
     return ReviewService(os.environ.get("INTAKE_REVIEW_DB", ".runtime/review.sqlite"),
+                         model_factory=ChildLocalModel,
                          tracer=tracer_from_env(), embedding_dir=os.environ.get("INTAKE_EMBEDDING_DIR", ".runtime/minilm"),
                          model_settings={"base_url": os.environ.get("INTAKE_OLLAMA_URL", "http://127.0.0.1:11434"),
                                          "model": DEFAULT_MODEL, "expected_digest": DEFAULT_DIGEST})

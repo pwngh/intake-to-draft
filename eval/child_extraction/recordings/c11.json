@@ -1,0 +1,27 @@
+{
+  "case_id": "c11",
+  "captured_at": "2026-11-17T21:05:55.370754+00:00",
+  "transcript": "Interviewer: This intake belongs only to the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: I am Rowan Loam and I want a divorce from Eris Loam.\nCaller: My current address is 15 Sample Grove Demo Borough.\nCaller: We married on 2010-06-12.\nCaller: We have one child of this marriage.\nCaller: Our child record is Milo Loam born 2015-03-08.\nCaller: Our separation date is 2024-10-09.\nCaller: Dissolve our marriage.\nInterviewer: The child is listed separately from the two adults.\n",
+  "note_id": "divorce_with_children",
+  "model": "qwen3-coder:latest",
+  "model_digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+  "prompt_version": "extract-children-v1",
+  "prompt_sha256": "d04c1255e56a5946cde20bbea88817c20eef35a4959c693cc248b520ea7717b4",
+  "transcript_sha256": "8e61a925c47a259d8fb848f5cd3e6c1173612f58107041b43c149d1db9b446db",
+  "options": {
+    "seed": 17,
+    "temperature": 0,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "raw_output": "{\n  \"facts\": [\n    {\n      \"field\": \"petitioner_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Rowan Loam\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"Rowan Loam\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"petitioner_address\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"15 Sample Grove Demo Borough\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 3,\n              \"quote\": \"15 Sample Grove Demo Borough\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"respondent_name\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Eris Loam\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 2,\n              \"quote\": \"Eris Loam\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"marriage_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2010-06-12\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 4,\n              \"quote\": \"2010-06-12\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"separation_date\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"2024-10-09\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 7,\n              \"quote\": \"2024-10-09\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"children\",\n      \"subject\": \"child-1\",\n      \"assertions\": [\n        {\n          \"value\": \"Milo Loam born 2015-03-08\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 6,\n              \"quote\": \"Milo Loam born 2015-03-08\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"field\": \"requested_outcome\",\n      \"subject\": \"case\",\n      \"assertions\": [\n        {\n          \"value\": \"Dissolve our marriage\",\n          \"kind\": \"stated\",\n          \"citations\": [\n            {\n              \"line\": 8,\n              \"quote\": \"Dissolve our marriage\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "usage": {
+    "prompt_eval_count": 1171,
+    "eval_count": 617,
+    "total_duration": 73157116292,
+    "load_duration": 34642871917,
+    "prompt_eval_duration": 2983084000,
+    "eval_duration": 34730427000
+  },
+  "keep_alive": 0
+}
