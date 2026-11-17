@@ -128,7 +128,8 @@ def check_output(raw: str, source: NumberedTranscript, note: dict) -> dict:
                 text = source.lines[citation.line - 1].text if citation.line <= len(source.lines) else None
                 start = text.find(citation.quote, quote_ends.get(citation.line, 0)) if text is not None else -1
                 valid &= start >= 0 and bool(citation.quote.strip())
-                quote_ends[citation.line] = start + len(citation.quote)
+                if start >= 0:
+                    quote_ends[citation.line] = start + len(citation.quote)
                 evidence.append({**citation.model_dump(), "source_line": text})
             valid &= value_is_quoted(assertion.value, [c.quote for c in assertion.citations])
             item = {"value": assertion.value, "kind": assertion.kind,
@@ -155,7 +156,8 @@ def check_output(raw: str, source: NumberedTranscript, note: dict) -> dict:
         proposed = candidate if not blocking.intersection(issues) and all(a["kind"] != "uncertain" for a in latest) else None
         report["fields"].append({"field": fact.field, "subject": fact.subject,
                                  "proposed": proposed, "history": history, "issues": issues})
-    present = {f["field"] for f in report["fields"] if f["proposed"] is not None}
+    present = {f["field"] for f in report["fields"]} - {
+        f["field"] for f in report["fields"] if f["proposed"] is None}
     report["missing"] = [field for field in required if field not in present]
     report["fields"].sort(key=lambda field: (field["field"], field["subject"]))
     return report
