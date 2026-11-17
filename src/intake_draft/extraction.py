@@ -122,14 +122,19 @@ def check_output(raw: str, source: NumberedTranscript, note: dict) -> dict:
         history, issues = [], ["human_verification_required"]
         for assertion in fact.assertions:
             evidence, valid = [], bool(assertion.value.strip())
+            quote_ends = {}
             valid &= [c.line for c in assertion.citations] == sorted(c.line for c in assertion.citations)
             for citation in assertion.citations:
                 text = source.lines[citation.line - 1].text if citation.line <= len(source.lines) else None
-                valid &= text is not None and bool(citation.quote.strip()) and citation.quote in text
+                start = text.find(citation.quote, quote_ends.get(citation.line, 0)) if text is not None else -1
+                valid &= start >= 0 and bool(citation.quote.strip())
+                quote_ends[citation.line] = start + len(citation.quote)
                 evidence.append({**citation.model_dump(), "source_line": text})
             valid &= value_is_quoted(assertion.value, [c.quote for c in assertion.citations])
-            history.append({"value": assertion.value, "kind": assertion.kind,
-                            "citations": evidence, "evidence_valid": bool(valid)})
+            item = {"value": assertion.value, "kind": assertion.kind,
+                    "citations": evidence, "evidence_valid": bool(valid)}
+            if item not in history:
+                history.append(item)
         history.sort(key=lambda a: max(c["line"] for c in a["citations"]))
         if not all(a["evidence_valid"] for a in history):
             issues.append("unsupported_evidence")
@@ -141,7 +146,13 @@ def check_output(raw: str, source: NumberedTranscript, note: dict) -> dict:
         latest = [a for a in history if max(c["line"] for c in a["citations"]) == latest_line]
         if len({a["value"] for a in latest}) > 1:
             issues.append("same_line_conflict")
-        proposed = history[-1] if all(a["evidence_valid"] for a in history) and "same_line_conflict" not in issues else None
+        candidate = history[-1]
+        first_line = min(c["line"] for c in candidate["citations"])
+        if any(a["value"] != candidate["value"] and
+               max(c["line"] for c in a["citations"]) >= first_line for a in history[:-1]):
+            issues.append("overlapping_statements")
+        blocking = {"unsupported_evidence", "same_line_conflict", "overlapping_statements"}
+        proposed = candidate if not blocking.intersection(issues) and all(a["kind"] != "uncertain" for a in latest) else None
         report["fields"].append({"field": fact.field, "subject": fact.subject,
                                  "proposed": proposed, "history": history, "issues": issues})
     present = {f["field"] for f in report["fields"] if f["proposed"] is not None}
@@ -192,7 +203,8 @@ def replay_record(record: dict) -> dict:
 def citation_table(report: dict) -> list[dict]:
     return [{"field": field["field"], "subject": field["subject"],
              "value": assertion["value"], "lines": sorted({c["line"] for c in assertion["citations"]}),
-             "evidence": assertion["citations"],
-             "selection": "proposed" if assertion == field["proposed"] else "earlier_or_unresolved",
+             "evidence": assertion["citations"], "evidence_valid": assertion["evidence_valid"],
+             "selection": ("unsupported" if not assertion["evidence_valid"] else
+                           "proposed" if assertion == field["proposed"] else "earlier_or_unresolved"),
              "review_status": "needs_review"}
             for field in report["fields"] for assertion in field["history"]]

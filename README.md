@@ -69,7 +69,7 @@ The successful recording is from local `qwen3-coder:latest`, digest `06c1097efce
 
 ## Citation limits
 
-A value can cite multiple lines. Citations must quote existing source text; the value's words must appear in order across those quotations, allowing punctuation changes. The checker chooses the latest *emitted* assertion by source position and retains earlier ones; same-line contradictions have no selected proposal. Missing fields remain missing, and malformed schemas are rejected without repairing or guessing facts.
+A value can cite multiple lines. Citations must quote existing source text in order, including within a line; the value's words must appear in order across those quotations, allowing punctuation changes. The checker chooses the latest *emitted* assertion by source position and retains earlier ones. Same-line contradictions, overlapping evidence for different values, and a latest uncertain statement have no selected proposal. `missing` lists required fields with no usable proposal; field histories and issues distinguish absent, unsupported, conflicting, and uncertain evidence. Malformed schemas are rejected without repairing or guessing facts.
 
 Location checks do not prove meaning or completeness. A model can quote a negated value or omit a later correction. Every proposal therefore remains `needs_review`, with `approved: false`; there is no draft path in this slice. The next review step must expose the entire source and require human verification before any value reaches a draft. Caller text is placed only in the untrusted user-data message; it cannot supply tools, prompt rules, or approval actions.
 

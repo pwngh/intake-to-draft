@@ -20,7 +20,7 @@ def test_health_identifies_the_limited_demonstration_stage(client):
     assert response.json() == {
         "status": "ok",
         "demonstration": True,
-        "stage": "intake-contract",
+        "stage": "recorded-extraction",
     }
 
 

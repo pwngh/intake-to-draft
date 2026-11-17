@@ -7,7 +7,7 @@ import pytest
 
 from intake_draft.contracts import TranscriptRequest, number_transcript
 from intake_draft.extraction import (
-    PROMPT_VERSION, RecordedModel, build_graph, check_output, messages_for,
+    PROMPT_VERSION, RecordedModel, build_graph, check_output, citation_table, messages_for,
     note_by_id, prompt_hash, replay_record,
 )
 
@@ -144,3 +144,74 @@ def test_real_record_replays_deterministically_into_review_not_approval():
     assert replay_record(record) == report and report["fields"]
     assert report["status"] == "needs_review" and report["approved"] is False
     assert all("human_verification_required" in field["issues"] for field in report["fields"])
+
+
+@pytest.mark.parametrize(("value", "quotes", "supported"), [
+    ("Mara Vale", ["Mara", "Vale"], True),
+    ("Vale Mara", ["Vale", "Mara"], False),
+    ("Mara Vale Vale", ["Mara Vale", "Vale"], False),
+])
+def test_same_line_fragments_must_follow_nonoverlapping_source_order(value, quotes, supported):
+    report = checked("Caller: Mara Vale", [fact("petitioner_name",
+        assertion(value, *((1, quote) for quote in quotes)))])
+    field = report["fields"][0]
+    assert field["history"][0]["evidence_valid"] is supported
+    assert (field["proposed"] is not None) is supported
+
+
+def test_duplicate_assertions_produce_one_proposed_table_row_after_json_roundtrip():
+    statement = assertion("Mara Vale", (1, "Mara Vale"))
+    report = checked("Caller: Mara Vale", [fact("petitioner_name", statement, statement)])
+    assert len(report["fields"][0]["history"]) == 1
+    original = citation_table(report)
+    assert citation_table(json.loads(json.dumps(report))) == original
+    assert len(original) == 1
+    assert original[0]["selection"] == "proposed" and original[0]["evidence_valid"] is True
+
+
+def test_table_distinguishes_unsupported_evidence_from_earlier_supported_history():
+    report = checked("Caller: Mara Vale\nCaller: Mara Wren", [fact("petitioner_name",
+        assertion("Mara Vale", (1, "Mara Vale")),
+        assertion("Invented person", (2, "Invented person")))])
+    earlier, unsupported = citation_table(report)
+    assert earlier["evidence_valid"] is True and earlier["selection"] == "earlier_or_unresolved"
+    assert unsupported["evidence_valid"] is False and unsupported["selection"] == "unsupported"
+    assert report["fields"][0]["proposed"] is None
+
+
+def test_latest_uncertainty_does_not_fall_back_to_an_earlier_certain_value():
+    report = checked("My name is Mara Vale\nPerhaps my name is Mara Wren", [fact(
+        "petitioner_name", assertion("Mara Vale", (1, "Mara Vale")),
+        assertion("Mara Wren", (2, "Mara Wren"), kind="uncertain"))])
+    field = report["fields"][0]
+    assert field["proposed"] is None and "uncertainty" in field["issues"]
+    assert report["missing"] == ["petitioner_name"]
+    assert [item["value"] for item in field["history"]] == ["Mara Vale", "Mara Wren"]
+
+
+@pytest.mark.parametrize("uncertain_first", [True, False])
+def test_uncertainty_on_a_tied_latest_line_prevents_selection_regardless_of_order(uncertain_first):
+    statements = [assertion("Mara Vale", (1, "Mara Vale"), kind="uncertain"),
+                  assertion("Mara Vale", (1, "Mara Vale"))]
+    if not uncertain_first:
+        statements.reverse()
+    report = checked("Perhaps Mara Vale", [fact("petitioner_name", *statements)])
+    assert report["fields"][0]["proposed"] is None
+    assert report["missing"] == ["petitioner_name"]
+
+
+@pytest.mark.parametrize("interleaved", [True, False])
+def test_overlapping_statement_ranges_cannot_claim_a_latest_value(interleaved):
+    if interleaved:
+        text = "Old: 1991-06-18\nCorrection: 1991-06-19\nRepeated year and month: 1991 06"
+        old = assertion("1991-06-18", (1, "1991-06-18"), (3, "1991 06"))
+        new = assertion("1991-06-19", (2, "1991-06-19"), kind="correction")
+    else:
+        text = "Old: 1991-06-18\nShared year and month: 1991 06\nCorrection: 1991-06-19"
+        old = assertion("1991-06-18", (1, "1991-06-18"), (2, "1991 06"))
+        new = assertion("1991-06-19", (2, "1991 06"), (3, "1991-06-19"), kind="correction")
+    report = checked(text, [fact("birth_date", old, new)], ("birth_date",))
+    field = report["fields"][0]
+    assert all(item["evidence_valid"] for item in field["history"])
+    assert field["proposed"] is None and "overlapping_statements" in field["issues"]
+    assert report["missing"] == ["birth_date"]

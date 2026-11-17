@@ -40,7 +40,7 @@ async def validation_error(_request: Request, exc: RequestValidationError) -> JS
 
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "demonstration": True, "stage": "intake-contract"}
+    return {"status": "ok", "demonstration": True, "stage": "recorded-extraction"}
 
 
 @app.post("/intakes/validate", response_model=NumberedTranscript)

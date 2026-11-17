@@ -12,6 +12,7 @@ dependencies = [
   "pydantic==2.14.3",
   "uvicorn==0.54.0",
   "langgraph==1.2.22",
+  "langsmith==0.15.0",
 ]
 
 [project.optional-dependencies]
