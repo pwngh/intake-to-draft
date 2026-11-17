@@ -46,15 +46,30 @@ def main() -> None:
                 notes = response.json()["matches"]
                 assert notes[0]["id"] == "adult_name_change"
                 assert client.post("/intakes/validate", json={"transcript": "  "}).status_code == 422
-                print("DEMONSTRATION ONLY — invented intake and reference requirements.")
+                extraction = client.get("/demo/extraction")
+                extraction.raise_for_status()
+                report = extraction.json()
+                assert report["transcript_sha256"] == first["sha256"]
+                assert report == client.get("/demo/extraction").json()
+                birth = next(field for field in report["fields"] if field["field"] == "birth_date")
+                assert birth["proposed"]["value"] == "1991-06-19"
+                assert [a["value"] for a in birth["history"]] == ["1991-06-18", "1991-06-19"]
+                address = next(field for field in report["fields"] if field["field"] == "petitioner_address")
+                assert [c["line"] for c in address["proposed"]["citations"]] == [5, 6]
+                assert report["status"] == "needs_review" and report["approved"] is False
+                print("DEMONSTRATION ONLY — Republic of Alderhaven, a fictional jurisdiction.")
                 print("Source lines:")
                 for line in first["lines"]:
                     print(f"{line['number']}: {line['text']}")
                 print("Transcript SHA-256:", first["sha256"])
                 print("Candidate reference:", notes[0]["id"])
                 print("Invented required fields:", ", ".join(notes[0]["required_fields"]))
-                print("PASS: HTTP validation, reference retrieval, and repeatability.")
-                print("This slice does not extract facts, review fields, trace models, or produce a draft.")
+                print("Recorded extraction model:", report["recorded_model"])
+                print("Field | Proposed or earlier value | Source lines | Selection")
+                for row in report["provenance_table"]:
+                    print(f"{row['field']} | {row['value']} | {row['lines']} | {row['selection']}")
+                print("PASS: recorded LangGraph extraction, citation history, and repeatability.")
+                print("Every proposal needs human verification. Review actions and draft filling are next.")
         finally:
             process.terminate()
             try:

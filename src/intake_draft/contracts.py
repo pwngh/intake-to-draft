@@ -63,7 +63,7 @@ def number_transcript(request: TranscriptRequest) -> NumberedTranscript:
 
 class SearchRequest(StrictModel):
     query: str = Field(min_length=1, max_length=1_000)
-    limit: int = Field(default=3, ge=1, le=4)
+    limit: int = Field(default=3, ge=1, le=40)
 
     @field_validator("query")
     @classmethod

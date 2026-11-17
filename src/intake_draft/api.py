@@ -1,4 +1,7 @@
-"""Local HTTP boundary; no model calls or persistence in this first slice."""
+"""Local demonstration boundary; model recordings are replayed without inference."""
+
+import json
+from importlib.resources import files
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
@@ -11,10 +14,11 @@ from intake_draft.contracts import (
     number_transcript,
 )
 from intake_draft.references import ReferenceIndex
+from intake_draft.extraction import JURISDICTION, citation_table, replay_record
 
 app = FastAPI(
     title="Intake to draft demonstration",
-    description="Invented material only. Not a legal form or legal advice.",
+    description=f"{JURISDICTION}. Not a legal form or legal advice.",
     version="0.1.0",
 )
 index = ReferenceIndex()
@@ -36,7 +40,7 @@ async def validation_error(_request: Request, exc: RequestValidationError) -> JS
 
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "demonstration": True, "stage": "intake-contract"}
+    return {"status": "ok", "demonstration": True, "stage": "recorded-extraction"}
 
 
 @app.post("/intakes/validate", response_model=NumberedTranscript)
@@ -46,4 +50,12 @@ def validate_intake(request: TranscriptRequest) -> NumberedTranscript:
 
 @app.post("/references/search")
 def search_references(request: SearchRequest) -> dict:
-    return {"demonstration": True, "matches": index.search(request.query, request.limit)}
+    return {"demonstration": True, "backend": "keyword", "matches": index.search(request.query, request.limit)}
+
+
+@app.get("/demo/extraction")
+def replay_extraction() -> dict:
+    record = json.loads(files("intake_draft").joinpath("data/recorded_name_change.json").read_text())
+    report = replay_record(record)
+    return {**report, "recorded_model": record["model"], "model_digest": record["model_digest"],
+            "provenance_table": citation_table(report)}

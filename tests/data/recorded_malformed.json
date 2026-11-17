@@ -1,0 +1,23 @@
+{
+  "id": "corrected-name-change",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "22d9599bf4703f5e63e11991b1d23525203c4d9a144b4dafd36ce12ff9a12843",
+  "transcript_sha256": "0d7589b39f187ac24e2a4d38d67ebfb795be0a5f61b95221bdebbed54ea1282b",
+  "transcript": "Interviewer: This is the Republic of Alderhaven, a fictional demonstration jurisdiction.\nCaller: My current name is Mara Vale.\nCaller: I request a name change to Mara Wren.\nCaller: My birth date is 1991-06-18.\nCaller: My street address is 18 Example Lane.\nCaller: The city is Sampletown.\nCaller: I want a name that I chose for myself.\nCaller: Correction: my birth date is 1991-06-19, not the date I said earlier.\n",
+  "note_id": "adult_name_change",
+  "model": "llama3.2:latest",
+  "model_digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+  "recorded_at": "2026-11-17T17:44:32.044514Z",
+  "options": {
+    "temperature": 0,
+    "seed": 17,
+    "num_ctx": 8192,
+    "num_predict": 4096
+  },
+  "usage": {
+    "prompt_eval_count": 589,
+    "eval_count": 344,
+    "total_duration": 12400068625
+  },
+  "raw_output": "{\"facts\":[{\"field\":\"petitioner_name\",\"subject\":\"case\",\"assertions\":[{\"value\":\"Mara Vale\",\"kind\":\"stated\",\"citations\":[{\"line\":2,\"quote\":\"Caller: My current name is Mara Vale.\"}]},{\"value\":\"Mara Wren\",\"kind\":\"requested\",\"citations\":[{\"line\":3,\"quote\":\"Caller: I request a name change to Mara Wren.\"}]},{\"value\":\"1991-06-18\",\"kind\":\"stated\",\"citations\":[{\"line\":4,\"quote\":\"Caller: My birth date is 1991-06-18.\"}]},{\"value\":\"1991-06-19\",\"kind\":\"correction\",\"citations\":[{\"line\":8,\"quote\":\"Caller: Correction: my birth date is 1991-06-19, not the date I said earlier.\"}]}],\"child-1\":{\"field\":\"requested_name\",\"subject\":\"case\",\"assertions\":[{\"value\":\"Mara Wren\",\"kind\":\"requested\",\"citations\":[{\"line\":3,\"quote\":\"Caller: I request a name change to Mara Wren.\"}]},{\"value\":\"Jules Quill\",\"kind\":\"uncertain\",\"citations\":[]}]}, \"child-2\":{\"field\":\"birth_date\",\"subject\":\"case\",\"assertions\":[{\"value\":\"1991-06-18\",\"kind\":\"stated\",\"citations\":[{\"line\":4,\"quote\":\"Caller: My birth date is 1991-06-18.\"}]},{\"value\":\"1991-06-19\",\"kind\":\"correction\",\"citations\":[{\"line\":8,\"quote\":\"Caller: Correction: my birth date is 1991-06-19, not the date I said earlier.\"}]}]}}"
+}
