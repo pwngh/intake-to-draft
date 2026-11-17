@@ -1,8 +1,8 @@
 # Intake to draft
 
-A local Python service turns an invented family law intake into a reviewed fictional petition draft through LangGraph, using local inference or recorded model output.
-A reviewer accepts, corrects, or rejects each field, and every filled value retains transcript citations and available earlier model assertions.
-A separate approval releases the draft, with reviewer identities and decisions saved in local SQLite.
+Intake to draft is a local Python service that turns an invented family law intake into a reviewed fictional petition draft.
+LangGraph extracts proposed facts, checks their citations, waits for review, and fills the draft after a separate approval.
+On the development cases, complete child values improved from 0/7 to 7/7; these are development results, and the original holdout results stay unchanged.
 
 All examples and requirements belong to the **Republic of Alderhaven — Fictional Demonstration Jurisdiction**, which does not exist. Nothing in the notes represents the law of a real place. They are not court requirements, legal forms, or legal advice. Portfolio project for Preston Neal.
 
@@ -37,6 +37,18 @@ Open [the local API documentation](http://127.0.0.1:8000/docs). The service bind
 | `GET /runs/{run_id}` | Returns the entire numbered source, immutable extraction report, review queue, audit, and approval. |
 | `POST /runs/{run_id}/review` | Applies a named accept/correct/reject decision or a separate final approval at the expected revision. |
 | `GET /runs/{run_id}/draft` | Returns the fictional petition, provenance table, and approver; returns 409 before approval. |
+
+## How a run moves
+
+The API keeps the intake as numbered source lines. For a live run, local retrieval selects a fictional reference note. That note determines which fields the case needs. The selected note and the other candidates stay with the run so the reviewer can check that choice.
+
+The model proposes values and quotes the lines that support them. A proposal is a suggestion awaiting review. The checker verifies the quotations against the saved source, selects the latest emitted assertion when the evidence permits it, and keeps the earlier assertions. The child prompt asks for each child's name and birth details together, with corrections in the same child's history.
+
+LangGraph pauses for review. A reviewer accepts, corrects, or rejects each field, and every filled value retains transcript citations and available earlier model assertions. A separate approval releases the draft, with reviewer identities and decisions saved in local SQLite. The template produces the fictional petition and its value-to-lines table from those approved values.
+
+SQLite keeps the review state and audit so a paused run can resume. Optional Langfuse tracing shows what each node received, returned, and how long it took. The trace helps explain a run; the saved review audit records its decisions.
+
+A capture is a saved model response. A replay uses that response without calling the model again. The demo uses replays so the review workflow and measured results can be checked from a clean checkout.
 
 ## Demo script
 
